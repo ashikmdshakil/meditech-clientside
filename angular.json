@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "meditech"
+    }
+  },
+  "defaultProject": "meditech",
+  "cli": {
+    "analytics": "4ee5f2ae-d0d2-4bad-bd95-8a5867fa54d0"
+  }
 }

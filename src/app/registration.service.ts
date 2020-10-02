@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
+import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { User } from './User.model';
 
 @Injectable({
@@ -13,14 +15,12 @@ export class RegistrationService {
     this.http = http;
     this.user = new User;
    }
-  registerUser(name: string, email: string, number: string, password: string){
+  registerUser(name: string, email: string, number: string, password: string): Observable<string>{
     this.user.name = name;
     this.user.email = email;
     this.user.mobileNumber = number;
     this.user.password = password;
-    console.log(""+this.user.email);
-    this.http.post('http://10.0.0.3:8080/signup',this.user,{'responseType': 'text'}).subscribe((response)=>{
-      console.log(response.toString());
-    })
+    let status: string;
+    return this.http.post('http://10.0.0.3:8080/signup',this.user,{'responseType': 'text'});
   }
 }

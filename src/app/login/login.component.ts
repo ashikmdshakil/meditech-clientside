@@ -28,7 +28,10 @@ export class LoginComponent implements OnInit {
     );
     token.subscribe(
       result=>{
-        console.log(result);
+        let user :any = result['principal'];
+        localStorage.setItem('username',user.username);
+        localStorage.setItem('password',user.password);
+        console.log(' ' +localStorage.getItem('username')+ ' ' + localStorage.getItem('password')); 
       },
       error =>{
         this.failureMessage = error;

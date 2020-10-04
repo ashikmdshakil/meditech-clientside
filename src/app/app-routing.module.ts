@@ -1,3 +1,4 @@
+import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
@@ -11,6 +12,7 @@ const routes: Routes = [
   children : [
     {path : "signup", component : SignupComponent},
     {path : "login", component : LoginComponent},
+    {path: "users", component: UsersComponent},
     {path : "", component : LoginComponent}
   ]
 }

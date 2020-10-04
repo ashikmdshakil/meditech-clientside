@@ -22,6 +22,6 @@ export class LoginService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(number + ':' + password)
   });
-     return this.http.get('http://10.0.0.3:8080/login',{headers: headers,params: param, responseType : 'text'});
+     return this.http.get('http://10.0.0.3:8080/login',{headers: headers,params: param});
   }
 }

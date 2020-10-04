@@ -1,3 +1,4 @@
+import { LogoutService } from './../logout.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-
-  constructor() { }
+  logoutService: LogoutService;
+  constructor(logoutService: LogoutService) {
+    this.logoutService = logoutService;
+   }
 
   ngOnInit(): void {
+  }
+  logout(){
+    this.logoutService.doLogout().subscribe(
+      result=>{
+        localStorage.removeItem('username');
+        localStorage.removeItem('password');
+        console.log(result);
+      }
+    );
   }
 
 }

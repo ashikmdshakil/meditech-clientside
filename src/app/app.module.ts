@@ -14,6 +14,10 @@ import { SignupComponent } from './signup/signup.component';
 import { NavComponent } from './nav/nav.component';
 import { from } from 'rxjs';
 import { UsersComponent } from './users/users.component';
+import { RoleComponent } from './role/role.component';
+import { AdminPannelComponent } from './admin-pannel/admin-pannel.component';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { BlankComponent } from './blank/blank.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { UsersComponent } from './users/users.component';
     SignupComponent,
     NavComponent,
     LoginComponent,
-    UsersComponent
+    UsersComponent,
+    RoleComponent,
+    AdminPannelComponent,
+    ConfirmComponent,
+    BlankComponent
   ],
   imports: [
     BrowserModule,

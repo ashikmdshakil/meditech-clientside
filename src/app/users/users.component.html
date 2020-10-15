@@ -1,7 +1,7 @@
 <div class="row" style="margin-top:15px;">
     <div class="col-sm-1">
     </div>
-    <div class="col-sm-8">
+    <div class="col-sm-11">
         <table class="table table-dark">
             <thead>
               <tr>
@@ -19,14 +19,13 @@
                 <td class = "userNumber">{{user.mobileNumber}}</td>
                 <td class = "userMail">{{user.email}}</td>
                 <input type = "hidden" value = {{user.userId}}>
-                <td><button  class="btn btn-primary deleteRow">Delete</button></td>
-                <td><button  class="btn btn-primary deleteRow">Edit</button></td>
-                <td><button  class="btn btn-primary deleteRow">Set Role</button></td>
+                <td><button (click) = "delete(user.mobileNumber)" class="btn btn-primary deleteRow">Delete</button></td>
+                <td><button (click)= "setRole(user.mobileNumber)" class="btn btn-primary deleteRow">Set Role</button></td>
               </tr>
             </tbody>
           </table>
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-0">
     </div>
   </div>
 

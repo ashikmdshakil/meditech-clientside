@@ -40,14 +40,6 @@ export class SignupComponent implements OnInit {
         this.number = null;
         this.password = null;
       }
-      else{
-        this.alertExist = true;
-        this.alertMessage = "Something went wrong or you already have an account.";
-        this.name = null;
-        this.mail = null;
-        this.number = null;
-        this.password = null;
-      }
     })
     
   }

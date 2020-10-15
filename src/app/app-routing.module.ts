@@ -1,3 +1,7 @@
+import { BlankComponent } from './blank/blank.component';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { RoleComponent } from './role/role.component';
+import { AdminPannelComponent } from './admin-pannel/admin-pannel.component';
 import { UsersComponent } from './users/users.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
@@ -12,10 +16,21 @@ const routes: Routes = [
   children : [
     {path : "signup", component : SignupComponent},
     {path : "login", component : LoginComponent},
-    {path: "users", component: UsersComponent},
     {path : "", component : LoginComponent}
   ]
-}
+},
+{path: "admin-pannel", component: AdminPannelComponent,
+    children: [
+      {path: "" ,component: UsersComponent},
+      {path: "blank", component: BlankComponent, outlet: 'setRole'},
+      {path: "blank", component: BlankComponent, outlet: 'setRole'},
+      {path: "role", component: RoleComponent, outlet: 'setRole'},
+      {path: "confirm", component: ConfirmComponent, outlet: 'setRole'}
+    ]
+  },
+  
+  
+ 
 ];
 
 @NgModule({

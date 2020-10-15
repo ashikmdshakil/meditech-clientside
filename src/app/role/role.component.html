@@ -1,0 +1,20 @@
+<div class="row" style="margin-top: 50px;">
+    <div class="col-2">
+    </div>
+    <div class="col-8">
+        <h2>Set Roles</h2>
+        <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;"><strong>Name</strong> : <span>{{user.name}}</span></p>
+        <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;"><strong>Number</strong> : <span>{{user.mobileNumber}}</span></p>
+        <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;"><strong>Email</strong> : <span>{{user.email}}</span></p>
+        <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;"><strong>Role</strong> : <span>{{user.roles.name}}</span></p>
+        <div  *ngFor= "let role of systemRoles">
+          <label class="checkbox-inline"><input type="radio" name = "role" (change)="handleChange(role.roleId, $event)">{{role.name}}</label>
+        </div>
+          <div>
+            <button type="button" (click) = "assignRole(user.mobileNumber)" class="btn btn-primary">Reset Role</button>
+          </div>
+    </div>
+    <div class="col-2">
+    </div>
+  </div>
+

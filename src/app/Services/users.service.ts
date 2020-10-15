@@ -1,5 +1,5 @@
 import { User } from './../User.model';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -19,4 +19,22 @@ export class UsersService {
   });
     return this.http.get('http://10.0.0.3:8080/getUsers',{ headers: headers });
   }
+  
+  getUser(mobileNumber: string): Observable<any>{
+    let param = new HttpParams()
+    .set('number' , mobileNumber);
+    let user :any = JSON.parse(localStorage.getItem('currentUser'));
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get('http://10.0.0.3:8080/getUser',{headers: headers,params: param, responseType: 'text'})
+   }
+
+   removeUser(user: User): Observable<any>{
+     console.log(user.roles.roleId);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post('http://10.0.0.3:8080/removeUser',user,{headers: headers,'responseType': 'text'});
+   }
 }

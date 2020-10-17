@@ -1,3 +1,5 @@
+import { NavComponent } from './nav/nav.component';
+import { SearchComponent } from './search/search.component';
 import { BlankComponent } from './blank/blank.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { RoleComponent } from './role/role.component';
@@ -14,6 +16,8 @@ const routes: Routes = [
   {path : "home", 
   component : HomeComponent,
   children : [
+    {path: "", component : NavComponent, outlet: 'nav'},
+    {path: "refresh", component : BlankComponent, outlet: 'nav'},
     {path : "signup", component : SignupComponent},
     {path : "login", component : LoginComponent},
     {path : "", component : LoginComponent}
@@ -25,13 +29,12 @@ const routes: Routes = [
       {path: "blank", component: BlankComponent, outlet: 'setRole'},
       {path: "blank", component: BlankComponent, outlet: 'setRole'},
       {path: "role", component: RoleComponent, outlet: 'setRole'},
-      {path: "confirm", component: ConfirmComponent, outlet: 'setRole'}
+      {path: "confirm", component: ConfirmComponent, outlet: 'setRole'},
+      {path: "", component: SearchComponent, outlet: 'search'}
     ]
   },
-  
-  
- 
-];
+  {path: "admin-pannel/refresh", component: BlankComponent}
+]  
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

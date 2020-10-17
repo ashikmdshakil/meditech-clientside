@@ -18,6 +18,7 @@ import { RoleComponent } from './role/role.component';
 import { AdminPannelComponent } from './admin-pannel/admin-pannel.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { BlankComponent } from './blank/blank.component';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { BlankComponent } from './blank/blank.component';
     RoleComponent,
     AdminPannelComponent,
     ConfirmComponent,
-    BlankComponent
+    BlankComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

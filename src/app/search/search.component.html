@@ -1,0 +1,49 @@
+<div class="container">
+    <br/>
+	<div class="row justify-content-center">
+                        <div class="col-12 col-md-10 col-lg-8" >
+                            <form class="card card-sm">
+                                <div class="card-body row no-gutters align-items-center">
+                                    <div class="col-auto">
+                                        <i class="fas fa-search h4 text-body"></i>
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col">
+                                        <input class="form-control form-control-lg form-control-borderless" type="text" name = "number" [(ngModel)] = 'mobileNumber' placeholder="Search User by phone number">
+                                    </div>
+                                    <!--end of col-->
+                                    <div class="col-auto">
+                                        <button class="btn btn-lg btn-success" (click) = "search()" type="submit">Search</button>
+                                    </div>
+                                    <!--end of col-->
+                                </div>
+                            </form>
+                        </div>
+                        <!--end of col-->
+    </div>
+    <div class = 'row' style="margin-top: 15px;" *ngIf = "user.userId != null">
+        <div class="col-sm-1">
+        </div>
+        <div class = 'col-sm-11'>
+            <table class="table table-dark">
+                <thead>
+                  <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">Email</th>
+                    <th scope="col"><button type="button" (click)="clear()" class="btn btn-secondary">clear</button></th>
+                  </tr>
+                </thead>
+                <tbody id ="users">
+                  <tr>
+                    <td class = "userName">{{user.name}}</td>
+                    <td class = "userNumber">{{user.mobileNumber}}</td>
+                    <td class = "userMail">{{user.email}}</td>
+                    <td><button (click) = "delete(user.mobileNumber)" class="btn btn-primary deleteRow">Delete</button></td>
+                    <td><button (click) = "setRole(user.mobileNumber)" class="btn btn-primary deleteRow">Set Role</button></td>
+                  </tr>
+                </tbody>
+              </table>
+        </div>
+    </div>
+</div>

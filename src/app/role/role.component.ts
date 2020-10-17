@@ -54,4 +54,7 @@ export class RoleComponent implements OnInit {
     
     })
 }
+  close(){
+    this.router.navigateByUrl('/admin-pannel/(setRole:blank)')
+  }
 }

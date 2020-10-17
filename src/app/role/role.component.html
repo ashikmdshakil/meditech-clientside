@@ -2,15 +2,24 @@
     <div class="col-2">
     </div>
     <div class="col-8">
-        <h2>Set Roles</h2>
+      <div class="row" style="margin-bottom: 20px;">
+        <div class="col-sm-8">
+          <h3>Set Roles</h3>
+        </div>
+        <div class="col-sm-4">
+          <button type="button" (click) = "close()" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
         <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;"><strong>Name</strong> : <span>{{user.name}}</span></p>
         <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;"><strong>Number</strong> : <span>{{user.mobileNumber}}</span></p>
         <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;"><strong>Email</strong> : <span>{{user.email}}</span></p>
         <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger;"><strong>Role</strong> : <span>{{user.roles.name}}</span></p>
         <div  *ngFor= "let role of systemRoles">
-          <label class="checkbox-inline"><input type="radio" name = "role" (change)="handleChange(role.roleId, $event)">{{role.name}}</label>
+          <label class="roles"><input type="radio" name = "role" (change)="handleChange(role.roleId, $event)">{{role.name}}</label>
         </div>
-          <div>
+          <div style="margin-top: 15px; margin-left: 50px;">
             <button type="button" (click) = "assignRole(user.mobileNumber)" class="btn btn-primary">Reset Role</button>
           </div>
     </div>

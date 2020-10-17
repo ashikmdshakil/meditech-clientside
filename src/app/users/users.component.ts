@@ -40,5 +40,10 @@ export class UsersComponent implements OnInit {
       this.router.navigateByUrl('/admin-pannel/(setRole:confirm)',{ state: { number: number }});
     })
   }
+  refresh(){
+    this.router.navigateByUrl('/admin-pannel/refresh').then(()=>{
+      this.router.navigateByUrl('/admin-pannel');
+    })
+  }
 
 }

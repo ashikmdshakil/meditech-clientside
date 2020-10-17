@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { LoginService } from './../login.service';
 import { Component, OnInit } from '@angular/core';
@@ -15,10 +16,12 @@ export class LoginComponent implements OnInit {
   password: string;
   alertExist: boolean = false;
   login: LoginService;
+  router: Router;
   failureMessage: Error;
 
-  constructor(login: LoginService) {
+  constructor(login: LoginService, router: Router) {
       this.login = login;
+      this.router = router;
    }
 
   authenticate(){
@@ -29,9 +32,15 @@ export class LoginComponent implements OnInit {
     token.subscribe(
       result=>{
         let user :any = result['principal'];
+        let authorities: any = user.authorities;
         localStorage.setItem('username',user.username);
         localStorage.setItem('password',user.password);
-        console.log(' ' +localStorage.getItem('username')+ ' ' + localStorage.getItem('password')); 
+        localStorage.setItem('role',user.authorities[0].authority)
+        console.log(' ' +localStorage.getItem('username')+ ' ' + localStorage.getItem('password'));
+        console.log(localStorage.getItem('role')); 
+        this.router.navigateByUrl('/home/(nav:refresh)').then(()=>{
+          this.router.navigateByUrl('/home');
+        })
       },
       error =>{
         this.failureMessage = error;

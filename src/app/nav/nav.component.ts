@@ -33,15 +33,10 @@ export class NavComponent implements OnInit {
         localStorage.removeItem('role');
         console.log(result);
         console.log(localStorage.getItem('username'));
-        this.router.navigateByUrl('/home/(nav:refresh)').then(()=>{
-          this.router.navigateByUrl('/home');
-        })
-        
-      }
-    );
+      })
+      this.router.navigateByUrl('/home/(nav:refresh)').then(()=>{
+        this.router.navigateByUrl('/home');
+      })
+    } 
   }
-  refreshNav(){
-   
-  }
-
-}
+  

@@ -1,3 +1,4 @@
+import { ProfileComponent } from './profile/profile.component';
 import { NavComponent } from './nav/nav.component';
 import { SearchComponent } from './search/search.component';
 import { BlankComponent } from './blank/blank.component';
@@ -26,6 +27,8 @@ const routes: Routes = [
 {path: "admin-pannel", component: AdminPannelComponent,
     children: [
       {path: "" ,component: UsersComponent},
+      {path: "", component : NavComponent, outlet: 'nav'},
+      {path: "refresh", component : BlankComponent, outlet: 'nav'},
       {path: "blank", component: BlankComponent, outlet: 'setRole'},
       {path: "blank", component: BlankComponent, outlet: 'setRole'},
       {path: "role", component: RoleComponent, outlet: 'setRole'},
@@ -33,7 +36,13 @@ const routes: Routes = [
       {path: "", component: SearchComponent, outlet: 'search'}
     ]
   },
-  {path: "admin-pannel/refresh", component: BlankComponent}
+  {path: "admin-pannel/refresh", component: BlankComponent},
+  {path: "profile", component: ProfileComponent,
+    children: [
+      {path: "", component : NavComponent, outlet: 'nav'},
+      {path: "refresh", component : BlankComponent, outlet: 'nav'},
+    ]
+  }
 ]  
 
 @NgModule({

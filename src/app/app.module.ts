@@ -19,6 +19,7 @@ import { AdminPannelComponent } from './admin-pannel/admin-pannel.component';
 import { ConfirmComponent } from './confirm/confirm.component';
 import { BlankComponent } from './blank/blank.component';
 import { SearchComponent } from './search/search.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { SearchComponent } from './search/search.component';
     AdminPannelComponent,
     ConfirmComponent,
     BlankComponent,
-    SearchComponent
+    SearchComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

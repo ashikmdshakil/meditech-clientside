@@ -20,6 +20,7 @@ import { ConfirmComponent } from './confirm/confirm.component';
 import { BlankComponent } from './blank/blank.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProfileFormComponent } from './profile-form/profile-form.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { ProfileComponent } from './profile/profile.component';
     ConfirmComponent,
     BlankComponent,
     SearchComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileFormComponent
   ],
   imports: [
     BrowserModule,

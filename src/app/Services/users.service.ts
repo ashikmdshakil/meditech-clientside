@@ -37,4 +37,11 @@ export class UsersService {
   });
     return this.http.post('http://10.0.0.3:8080/removeUser',user,{headers: headers,'responseType': 'text'});
    }
+
+   updateUser(user: User): Observable<string>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post('http://10.0.0.3:8080/updateUser',user,{headers: headers,'responseType': 'text'});
+  }
 }

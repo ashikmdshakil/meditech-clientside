@@ -1,3 +1,4 @@
+import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavComponent } from './nav/nav.component';
 import { SearchComponent } from './search/search.component';
@@ -41,6 +42,8 @@ const routes: Routes = [
     children: [
       {path: "", component : NavComponent, outlet: 'nav'},
       {path: "refresh", component : BlankComponent, outlet: 'nav'},
+      {path: "", component: ProfileFormComponent, outlet: 'profile-form'},
+      {path: "refresh", component : BlankComponent, outlet: 'profile-form'},
     ]
   }
 ]  

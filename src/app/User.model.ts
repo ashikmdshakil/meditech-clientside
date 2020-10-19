@@ -1,3 +1,4 @@
+import { AddressBook } from './AddressBook.model';
 import { Role } from './Role.model';
 export class User{
     userId: number;
@@ -6,4 +7,5 @@ export class User{
     mobileNumber: string;
     password: string;
     roles: Role;
+    addressBooks: AddressBook;
 }

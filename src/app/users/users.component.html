@@ -22,6 +22,7 @@
                 <th scope="col">Number</th>
                 <th scope="col">Email</th>
                 <th scope="col"></th>
+                <th scope="col"></th>
               </tr>
             </thead>
             <tbody id ="users" *ngFor= "let user of users ; let i = index">
@@ -32,7 +33,7 @@
                 <td class = "userMail">{{user.email}}</td>
                 <input type = "hidden" value = {{user.userId}}>
                 <td><button (click) = "delete(user.mobileNumber)" class="btn btn-primary deleteRow">Delete</button></td>
-                <td><button (click)= "setRole(user.mobileNumber)" class="btn btn-primary deleteRow">Set Role</button></td>
+                <td><button (click)= "setRole(user.mobileNumber)" class="btn btn-primary deleteRow">Role</button></td>
               </tr>
             </tbody>
           </table>

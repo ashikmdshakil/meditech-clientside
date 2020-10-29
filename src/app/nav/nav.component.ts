@@ -1,3 +1,4 @@
+import { DomSanitizer } from '@angular/platform-browser';
 import { UsersService } from './../Services/users.service';
 import { LogoutService } from './../logout.service';
 import { Component, OnInit } from '@angular/core';
@@ -14,15 +15,20 @@ export class NavComponent implements OnInit {
   router: Router;
   userService: UsersService;
   user: User = new User();
-  constructor(logoutService: LogoutService, router: Router, userService: UsersService) {
+  imageUrl: any;
+  domSanitizer: DomSanitizer;
+  constructor(logoutService: LogoutService, router: Router, userService: UsersService, domSanitizer: DomSanitizer) {
     this.logoutService = logoutService;
     this.router = router;
     this.userService = userService;
+    this.domSanitizer = domSanitizer;
    }
 
   ngOnInit(): void {
     this.userService.getUser(localStorage.getItem('username')).subscribe(result =>{
       this.user = JSON.parse(result);
+      let image = 'data:image/png;base64, '+this.user.userAvatar.image;
+      this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image);
     })
   }
   logout(){

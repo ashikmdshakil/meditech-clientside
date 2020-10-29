@@ -21,6 +21,8 @@ import { BlankComponent } from './blank/blank.component';
 import { SearchComponent } from './search/search.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { ProfileFormComponent } from './profile-form/profile-form.component';
     BlankComponent,
     SearchComponent,
     ProfileComponent,
-    ProfileFormComponent
+    ProfileFormComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,

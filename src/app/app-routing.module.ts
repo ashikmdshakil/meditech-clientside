@@ -1,3 +1,5 @@
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { ProfileComponent } from './profile/profile.component';
 import { NavComponent } from './nav/nav.component';
@@ -22,6 +24,7 @@ const routes: Routes = [
     {path: "refresh", component : BlankComponent, outlet: 'nav'},
     {path : "signup", component : SignupComponent},
     {path : "login", component : LoginComponent},
+    {path : "reset-password", component : ForgotPasswordComponent},
     {path : "", component : LoginComponent}
   ]
 },
@@ -45,7 +48,8 @@ const routes: Routes = [
       {path: "", component: ProfileFormComponent, outlet: 'profile-form'},
       {path: "refresh", component : BlankComponent, outlet: 'profile-form'},
     ]
-  }
+  },
+  {path: "reset-password/:name", component: ResetPasswordComponent}
 ]  
 
 @NgModule({

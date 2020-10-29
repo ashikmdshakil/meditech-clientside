@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class UsersService {
   http: HttpClient;
+  formData: FormData = new FormData();
 
   constructor(http: HttpClient) {
       this.http = http;
@@ -44,4 +45,16 @@ export class UsersService {
   });
     return this.http.post('http://10.0.0.3:8080/updateUser',user,{headers: headers,'responseType': 'text'});
   }
+
+  requestForResetPassword(number: string): Observable<String>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+  this.formData.delete('number');
+  this.formData.append('number', number);
+    return this.http.post('http://10.0.0.3:8080/mailForResetPassword',this.formData,{headers: headers,'responseType': 'text'});
+    
+  }
+  
+
 }

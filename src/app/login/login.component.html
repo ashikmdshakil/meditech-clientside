@@ -18,6 +18,9 @@
                 <label for="formGroupExampleInput2">Password</label>
                 <input type="password" [(ngModel)] = "password" class="form-control" id="password">
             </div>
+            <div>
+                <a  routerLink = "/home/reset-password"><p>Forgot Password?</p></a>
+            </div>
             <button id = "save" (click) = "authenticate()" class="btn btn-success">Log In</button>
         </div>
         <div class="col-sm-3">

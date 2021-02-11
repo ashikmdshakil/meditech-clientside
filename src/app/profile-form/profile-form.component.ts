@@ -18,6 +18,7 @@ export class ProfileFormComponent implements OnInit {
   mail: string;
   number: string;
   imageUrl: any;
+  imageId: any;
   isChecked: boolean = false;
   addressBooks: AddressBook = new AddressBook();
   user: User = new User();
@@ -44,8 +45,13 @@ export class ProfileFormComponent implements OnInit {
       if(this.user.addressBooks !== null){
         this.addressBooks = this.user.addressBooks;
       }
-      let image = 'data:image/png;base64, '+this.user.userAvatar.image;
-      this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image);
+     
+        let image = 'data:image/png;base64, '+this.user.userAvatar.image;
+        console.log("This image id is "+ this.user.userAvatar.avatarId);
+        this.imageId = this.user.userAvatar.avatarId;
+        this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image);
+      
+     
       }) 
 
       
@@ -55,6 +61,7 @@ export class ProfileFormComponent implements OnInit {
   update(){
     if(this.isChecked){
     this.user.addressBooks = this.addressBooks;
+    this.user.userAvatar.avatarId = this.imageId;
     this.userService.updateUser(this.user).subscribe(result =>{
         if(result == 'success'){
           this.name = this.user.name;

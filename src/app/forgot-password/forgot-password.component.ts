@@ -18,8 +18,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
 
   resetPassword(){
-      this.userService.requestForResetPassword(this.number).subscribe(response =>{
-        
+      this.userService.requestForResetPassword(this.number).subscribe(response =>{  
       });
   }
 

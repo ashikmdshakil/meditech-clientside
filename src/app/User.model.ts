@@ -10,4 +10,5 @@ export class User{
     roles: Role;
     addressBooks: AddressBook;
     userAvatar: UserAvatar;
+    account: Account[] = [];
 }

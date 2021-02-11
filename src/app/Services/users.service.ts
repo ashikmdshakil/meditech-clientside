@@ -40,20 +40,27 @@ export class UsersService {
    }
 
    updateUser(user: User): Observable<string>{
+     user.userAvatar = null;
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
+    console.log(user.addressBooks.city);
     return this.http.post('http://10.0.0.3:8080/updateUser',user,{headers: headers,'responseType': 'text'});
   }
 
   requestForResetPassword(number: string): Observable<String>{
-    const headers = new HttpHeaders({
-      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
-  });
-  this.formData.delete('number');
-  this.formData.append('number', number);
-    return this.http.post('http://10.0.0.3:8080/mailForResetPassword',this.formData,{headers: headers,'responseType': 'text'});
+      this.formData.delete('number');
+      this.formData.append('number', number);
+    return this.http.post('http://10.0.0.3:8080/mailForResetPassword',this.formData,{'responseType': 'text'});
     
+  }
+
+  setPassword(token: string, password: string): Observable<String>{
+      this.formData.delete('tokenString');
+      this.formData.delete('password');
+      this.formData.append('tokenString', token);
+      this.formData.append('password', password);
+    return this.http.post('http://10.0.0.3:8080/setPassword',this.formData,{responseType: 'text'});
   }
   
 

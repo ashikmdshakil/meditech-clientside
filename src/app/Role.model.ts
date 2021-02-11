@@ -3,7 +3,5 @@ export class Role{
     roleId: number;
     name: string;
     type: string;
-    users: User[] = []
-
-  
+    users: User[] = []  
 }

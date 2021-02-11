@@ -1,3 +1,4 @@
+import { Account } from './Model/Account.model';
 import { User } from './User.model';
 export class AddressBook{
     AddressId: number;
@@ -8,4 +9,5 @@ export class AddressBook{
     zip: string;
     country: string;
     user: User;
+    account: Account;
 }

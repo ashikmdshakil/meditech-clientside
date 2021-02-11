@@ -1,3 +1,4 @@
+import { UsersService } from './../Services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
@@ -12,9 +13,11 @@ export class ResetPasswordComponent implements OnInit {
   password2: string;
   router: ActivatedRoute;
   tokenString: string;
+  userService: UsersService;
 
-  constructor(router: ActivatedRoute) {
+  constructor(router: ActivatedRoute, userService: UsersService) {
     this.router = router;
+    this.userService = userService;
    }
 
   ngOnInit(): void {
@@ -25,7 +28,13 @@ export class ResetPasswordComponent implements OnInit {
   }
 
   reset(){
-
+    if(this.password1 == this.password2){
+      this.userService.setPassword(this.tokenString, this.password1).subscribe(response =>{
+        console.log(response);
+      })
+    }
+    else{
+      console.log("password does not match .");
+    }
   }
-
 }

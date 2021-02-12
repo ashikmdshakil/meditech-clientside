@@ -61,7 +61,9 @@ export class ProfileFormComponent implements OnInit {
   update(){
     if(this.isChecked){
     this.user.addressBooks = this.addressBooks;
-    this.user.userAvatar.avatarId = this.imageId;
+    //if(this.imageId !== null){
+      //this.user.userAvatar.avatarId = this.imageId;
+    //}
     this.userService.updateUser(this.user).subscribe(result =>{
         if(result == 'success'){
           this.name = this.user.name;

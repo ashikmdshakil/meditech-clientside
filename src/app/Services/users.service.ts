@@ -2,6 +2,7 @@ import { User } from './../User.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+const ipAdress = 'http://10.0.0.3:8080'; 
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +19,7 @@ export class UsersService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.get('http://10.0.0.3:8080/getUsers',{ headers: headers });
+    return this.http.get(ipAdress+'/getUsers',{ headers: headers });
   }
   
   getUser(mobileNumber: string): Observable<any>{
@@ -28,7 +29,7 @@ export class UsersService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-      return this.http.get('http://10.0.0.3:8080/getUser',{headers: headers,params: param, responseType: 'text'})
+      return this.http.get(ipAdress+'/getUser',{headers: headers,params: param, responseType: 'text'})
    }
 
    removeUser(user: User): Observable<any>{
@@ -37,7 +38,7 @@ export class UsersService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.post('http://10.0.0.3:8080/removeUser',user,{headers: headers,'responseType': 'text'});
+    return this.http.post(ipAdress+'/removeUser',user,{headers: headers,'responseType': 'text'});
    }
 
    updateUser(user: User): Observable<string>{
@@ -46,13 +47,13 @@ export class UsersService {
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
     console.log(user.addressBooks.city);
-    return this.http.post('http://10.0.0.3:8080/updateUser',user,{headers: headers,'responseType': 'text'});
+    return this.http.post(ipAdress+'/updateUser',user,{headers: headers,'responseType': 'text'});
   }
 
   requestForResetPassword(number: string): Observable<String>{
       this.formData.delete('number');
       this.formData.append('number', number);
-    return this.http.post('http://10.0.0.3:8080/mailForResetPassword',this.formData,{'responseType': 'text'});
+    return this.http.post(ipAdress+'/mailForResetPassword',this.formData,{'responseType': 'text'});
     
   }
 
@@ -61,7 +62,7 @@ export class UsersService {
       this.formData.delete('password');
       this.formData.append('tokenString', token);
       this.formData.append('password', password);
-    return this.http.post('http://10.0.0.3:8080/setPassword',this.formData,{responseType: 'text'});
+    return this.http.post(ipAdress+'/setPassword',this.formData,{responseType: 'text'});
   }
   
 

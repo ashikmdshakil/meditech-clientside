@@ -32,7 +32,7 @@ const routes: Routes = [
     {path : "reset-password", component : ForgotPasswordComponent},
     {path : "", component : CategoryComponent},
     {path : "doctor-category", component : DoctorCategoryComponent},
-    {path : "doctor-list", component : DoctorListComponent}
+    {path : "doctor-list/:id", component : DoctorListComponent}
   ]
 },
 {path: "admin-pannel", component: AdminPannelComponent,

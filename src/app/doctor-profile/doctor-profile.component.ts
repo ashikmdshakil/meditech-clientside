@@ -58,10 +58,19 @@ export class DoctorProfileComponent implements OnInit {
         console.log("This image id is "+ this.user.userAvatar.avatarId);
         this.imageId = this.user.userAvatar.avatarId;
         this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image); 
+        if(this.user.categories !== null){
+          this.currentCategories = result['categories'];
+        }
+        
+        if(this.user.degree !== null){
+          this.degree = result['degree'];
+        }
 
-        this.currentCategories = result['categories'];
-        this.degree = result['degree'];
-        this.speciality = result['speciality'];
+        if(this.user.speciality !== null){
+          this.speciality = result['speciality'];
+        }
+        
+        
       }) 
 
       this.categoryService.getCategories().subscribe(result =>{

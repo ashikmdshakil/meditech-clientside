@@ -19,7 +19,7 @@ export class ConfirmComponent implements OnInit {
    }
   ngOnInit(): void {
     this.userService.getUser(history.state.number).subscribe((response)=>{
-      this.user = JSON.parse(response);
+      this.user = response;
     })
   }
 

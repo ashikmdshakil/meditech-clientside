@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../User.model';
-const ip = "10.0.0.3:8080";
+const ip = "http://10.0.0.3:8080";
 @Injectable({
   providedIn: 'root'
 })
@@ -21,7 +21,9 @@ export class RolesService {
   }
   
   updateUserRole(user: User): Observable<any>{
+    user.userAvatar = null;
     console.log(user.name);
+    console.log(user.roles.roleId);
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });

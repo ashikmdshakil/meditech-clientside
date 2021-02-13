@@ -30,7 +30,8 @@ export class DoctorCategoryComponent implements OnInit {
 
   getDoctorList(id: number){
     console.log("this doctor category id is "+id);
-    this.router.navigateByUrl('/home/doctor-list',{ state: { id: id }});
+    //this.router.navigateByUrl('/home/doctor-list',{ state: { id: id }});
+    this.router.navigateByUrl('/home/doctor-list/'+id);
 
   }
 

@@ -3,16 +3,19 @@
     <div class="col-sm-6">
         <div class="card shadow p-3 mb-5 bg-white rounded">
             <div style="height: 150px;" class="card-body">
+                <div *ngFor= "let doctor of doctors" style="margin-bottom: 25px;">
                 <div class="row">
                     <div class="col-sm-4">
-                        <img src="../../assets/blank_image.png" style="max-height: 150px; max-width: 150px;">
+                        <img [src] = "doctor.userAvatar.image" style="max-height: 125px; max-width: 150px;">
                     </div>
                     <div class="col-sm-8">
-                        <h3>Dr. Ashik Md Shakil</h3>
-                        <p>MBBS(Dhaka Medical College)</p>
-                        <p>Cardiologist</p>
+                        <div>
+                            <h3>{{doctor.name}}</h3>
+                            <p>{{doctor.degree.degreeName}}</p>
+                            <p>{{doctor.speciality.speciality}}</p>   
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     <div class="col-sm-3"></div>

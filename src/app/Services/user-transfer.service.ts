@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from '../User.model';
-
+const ip = "10.0.0.3:8080";
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +19,7 @@ export class UserTransferService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-  this.http.get('http://10.0.0.3:8080/getUser',{headers: headers,params: param, responseType: 'text'}).subscribe(response =>{ 
+  this.http.get(ip+'/getUser',{headers: headers,params: param, responseType: 'text'}).subscribe(response =>{ 
     this.user = JSON.parse(response);
     console.log(response);
   })

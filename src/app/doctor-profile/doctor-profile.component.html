@@ -66,12 +66,24 @@
         </div>
         <div class="form-group">
             <label for="formGroupExampleInput">Degree</label>
-            <input type="text" name = "street1" class="form-control"  [(ngModel)] = 'addressBooks.street1' id="street1">
+            <input type="text" name = "street1" class="form-control"  [(ngModel)] = 'degree.degreeName' id="degree">
+        </div>
+
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Degree Names</p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Speciality</label>
+            <input type="text" name = "street1" class="form-control"  [(ngModel)] = 'speciality.speciality' id="speciality">
         </div>
         <div class="row" style="margin-top: 25px;">
             <div class="col-sm-4"></div>
             <div class="col-sm-4">
-                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Specialization</p>
+                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Category</p>
             </div>
             <div class="col-sm-4"></div>
         </div>

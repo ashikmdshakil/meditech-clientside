@@ -1,3 +1,5 @@
+import { DoctorListComponent } from './doctor-list/doctor-list.component';
+import { CategoryComponent } from './category/category.component';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
 import { RegisterDoctorComponent } from './register-doctor/register-doctor.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
@@ -16,6 +18,7 @@ import { SignupComponent } from './signup/signup.component';
 import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { DoctorCategoryComponent } from './doctor-category/doctor-category.component';
 
 const routes: Routes = [
   {path: "", redirectTo : "home", pathMatch: 'full'},
@@ -27,7 +30,9 @@ const routes: Routes = [
     {path : "signup", component : SignupComponent},
     {path : "login", component : LoginComponent},
     {path : "reset-password", component : ForgotPasswordComponent},
-    {path : "", component : LoginComponent}
+    {path : "", component : CategoryComponent},
+    {path : "doctor-category", component : DoctorCategoryComponent},
+    {path : "doctor-list", component : DoctorListComponent}
   ]
 },
 {path: "admin-pannel", component: AdminPannelComponent,

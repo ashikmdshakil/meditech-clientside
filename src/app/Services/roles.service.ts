@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from '../User.model';
-
+const ip = "10.0.0.3:8080";
 @Injectable({
   providedIn: 'root'
 })
@@ -17,7 +17,7 @@ export class RolesService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.get('http://10.0.0.3:8080/systemRoles',{ headers: headers});
+    return this.http.get(ip+'/systemRoles',{ headers: headers});
   }
   
   updateUserRole(user: User): Observable<any>{
@@ -25,7 +25,7 @@ export class RolesService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.post('http://10.0.0.3:8080/assignRole',user,{headers: headers, responseType : "text"});
+    return this.http.post(ip+'/assignRole',user,{headers: headers, responseType : "text"});
   }
  
   }

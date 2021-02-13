@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+const ip = "http://10.0.0.3:8080";
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,7 @@ export class CategoryService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.get('http://10.0.0.3:8080/getCategories',{ headers: headers});
+    return this.http.get(ip+'/getCategories',{ headers: headers});
   }
 
 
@@ -26,7 +27,7 @@ export class CategoryService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-      return this.http.get('http://10.0.0.3:8080/getUserCategories',{headers: headers,params: param, responseType: 'text'})
+      return this.http.get(ip+'/getUserCategories',{headers: headers,params: param, responseType: 'text'})
    }
 
 }

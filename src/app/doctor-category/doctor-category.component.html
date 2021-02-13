@@ -1,0 +1,28 @@
+
+<div class="row">
+    <div class="col-4">
+    </div>
+    <div class="col-4">
+      <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Doctors Category</h2>
+    </div>
+    <div class="col-4">
+    </div>
+  </div>
+  <div class = "row">
+    <div class="col-1">
+    </div>
+    <div class="col-11">
+    <div *ngFor= "let category of categories" class="service">
+      <div class="card" style="width:300px">
+        <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+        <div class="card-body">
+          <h4 class="card-title">{{category.name}}</h4>
+          <p class="card-text"></p>
+          <a (click) = "getDoctorList(category.id)" class="btn btn-primary">Visit</a>
+        </div>
+      </div>
+      </div>
+    </div>
+    
+  </div>
+

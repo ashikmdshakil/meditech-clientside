@@ -2,7 +2,7 @@ import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-
+const ip = "10.0.0.3:8080";
 @Injectable({
   providedIn: 'root'
 })
@@ -22,6 +22,6 @@ export class LoginService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(number + ':' + password)
   });
-     return this.http.get('http://10.0.0.3:8080/login',{headers: headers,params: param});
+     return this.http.get(ip+'/login',{headers: headers,params: param});
   }
 }

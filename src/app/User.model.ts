@@ -1,3 +1,5 @@
+import { Speciality } from './Model/Speciality.model';
+import { Degree } from './Model/Degree.model';
 import { Categories } from './Model/Categories.model';
 import { UserAvatar } from './UserAvatar.model';
 import { AddressBook } from './AddressBook.model';
@@ -13,4 +15,6 @@ export class User{
     userAvatar: UserAvatar;
     account: Account[] = [];
     categories: Categories[] = [];
+    degree: Degree;
+    speciality: Speciality;
 }

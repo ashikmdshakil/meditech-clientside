@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserAvatar } from '../UserAvatar.model';
-
+const ip = "10.0.0.3:8080";
 @Injectable({
   providedIn: 'root'
 })
@@ -21,11 +21,11 @@ export class UserAvatarService {
   });
     this.formData.append('profileImage', userAvatar.image);
     this.formData.append('userId', userAvatar.user.userId.toString());
-    return this.http.post('http://10.0.0.3:8080/updateAvatar',this.formData,{headers: headers,'responseType': 'text'});
+    return this.http.post(ip+'/updateAvatar',this.formData,{headers: headers,'responseType': 'text'});
   }
 
   getImage(): Observable<any>{
-      return this.http.get('http://10.0.0.3:8080/getImage',{responseType: 'arraybuffer'});
+      return this.http.get(ip+'/getImage',{responseType: 'arraybuffer'});
    }
 
 

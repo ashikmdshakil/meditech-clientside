@@ -27,6 +27,8 @@ import { CategoryComponent } from './category/category.component';
 import { RegisterDoctorComponent } from './register-doctor/register-doctor.component';
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
+import { DoctorCategoryComponent } from './doctor-category/doctor-category.component';
+import { DoctorListComponent } from './doctor-list/doctor-list.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { DoctorProfileComponent } from './doctor-profile/doctor-profile.componen
     CategoryComponent,
     RegisterDoctorComponent,
     DoctorDashboardComponent,
-    DoctorProfileComponent
+    DoctorProfileComponent,
+    DoctorCategoryComponent,
+    DoctorListComponent
   ],
   imports: [
     BrowserModule,

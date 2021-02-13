@@ -1,3 +1,5 @@
+import { Speciality } from './../Model/Speciality.model';
+import { Degree } from './../Model/Degree.model';
 import { Categories } from './../Model/Categories.model';
 import { CategoryService } from './../Services/category.service';
 import { CategoryComponent } from './../category/category.component';
@@ -26,6 +28,8 @@ export class DoctorProfileComponent implements OnInit {
   isChecked: boolean = false;
   addressBooks: AddressBook = new AddressBook();
   user: User = new User();
+  degree: Degree = new Degree();
+  speciality: Speciality = new Speciality();
   userAvatar: UserAvatar = new UserAvatar();
   userService: UsersService;
   userAvatarService: UserAvatarService;
@@ -56,6 +60,8 @@ export class DoctorProfileComponent implements OnInit {
         this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image); 
 
         this.currentCategories = result['categories'];
+        this.degree = result['degree'];
+        this.speciality = result['speciality'];
       }) 
 
       this.categoryService.getCategories().subscribe(result =>{
@@ -86,6 +92,9 @@ export class DoctorProfileComponent implements OnInit {
     if(this.isChecked){
     this.user.addressBooks = this.addressBooks;
     this.user.categories = this.currentCategories;
+    this.user.degree = this.degree;
+    this.user.speciality = this.speciality;
+    console.log(this.user.speciality.speciality);
     //if(this.imageId !== null){
       //this.user.userAvatar.avatarId = this.imageId;
     //}

@@ -1,3 +1,4 @@
+import { Categories } from './Model/Categories.model';
 import { UserAvatar } from './UserAvatar.model';
 import { AddressBook } from './AddressBook.model';
 import { Role } from './Role.model';
@@ -11,4 +12,5 @@ export class User{
     addressBooks: AddressBook;
     userAvatar: UserAvatar;
     account: Account[] = [];
+    categories: Categories[] = [];
 }

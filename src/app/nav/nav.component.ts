@@ -26,7 +26,7 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUser(localStorage.getItem('username')).subscribe(result =>{
-      this.user = JSON.parse(result);
+      this.user = result;
       let image = 'data:image/png;base64, '+this.user.userAvatar.image;
       this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image);
     })
@@ -47,5 +47,15 @@ export class NavComponent implements OnInit {
         this.router.navigateByUrl('/home');
       })
     } 
+
+    routeProfile(){
+      if(localStorage.getItem('role') === 'doctor'){
+        this.router.navigateByUrl('/profile/(profile-form:doctor-profile)');
+      }
+      else{
+        this.router.navigateByUrl('/profile/(profile-form:user-profile)');
+      }
+      
+    }
   }
   

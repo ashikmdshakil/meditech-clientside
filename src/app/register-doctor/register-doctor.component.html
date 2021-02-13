@@ -1,0 +1,40 @@
+<router-outlet name = 'nav'></router-outlet>
+<div class="container-fluid">
+    <div class="row" style="margin-top: 30px;">
+        <div class="col-sm-3">
+        </div>
+        <div class="col-sm-6">
+            <div *ngIf = "alertExist" class="alert alert-danger" role="alert">
+                <strong>{{alertMessage}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+            <input type="hidden">
+            <div class="form-group">
+                <label for="formGroupExampleInput">Name</label>
+                <input type="text" [(ngModel)] = "name" class="form-control" id="name">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Email</label>
+                <input type="email" [(ngModel)] = "mail" class="form-control" id="mail">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Mobile Number</label>
+                <input type="text" [(ngModel)] = "number" class="form-control" id="number">
+            </div>
+            <div class="form-group">
+                <label for="formGroupExampleInput2">Password</label>
+                <input type="password" [(ngModel)] = "password" class="form-control" id="password">
+            </div>
+              <div style="margin-top: 20px;">
+                <button id = "save" (click) = "signUp()" class="btn btn-success">Register Doctors</button>
+              </div>
+            <div id = "message" style="margin-top:9px">
+                
+            </div>
+        </div>
+        <div class="col-sm-3">
+        </div>
+    </div>
+

@@ -29,7 +29,7 @@ export class UsersService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-      return this.http.get(ipAdress+'/getUser',{headers: headers,params: param, responseType: 'text'})
+      return this.http.get(ipAdress+'/getUser',{headers: headers,params: param})
    }
 
    removeUser(user: User): Observable<any>{

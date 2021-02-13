@@ -24,6 +24,9 @@ import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { CategoryComponent } from './category/category.component';
+import { RegisterDoctorComponent } from './register-doctor/register-doctor.component';
+import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
+import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +45,10 @@ import { CategoryComponent } from './category/category.component';
     ProfileFormComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    CategoryComponent
+    CategoryComponent,
+    RegisterDoctorComponent,
+    DoctorDashboardComponent,
+    DoctorProfileComponent
   ],
   imports: [
     BrowserModule,

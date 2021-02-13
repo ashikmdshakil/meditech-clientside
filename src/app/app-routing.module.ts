@@ -1,3 +1,5 @@
+import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
+import { RegisterDoctorComponent } from './register-doctor/register-doctor.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
@@ -37,7 +39,8 @@ const routes: Routes = [
       {path: "blank", component: BlankComponent, outlet: 'setRole'},
       {path: "role", component: RoleComponent, outlet: 'setRole'},
       {path: "confirm", component: ConfirmComponent, outlet: 'setRole'},
-      {path: "", component: SearchComponent, outlet: 'search'}
+      {path: "", component: SearchComponent, outlet: 'search'},
+     
     ]
   },
   {path: "admin-pannel/refresh", component: BlankComponent},
@@ -45,11 +48,21 @@ const routes: Routes = [
     children: [
       {path: "", component : NavComponent, outlet: 'nav'},
       {path: "refresh", component : BlankComponent, outlet: 'nav'},
-      {path: "", component: ProfileFormComponent, outlet: 'profile-form'},
+      {path: "", component: BlankComponent, outlet: 'profile-form'},
+      {path: "user-profile", component: ProfileFormComponent, outlet: 'profile-form'},
       {path: "refresh", component : BlankComponent, outlet: 'profile-form'},
+      {path: "doctor-profile", component : DoctorProfileComponent, outlet: 'profile-form'},
     ]
   },
-  {path: "reset-password/:name", component: ResetPasswordComponent}
+  {path: "reset-password/:name", component: ResetPasswordComponent},
+  {path: "register-doctor", component: RegisterDoctorComponent,
+
+  children : [
+    {path: "", component : NavComponent, outlet: 'nav'},
+  ]
+
+}
+  
 ]  
 
 @NgModule({

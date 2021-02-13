@@ -57,6 +57,46 @@
             <label for="formGroupExampleInput2">Mobile Number</label>
             <input type="text" name="number" class="form-control" id="number" [(ngModel)] = 'user.mobileNumber'>
         </div>
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Degree Names</p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Degree</label>
+            <input type="text" name = "street1" class="form-control"  [(ngModel)] = 'addressBooks.street1' id="street1">
+        </div>
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Specialization</p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-6">
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Check Categories
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown" *ngFor= "let category of categories">
+                      <ul *ngFor= "let category of categories">
+                          <li style="list-style-type: none;"><a class="dropdown-item" (click)= "updateCategory(category.id, category.name)">{{category.name}}</a></li>
+                      </ul>   
+                  </div>
+            </div>
+            <div class="col-6">
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 900;">Present Categories</p>
+                <ul *ngFor= "let category of currentCategories">
+                    <li style="list-style-type: none;">{{category.name}}</li>
+                </ul>
+                <button style="margin-left: 29px;" type="button" (click) = "clearCategories()" class="btn btn-light">clear</button>
+
+            </div>
+        </div>
+       
 
         <div class="row">
             <div class="col-sm-4"></div>
@@ -121,6 +161,8 @@
         </div>
     </div>
     <div class="col-sm-2"></div>
+    
 </div>
 
 </div>
+

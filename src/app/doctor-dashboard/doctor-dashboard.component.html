@@ -1,1 +1,21 @@
-<p>doctor-dashboard works!</p>
+<router-outlet name = "nav"></router-outlet>
+
+<div class="row" style="min-height: 500px;">
+    <div class="col-4">
+        <!--<router-outlet name = "sidebar"></router-outlet>-->
+        <div class="sidenav">
+            <a (click) = "getDoctorDetails()">Doctor Details</a>
+            <a (click) = "getDoctorChambers()">Doctor's Chambers</a>
+            <a href="#clients">Update Chambers</a>
+            <a href="#clients">E-Consultancy Slots</a>
+            <a href="#clients">Doctor's History</a>
+            <a href="#clients">Doctor's Payments</a>
+        </div>
+    </div>
+    <div class="col-8">
+        <router-outlet name = "details"></router-outlet>
+    </div>
+</div>
+        
+
+

@@ -19,6 +19,9 @@ import { HomeComponent } from './home/home.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { DoctorCategoryComponent } from './doctor-category/doctor-category.component';
+import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
+import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
+import { DoctorChamberComponent } from './doctor-chamber/doctor-chamber.component';
 
 const routes: Routes = [
   {path: "", redirectTo : "home", pathMatch: 'full'},
@@ -61,11 +64,18 @@ const routes: Routes = [
   },
   {path: "reset-password/:name", component: ResetPasswordComponent},
   {path: "register-doctor", component: RegisterDoctorComponent,
-
   children : [
     {path: "", component : NavComponent, outlet: 'nav'},
   ]
+},
+  {path: "doctor-dashboard", component: DoctorDashboardComponent,
+  children: [
+    {path: "", component : NavComponent, outlet: 'nav'},
+    {path: "", component: DoctorDetailsComponent, outlet: 'details'},
+    {path: "doctor-details", component: DoctorDetailsComponent, outlet: 'details'},
+    {path: "doctor-chambers", component: DoctorChamberComponent, outlet: 'details'}
 
+  ]
 }
   
 ]  

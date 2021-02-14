@@ -57,5 +57,8 @@ export class NavComponent implements OnInit {
       }
       
     }
+    seeDashboard(){
+      this.router.navigateByUrl('/doctor-dashboard');
+    }
   }
   

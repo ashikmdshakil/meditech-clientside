@@ -6,13 +6,14 @@ const ip = "http://10.0.0.3:8080";
   providedIn: 'root'
 })
 export class UserTransferService {
-  user: User = new User();
+  user: any; 
   http: HttpClient;
   constructor(http : HttpClient) {
     this.http = http;
    }
 
-   getUser(mobileNumber: string){
+   getUserByNumber(mobileNumber: string){
+     console.log("Mobile number is "+mobileNumber);
     let param = new HttpParams()
     .set('number' , mobileNumber);
     let user :any = JSON.parse(localStorage.getItem('currentUser'));
@@ -21,7 +22,7 @@ export class UserTransferService {
   });
   this.http.get(ip+'/getUser',{headers: headers,params: param, responseType: 'text'}).subscribe(response =>{ 
     this.user = JSON.parse(response);
-    console.log(response);
+    console.log(this.user.name);
   })
    }
 }

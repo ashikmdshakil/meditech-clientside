@@ -1,3 +1,4 @@
+import { ChamberServiceService } from './Services/chamber-service.service';
 import { RegistrationService } from './registration.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -31,6 +32,9 @@ import { DoctorCategoryComponent } from './doctor-category/doctor-category.compo
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { DoctorChamberComponent } from './doctor-chamber/doctor-chamber.component';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
+import { UpdateChamberComponent } from './update-chamber/update-chamber.component';
+import { UpdateSlotsComponent } from './update-slots/update-slots.component';
+
 
 @NgModule({
   declarations: [
@@ -56,7 +60,9 @@ import { DoctorDetailsComponent } from './doctor-details/doctor-details.componen
     DoctorCategoryComponent,
     DoctorListComponent,
     DoctorChamberComponent,
-    DoctorDetailsComponent
+    DoctorDetailsComponent,
+    UpdateChamberComponent,
+    UpdateSlotsComponent
   ],
   imports: [
     BrowserModule,
@@ -64,7 +70,9 @@ import { DoctorDetailsComponent } from './doctor-details/doctor-details.componen
     FormsModule,
     HttpClientModule
   ],
-  providers: [RegistrationService],
+  providers: [RegistrationService,
+    ChamberServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

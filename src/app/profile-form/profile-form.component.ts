@@ -69,9 +69,10 @@ export class ProfileFormComponent implements OnInit {
           this.name = this.user.name;
           this.mail = this.user.email;
           this.number = this.user.mobileNumber;
+          console.log("Statement is success !!!");
         }
         this.router.navigateByUrl('/profile/(nav:refresh)').then(()=>{
-        this.router.navigateByUrl('/profile');
+        this.router.navigateByUrl('/profile/(profile-form:user-profile)-');
       })
     }); 
   }

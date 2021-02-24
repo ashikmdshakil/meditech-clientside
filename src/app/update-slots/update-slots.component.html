@@ -1,0 +1,50 @@
+<div class="row">
+    <div class="col-sm -2"></div>
+    <div class="col-sm-8">
+        <div class="row">
+            <div class="col-9">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Slot Name</label>
+                    <input type="text" [(ngModel)] = "doctorSlot.name" class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Maximum Appoinments</label>
+                    <input type="email" [(ngModel)] = "doctorSlot.maximumNumberOfAppoinment" class="form-control" id="maximum-appoinments">
+                </div>
+               
+                <div class = "form-group">
+                    <label for="formGroupExampleInput2">Start time   </label>
+                    <input type="datetime-local" [(ngModel)] = "doctorSlot.startTime" id="startTime" name="startTime">
+                </div> 
+                <div class = "form-group">
+                    <label for="formGroupExampleInput2">End time   </label>
+                    <input type="datetime-local" [(ngModel)] = "doctorSlot.endTime" id="endTime" name="endTime">
+                </div> 
+                <div class="form-group">
+                    <label for="formGroupExampleInput2">Maximum Appoinments</label>
+                    <input type="email" [(ngModel)] = "doctorSlot.fees" class="form-control" id="maximum-appoinments">
+                </div>
+                <div class="row">
+                    <div class="col-6">
+                        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Select Chamber
+                          </a>
+                          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                              <ul  *ngFor= "let chamber of chamberList">
+                                  <li style="list-style-type: none;"><a class="dropdown-item" (click) = "getChamber(chamber.id, chamber.name)" >{{chamber.name}}</a></li>
+                              </ul>   
+                          </div>
+                    </div>
+                    <div class="col-6">
+                        <strong>{{chamber.name}}</strong>
+                    </div>
+                </div>
+
+                <button id = "save" (click)="saveDoctorSlots()" class="btn btn-success">Save Chamber</button>
+            </div>
+            <div class="col-3"></div>
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+

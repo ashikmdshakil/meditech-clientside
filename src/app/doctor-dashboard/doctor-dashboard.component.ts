@@ -1,3 +1,5 @@
+import { User } from './../User.model';
+import { UsersService } from './../Services/users.service';
 import { UserTransferService } from './../Services/user-transfer.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -9,15 +11,14 @@ import { Router } from '@angular/router';
 })
 export class DoctorDashboardComponent implements OnInit {
   router: Router;
-  userTransferService: UserTransferService;
 
-  constructor(router: Router, userTransferService: UserTransferService) {
+  constructor(router: Router) {
     this.router = router;
-    this.userTransferService = userTransferService;
-   }
+    
+  }
 
   ngOnInit(): void {
-      this.userTransferService.getUserByNumber(localStorage.getItem("username"));
+    
   }
 
   getDoctorDetails(){
@@ -25,6 +26,12 @@ export class DoctorDashboardComponent implements OnInit {
   }
   getDoctorChambers(){
     this.router.navigateByUrl('/doctor-dashboard/(details:doctor-chambers)');
+  }
+  updateDoctorChamber(){
+    this.router.navigateByUrl('/doctor-dashboard/(details:update-chambers)');
+  }
+  updateSlots(){
+    this.router.navigateByUrl('/doctor-dashboard/(details:update-slots)');
   }
 
 }

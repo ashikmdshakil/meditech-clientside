@@ -64,6 +64,9 @@ export class UsersService {
       this.formData.append('password', password);
     return this.http.post(ipAdress+'/setPassword',this.formData,{responseType: 'text'});
   }
+   updateChamber(){
+     console.log("Here this is working ....")
+   }
   
 
 }

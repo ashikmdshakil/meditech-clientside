@@ -1,3 +1,4 @@
+import { UpdateChamberComponent } from './update-chamber/update-chamber.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { CategoryComponent } from './category/category.component';
 import { DoctorProfileComponent } from './doctor-profile/doctor-profile.component';
@@ -22,6 +23,7 @@ import { DoctorCategoryComponent } from './doctor-category/doctor-category.compo
 import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.component';
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 import { DoctorChamberComponent } from './doctor-chamber/doctor-chamber.component';
+import { UpdateSlotsComponent } from './update-slots/update-slots.component';
 
 const routes: Routes = [
   {path: "", redirectTo : "home", pathMatch: 'full'},
@@ -73,7 +75,10 @@ const routes: Routes = [
     {path: "", component : NavComponent, outlet: 'nav'},
     {path: "", component: DoctorDetailsComponent, outlet: 'details'},
     {path: "doctor-details", component: DoctorDetailsComponent, outlet: 'details'},
-    {path: "doctor-chambers", component: DoctorChamberComponent, outlet: 'details'}
+    {path: "doctor-chambers", component: DoctorChamberComponent, outlet: 'details'},
+    {path: "update-chambers", component: UpdateChamberComponent, outlet: 'details'},
+    {path: "update-slots", component: UpdateSlotsComponent, outlet: 'details'}
+
 
   ]
 }

@@ -1,3 +1,4 @@
+import { UserTransferService } from './../Services/user-transfer.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UsersService } from './../Services/users.service';
 import { LogoutService } from './../logout.service';
@@ -17,11 +18,14 @@ export class NavComponent implements OnInit {
   user: User = new User();
   imageUrl: any;
   domSanitizer: DomSanitizer;
-  constructor(logoutService: LogoutService, router: Router, userService: UsersService, domSanitizer: DomSanitizer) {
+  userTransferService: UserTransferService;
+
+  constructor(logoutService: LogoutService, router: Router, userService: UsersService, domSanitizer: DomSanitizer, userTransferService: UserTransferService) {
     this.logoutService = logoutService;
     this.router = router;
     this.userService = userService;
     this.domSanitizer = domSanitizer;
+    this.userTransferService = userTransferService;
    }
 
   ngOnInit(): void {
@@ -43,7 +47,7 @@ export class NavComponent implements OnInit {
       localStorage.removeItem('username');
         localStorage.removeItem('password');
         localStorage.removeItem('role');
-      this.router.navigateByUrl('/home/(nav:refresh)').then(()=>{
+        this.router.navigateByUrl('/home/(nav:refresh)').then(()=>{
         this.router.navigateByUrl('/home');
       })
     } 
@@ -58,6 +62,7 @@ export class NavComponent implements OnInit {
       
     }
     seeDashboard(){
+      //this.userTransferService.number = localStorage.getItem("username");
       this.router.navigateByUrl('/doctor-dashboard');
     }
   }

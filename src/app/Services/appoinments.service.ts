@@ -2,7 +2,7 @@ import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Appoinment } from '../Model/Appoinment.model';
-const ipAdress = "http://10.0.0.3:8080";
+const ipAdress = "http://182.48.90.214:8080";
 
 @Injectable({
   providedIn: 'root'

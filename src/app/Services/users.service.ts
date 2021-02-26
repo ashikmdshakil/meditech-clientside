@@ -2,7 +2,7 @@ import { User } from './../User.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-const ipAdress = 'http://10.0.0.3:8080'; 
+const ipAdress = 'http://182.48.90.214:8080'; 
 
 @Injectable({
   providedIn: 'root'

@@ -1,0 +1,20 @@
+<router-outlet name = "nav"></router-outlet>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <div class="card shadow p-3 mb-5 bg-white rounded" *ngFor= "let chamber of chambers">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <div>
+                        <h3>{{chamber.name}}</h3>
+                        <p>{{chamber.adress}}</p>
+                        <button type="button" (click) = "seeSlots(chamber.id)" class="btn btn-link">See Appoinment Slots</button> 
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-2"></div>
+</div>

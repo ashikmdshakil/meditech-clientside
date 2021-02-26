@@ -11,7 +11,8 @@
                     <div>
                         <h3>{{doctor.name}}</h3>
                         <p>{{doctor.degree.degreeName}}</p>
-                        <p>{{doctor.speciality.speciality}}</p>   
+                        <p>{{doctor.speciality.speciality}}</p>
+                        <button type="button" (click) = "visitDoctor(doctor.userId)" class="btn btn-link">Chambers and Appoinments</button> 
                     </div>
                 </div>
             </div>

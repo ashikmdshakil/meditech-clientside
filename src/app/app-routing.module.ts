@@ -1,3 +1,5 @@
+import { DoctorAppoinmentSlotComponent } from './doctor-appoinment-slot/doctor-appoinment-slot.component';
+import { DoctorChamberListComponent } from './doctor-chamber-list/doctor-chamber-list.component';
 import { UpdateChamberComponent } from './update-chamber/update-chamber.component';
 import { DoctorListComponent } from './doctor-list/doctor-list.component';
 import { CategoryComponent } from './category/category.component';
@@ -78,10 +80,22 @@ const routes: Routes = [
     {path: "doctor-chambers", component: DoctorChamberComponent, outlet: 'details'},
     {path: "update-chambers", component: UpdateChamberComponent, outlet: 'details'},
     {path: "update-slots", component: UpdateSlotsComponent, outlet: 'details'}
+  ]
+},
 
+{path: "doctor-chamber-list/:id", component: DoctorChamberListComponent,
+  children: [
+    {path: "", component : NavComponent, outlet: 'nav'}
+  ]
+},
 
+{path: "doctor-appoinment-slot/:id", component: DoctorAppoinmentSlotComponent,
+  children: [
+    {path: "", component : NavComponent, outlet: 'nav'}
   ]
 }
+
+
   
 ]  
 

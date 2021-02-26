@@ -1,0 +1,24 @@
+<router-outlet name = "nav"></router-outlet>
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card shadow p-3 mb-5 bg-white rounded" *ngFor= "let slot of appoinmentSlots">
+            <div class="row">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-8">
+                    <div>
+                        <h3>{{slot.name}}</h3>
+                        <p>Start Time : {{slot.startTime}}</p>
+                        <p>End Time   : {{slot.endTime}}</p>
+                        <p>Fees       : {{slot.fees}}</p>
+                        <p>Max Appoinment : {{slot.maximumNumberOfAppoinment}}</p>
+                        <button type="button" (click) = "takeAppoinment(slot.id)" class="btn btn-link">Take Appoinment</button>    
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6"></div>
+</div>

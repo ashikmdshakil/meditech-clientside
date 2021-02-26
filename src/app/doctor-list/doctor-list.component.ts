@@ -13,13 +13,15 @@ export class DoctorListComponent implements OnInit {
   categoryService: CategoryService;
   doctors: User[] = [];
   router: ActivatedRoute;
+  routerA: Router;
   categoryId: number;
   domSanitizer: DomSanitizer;
 
-  constructor(categoryService: CategoryService, router: ActivatedRoute, domSanitizer: DomSanitizer) {
+  constructor(categoryService: CategoryService, router: ActivatedRoute, domSanitizer: DomSanitizer, routerA: Router) {
     this.categoryService = categoryService;
     this.router = router;
     this.domSanitizer = domSanitizer;
+    this.routerA = routerA;
    }
 
   ngOnInit(): void {
@@ -35,6 +37,11 @@ export class DoctorListComponent implements OnInit {
 
     })
 
+  }
+
+  visitDoctor(id){
+    console.log("Doctor's id is "+ id);
+    this.routerA.navigateByUrl('/doctor-chamber-list/'+id);
   }
 
 }

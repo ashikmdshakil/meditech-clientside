@@ -32,6 +32,16 @@ export class UsersService {
       return this.http.get(ipAdress+'/getUser',{headers: headers,params: param})
    }
 
+   getUserById(id: string): Observable<any>{
+    let param = new HttpParams()
+    .set('id' , id);
+    //let user :any = JSON.parse(localStorage.getItem('currentUser'));
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAdress+'/getUserById',{headers: headers,params: param})
+   }
+
    removeUser(user: User): Observable<any>{
     user.userAvatar = null;
      console.log(user.roles.roleId);

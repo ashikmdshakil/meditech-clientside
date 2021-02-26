@@ -34,6 +34,8 @@ import { DoctorChamberComponent } from './doctor-chamber/doctor-chamber.componen
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 import { UpdateChamberComponent } from './update-chamber/update-chamber.component';
 import { UpdateSlotsComponent } from './update-slots/update-slots.component';
+import { DoctorChamberListComponent } from './doctor-chamber-list/doctor-chamber-list.component';
+import { DoctorAppoinmentSlotComponent } from './doctor-appoinment-slot/doctor-appoinment-slot.component';
 
 
 @NgModule({
@@ -62,7 +64,9 @@ import { UpdateSlotsComponent } from './update-slots/update-slots.component';
     DoctorChamberComponent,
     DoctorDetailsComponent,
     UpdateChamberComponent,
-    UpdateSlotsComponent
+    UpdateSlotsComponent,
+    DoctorChamberListComponent,
+    DoctorAppoinmentSlotComponent
   ],
   imports: [
     BrowserModule,

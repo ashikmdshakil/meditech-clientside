@@ -1,3 +1,5 @@
+import { ChamberService } from './../Services/chamber.service';
+import { ChamberServiceService } from './../Services/chamber-service.service';
 import { UsersService } from './../Services/users.service';
 import { DoctorSlotService } from './../Services/doctor-slot.service';
 import { DoctorSlot } from './../Model/DoctorSlot.model';
@@ -13,22 +15,19 @@ import { User } from '../User.model';
 export class UpdateSlotsComponent implements OnInit {
   doctorSlot: DoctorSlot = new DoctorSlot();
   doctorSlotService: DoctorSlotService;
-  userService: UsersService;
+  chamberService: ChamberServiceService;
   chamberList: Chamber[] = [];
   chamber: Chamber = new Chamber();
   user: User = new User();
 
-  constructor(doctorSlotService: DoctorSlotService, userService: UsersService) {
+  constructor(doctorSlotService: DoctorSlotService, chamberService: ChamberServiceService) {
     this.doctorSlotService = doctorSlotService;
-    this.userService = userService;
+    this.chamberService = chamberService;
    }
 
   ngOnInit(): void {
-      this.userService.getUser(localStorage.getItem("username")).subscribe(result =>{
-        this.chamberList = result["chambers"];
-        this.chamberList.forEach(element => {
-          console.log(element.name);
-        });
+      this.chamberService.getChambers().subscribe(result =>{
+        this.chamberList = result;
       })
 
   }

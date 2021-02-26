@@ -1,3 +1,4 @@
+import { Appoinment } from './Appoinment.model';
 import { ChamberService } from './../Services/chamber.service';
 import { User } from "../User.model";
 import { Chamber } from './Chamber.model';
@@ -11,5 +12,6 @@ export class DoctorSlot{
     maximumNumberOfAppoinment: number;
     user: User;
     chamber: Chamber;
+    appoinments: Appoinment[] = [];
     
 }

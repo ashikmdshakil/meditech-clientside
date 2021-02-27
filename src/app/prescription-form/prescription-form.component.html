@@ -1,0 +1,26 @@
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <h3>{{patientName}}</h3>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Medicines</label>
+            <input type="text" [(ngModel)]= "prescription.medicine" class="form-control" id="medicine">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Tests</label>
+            <input type="text" [(ngModel)]= "prescription.test" class="form-control" id="test">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Another Doctor Reference</label>
+            <input type="text" [(ngModel)]= "prescription.referredTo" class="form-control" id="referredTo">
+        </div>
+
+        <button type="button" (click)="prescribe()" class="btn btn-success">Prescribe</button>
+
+    </div>
+    <div class="col-1"></div>
+</div>
+
+
+
+

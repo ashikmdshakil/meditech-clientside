@@ -18,7 +18,7 @@ export class DoctorSlotService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.post('http://182.48.90.214:8080/updateDoctorSlots',doctorSlot,{headers: headers,'responseType': 'text'});
+    return this.http.post('http://10.0.0.3:8080/updateDoctorSlots',doctorSlot,{headers: headers,'responseType': 'text'});
    }
 
    getSlots(id: string): Observable<any>{
@@ -28,7 +28,17 @@ export class DoctorSlotService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-      return this.http.get('http://182.48.90.214:8080/getSlots',{headers: headers,params: param})
+      return this.http.get('http://10.0.0.3:8080/getSlots',{headers: headers,params: param})
+   }
+
+   getPatientList(id: string): Observable<any>{
+    let param = new HttpParams()
+    .set('id' , id);
+    //let user :any = JSON.parse(localStorage.getItem('currentUser'));
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get('http://10.0.0.3:8080/getPatientList',{headers: headers,params: param})
    }
 
 }

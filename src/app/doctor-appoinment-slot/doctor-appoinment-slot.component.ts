@@ -4,7 +4,7 @@ import { User } from './../User.model';
 import { Appoinment } from './../Model/Appoinment.model';
 import { DoctorSlot } from './../Model/DoctorSlot.model';
 import { ChamberServiceService } from './../Services/chamber-service.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -15,6 +15,7 @@ import { Component, OnInit } from '@angular/core';
 export class DoctorAppoinmentSlotComponent implements OnInit {
   chamberId: number;
   router: ActivatedRoute;
+  routerA: Router;
   slotService: DoctorSlotService;
   appoinmentSlots: DoctorSlot[] = [];
   appoinment: Appoinment = new Appoinment();
@@ -22,8 +23,9 @@ export class DoctorAppoinmentSlotComponent implements OnInit {
   doctorSlot: DoctorSlot = new DoctorSlot();
   appoinmentService: AppoinmentsService;
 
-  constructor(router: ActivatedRoute, slotService: DoctorSlotService, appoinmentService: AppoinmentsService) {
+  constructor(router: ActivatedRoute,routerA: Router ,slotService: DoctorSlotService, appoinmentService: AppoinmentsService) {
     this.router = router;
+    this.routerA = routerA;
     this.slotService = slotService;
     this.appoinmentService = appoinmentService;
    }
@@ -48,6 +50,10 @@ export class DoctorAppoinmentSlotComponent implements OnInit {
     this.appoinmentService.takeAppoinment(this.appoinment).subscribe(result =>{
       
     })
+  }
+
+  seeAppoinments(id){
+    this.routerA.navigateByUrl('/patient-list/'+id);
   }
 
 }

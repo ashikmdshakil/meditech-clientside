@@ -4,6 +4,7 @@ import { UserTransferService } from './../Services/user-transfer.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from '../User.model';
 import { Chamber } from '../Model/Chamber.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-doctor-chamber',
@@ -14,10 +15,12 @@ export class DoctorChamberComponent implements OnInit {
   chambers :Chamber[] = [];
   userTransferService: UserTransferService;
   userService: UsersService;
+  router : Router;
 
-  constructor(userTransferService: UserTransferService, userService: UsersService) {
+  constructor(userTransferService: UserTransferService, userService: UsersService, router: Router) {
     this.userTransferService = userTransferService;
     this.userService = userService;
+    this.router = router;
    }
 
   ngOnInit(): void {
@@ -26,7 +29,14 @@ export class DoctorChamberComponent implements OnInit {
       this.chambers.forEach(element => {
         console.log(element.name);
       });
-    })
+    }) 
+  }
+
+  slotList(id){
+    this.router.navigateByUrl('/doctor-appoinment-slot/'+id);
+  }
+
+  seeAppoinments(id){
     
   }
 

@@ -2,7 +2,8 @@ import { User } from './../User.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-const ipAdress = 'http://182.48.90.214:8080'; 
+import { Prescription } from '../Model/Prescription.model';
+const ipAdress = 'http://10.0.0.3:8080'; 
 
 @Injectable({
   providedIn: 'root'
@@ -74,8 +75,21 @@ export class UsersService {
       this.formData.append('password', password);
     return this.http.post(ipAdress+'/setPassword',this.formData,{responseType: 'text'});
   }
-   updateChamber(){
-     console.log("Here this is working ....")
+  saveUserPrescription(prescription: Prescription): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAdress+'/savePrescription',prescription,{headers: headers,'responseType': 'text'});
+   }
+
+   getUserPrescriptions(id: number): Observable<any>{
+    let param = new HttpParams()
+    .set('id' , id.toString());
+    //let user :any = JSON.parse(localStorage.getItem('currentUser'));
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAdress+'/getPrescriptions',{headers: headers,params: param})
    }
   
 

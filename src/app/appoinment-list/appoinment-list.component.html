@@ -1,0 +1,36 @@
+<router-outlet name = "nav"></router-outlet>
+<div class="row">
+    <div class="col-sm-8">
+            <div class="row">
+                <div class="col-sm-12">
+                    <table class="table table-dark">
+                        <thead>
+                          <tr>
+                            <th scope="col"></th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Number</th>
+                            <th scope="col">Email</th>
+                            <th scope="col"></th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody id ="users" *ngFor= "let appoinment of appoinments ; let i = index">
+                          <tr>
+                            <td>{{i+1}}</td>
+                            <td class = "userName">{{appoinment.user.name}}</td>
+                            <td class = "userNumber">{{appoinment.user.mobileNumber}}</td>
+                            <td class = "userMail">{{appoinment.user.email}}</td>
+                            <input type = "hidden" value = {{appoinment.user.userId}}>
+                            <td><button (click)="getPrescriptionForm(appoinment.user.userId, appoinment.user.name)" class="btn btn-primary deleteRow">Prescribe</button></td>
+                            <td><button  (click)="getHistory(appoinment.user.userId, appoinment.user.name)" class="btn btn-primary deleteRow">See prescription</button></td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+    </div>
+    <div class="col-sm-4">
+      <router-outlet name = "prescription"></router-outlet><br>
+      <router-outlet name = "history"></router-outlet>
+    </div>
+</div>

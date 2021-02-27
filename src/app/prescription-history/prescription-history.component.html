@@ -1,0 +1,21 @@
+<h3 style="margin-bottom: 15px;">{{patientName}}'s History</h3>
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <div class="card shadow p-3 mb-5 bg-white rounded" *ngFor= "let prescription of prescriptions">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <div >
+                        <p>Doctor name : {{prescription.doctorName}}</p>
+                        <p>Medicines : {{prescription.medicine}}</p>
+                        <p>Tests : {{prescription.test}}</p>
+                        <p>Referred to : {{prescription.referredTo}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-1"></div>
+</div>

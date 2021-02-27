@@ -1,8 +1,8 @@
-import { HttpHeaders, HttpClient } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Appoinment } from '../Model/Appoinment.model';
-const ipAdress = "http://182.48.90.214:8080";
+const ipAdress = "http://10.0.0.3:8080";
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +20,16 @@ export class AppoinmentsService {
  });
    //console.log(user.addressBooks.city);
    return this.http.post(ipAdress+'/takeAppoinment',appoinment,{headers: headers,'responseType': 'text'});
+ }
+
+ myAppoinments(mobileNumber: string): Observable<any>{
+  let param = new HttpParams()
+  .set('mobileNumber' , mobileNumber);
+  //let user :any = JSON.parse(localStorage.getItem('currentUser'));
+  const headers = new HttpHeaders({
+    authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+});
+    return this.http.get(ipAdress+'/myAppoinments',{headers: headers,params: param})
  }
 
 }

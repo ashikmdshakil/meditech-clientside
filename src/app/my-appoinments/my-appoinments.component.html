@@ -1,0 +1,21 @@
+<router-outlet name = "nav"></router-outlet>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        <div class="card shadow p-3 mb-5 bg-white rounded" *ngFor= "let appoinment of appoinments">
+            <div class="row">
+                <div class="col-sm-2"></div>
+                <div class="col-sm-8">
+                    <div>
+                        <h3>{{appoinment.doctorSlot.chamber.name}}</h3>
+                        <p>{{appoinment.doctorSlot.chamber.user.name}}</p>
+                        <p>{{appoinment.doctorSlot.startTime}}</p>
+                        <p>{{appoinment.doctorSlot.endTime}}</p>
+                    </div>
+                </div>
+                <div class="col-sm-2"></div>
+            </div>
+        </div>
+    </div>
+    <div class="col-2"></div>
+</div>

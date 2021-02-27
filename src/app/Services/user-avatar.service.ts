@@ -2,7 +2,7 @@ import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserAvatar } from '../UserAvatar.model';
-const ip = "http://182.48.90.214:8080";
+const ip = "http://10.0.0.3:8080";
 @Injectable({
   providedIn: 'root'
 })

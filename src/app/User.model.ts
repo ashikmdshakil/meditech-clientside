@@ -1,3 +1,4 @@
+import { Prescription } from './Model/Prescription.model';
 import { Chamber } from './Model/Chamber.model';
 import { Speciality } from './Model/Speciality.model';
 import { Degree } from './Model/Degree.model';
@@ -21,4 +22,5 @@ export class User{
     speciality: Speciality;
     chambers: Chamber[] = [];
     doctorSlots: DoctorSlot[] = [];
+    prescriptions: Prescription[] = [];
 }

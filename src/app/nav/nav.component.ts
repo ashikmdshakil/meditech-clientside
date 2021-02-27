@@ -31,6 +31,7 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     this.userService.getUser(localStorage.getItem('username')).subscribe(result =>{
       this.user = result;
+      localStorage.setItem("name", this.user.name);
       let image = 'data:image/png;base64, '+this.user.userAvatar.image;
       this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image);
     })
@@ -64,6 +65,10 @@ export class NavComponent implements OnInit {
     seeDashboard(){
       //this.userTransferService.number = localStorage.getItem("username");
       this.router.navigateByUrl('/doctor-dashboard');
+    }
+
+    myAppoinments(){
+      this.router.navigateByUrl('/my-appoinments');
     }
   }
   

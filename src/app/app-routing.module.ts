@@ -1,3 +1,7 @@
+import { PrescriptionHistoryComponent } from './prescription-history/prescription-history.component';
+import { PrescriptionFormComponent } from './prescription-form/prescription-form.component';
+import { AppoinmentListComponent } from './appoinment-list/appoinment-list.component';
+import { MyAppoinmentsComponent } from './my-appoinments/my-appoinments.component';
 import { DoctorAppoinmentSlotComponent } from './doctor-appoinment-slot/doctor-appoinment-slot.component';
 import { DoctorChamberListComponent } from './doctor-chamber-list/doctor-chamber-list.component';
 import { UpdateChamberComponent } from './update-chamber/update-chamber.component';
@@ -79,7 +83,8 @@ const routes: Routes = [
     {path: "doctor-details", component: DoctorDetailsComponent, outlet: 'details'},
     {path: "doctor-chambers", component: DoctorChamberComponent, outlet: 'details'},
     {path: "update-chambers", component: UpdateChamberComponent, outlet: 'details'},
-    {path: "update-slots", component: UpdateSlotsComponent, outlet: 'details'}
+    {path: "update-slots", component: UpdateSlotsComponent, outlet: 'details'},
+    {path: "doctor-appoinment-slot/:id", component: DoctorAppoinmentSlotComponent, outlet: 'details'}
   ]
 },
 
@@ -93,7 +98,27 @@ const routes: Routes = [
   children: [
     {path: "", component : NavComponent, outlet: 'nav'}
   ]
-}
+},
+
+{path: "my-appoinments", component: MyAppoinmentsComponent,
+  children: [
+    {path: "", component : NavComponent, outlet: 'nav'}
+  ]
+},
+
+{path: "patient-list/:id", component: AppoinmentListComponent,
+  children: [
+    {path: "", component : NavComponent, outlet: 'nav'},
+    {path: "", component : BlankComponent, outlet: 'prescription'},
+    {path: "", component : BlankComponent, outlet: 'history'},
+    {path: "prescription-form", component: PrescriptionFormComponent, outlet: 'prescription'},
+    {path: "prescription-history", component : PrescriptionHistoryComponent, outlet: 'history'},
+    {path: "blank", component: BlankComponent, outlet: 'prescription'},
+    {path: "blank", component: BlankComponent, outlet: 'history'}
+  ]
+},
+
+
 
 
   

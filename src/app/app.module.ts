@@ -36,6 +36,10 @@ import { UpdateChamberComponent } from './update-chamber/update-chamber.componen
 import { UpdateSlotsComponent } from './update-slots/update-slots.component';
 import { DoctorChamberListComponent } from './doctor-chamber-list/doctor-chamber-list.component';
 import { DoctorAppoinmentSlotComponent } from './doctor-appoinment-slot/doctor-appoinment-slot.component';
+import { MyAppoinmentsComponent } from './my-appoinments/my-appoinments.component';
+import { AppoinmentListComponent } from './appoinment-list/appoinment-list.component';
+import { PrescriptionFormComponent } from './prescription-form/prescription-form.component';
+import { PrescriptionHistoryComponent } from './prescription-history/prescription-history.component';
 
 
 @NgModule({
@@ -66,7 +70,11 @@ import { DoctorAppoinmentSlotComponent } from './doctor-appoinment-slot/doctor-a
     UpdateChamberComponent,
     UpdateSlotsComponent,
     DoctorChamberListComponent,
-    DoctorAppoinmentSlotComponent
+    DoctorAppoinmentSlotComponent,
+    MyAppoinmentsComponent,
+    AppoinmentListComponent,
+    PrescriptionFormComponent,
+    PrescriptionHistoryComponent
   ],
   imports: [
     BrowserModule,

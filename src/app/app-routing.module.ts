@@ -1,3 +1,9 @@
+import { PrescriptionFormFullComponent } from './prescription-form-full/prescription-form-full.component';
+import { SupermenComponent } from './supermen/supermen.component';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { PatientsComponent } from './patients/patients.component';
+import { RegisterSupermanComponent } from './register-superman/register-superman.component';
+import { RegisterPatientComponent } from './register-patient/register-patient.component';
 import { PrescriptionHistoryComponent } from './prescription-history/prescription-history.component';
 import { PrescriptionFormComponent } from './prescription-form/prescription-form.component';
 import { AppoinmentListComponent } from './appoinment-list/appoinment-list.component';
@@ -48,15 +54,44 @@ const routes: Routes = [
 },
 {path: "admin-pannel", component: AdminPannelComponent,
     children: [
-      {path: "" ,component: UsersComponent},
       {path: "", component : NavComponent, outlet: 'nav'},
-      {path: "refresh", component : BlankComponent, outlet: 'nav'},
-      {path: "blank", component: BlankComponent, outlet: 'setRole'},
-      {path: "blank", component: BlankComponent, outlet: 'setRole'},
-      {path: "role", component: RoleComponent, outlet: 'setRole'},
-      {path: "confirm", component: ConfirmComponent, outlet: 'setRole'},
       {path: "", component: SearchComponent, outlet: 'search'},
-     
+      {path: "" ,component: UsersComponent, outlet: 'users', children:[
+        {path: "", component : NavComponent, outlet: 'nav'},
+        {path: "refresh", component : BlankComponent, outlet: 'nav'},
+        {path: "blank", component: BlankComponent, outlet: 'setRole'},
+        {path: "blank", component: BlankComponent, outlet: 'setRole'},
+        {path: "role", component: RoleComponent, outlet: 'setRole'},
+        {path: "confirm", component: ConfirmComponent, outlet: 'setRole'},
+        {path: "", component: SearchComponent, outlet: 'search'},  
+      ]},
+      {path: "patients" ,component: PatientsComponent, outlet: 'users', children:[
+        {path: "", component : NavComponent, outlet: 'nav'},
+        {path: "refresh", component : BlankComponent, outlet: 'nav'},
+        {path: "blank", component: BlankComponent, outlet: 'setRole'},
+        {path: "blank", component: BlankComponent, outlet: 'setRole'},
+        {path: "role", component: RoleComponent, outlet: 'setRole'},
+        {path: "confirm", component: ConfirmComponent, outlet: 'setRole'},
+        {path: "", component: SearchComponent, outlet: 'search'},  
+      ]},
+      {path: "doctors" ,component: DoctorsComponent, outlet: 'users', children:[
+        {path: "", component : NavComponent, outlet: 'nav'},
+        {path: "refresh", component : BlankComponent, outlet: 'nav'},
+        {path: "blank", component: BlankComponent, outlet: 'setRole'},
+        {path: "blank", component: BlankComponent, outlet: 'setRole'},
+        {path: "role", component: RoleComponent, outlet: 'setRole'},
+        {path: "confirm", component: ConfirmComponent, outlet: 'setRole'},
+        {path: "", component: SearchComponent, outlet: 'search'},  
+      ]},
+      {path: "supermen" ,component: SupermenComponent, outlet: 'users', children:[
+        {path: "", component : NavComponent, outlet: 'nav'},
+        {path: "refresh", component : BlankComponent, outlet: 'nav'},
+        {path: "blank", component: BlankComponent, outlet: 'setRole'},
+        {path: "blank", component: BlankComponent, outlet: 'setRole'},
+        {path: "role", component: RoleComponent, outlet: 'setRole'},
+        {path: "confirm", component: ConfirmComponent, outlet: 'setRole'},
+        {path: "", component: SearchComponent, outlet: 'search'},  
+      ]},
     ]
   },
   {path: "admin-pannel/refresh", component: BlankComponent},
@@ -72,6 +107,16 @@ const routes: Routes = [
   },
   {path: "reset-password/:name", component: ResetPasswordComponent},
   {path: "register-doctor", component: RegisterDoctorComponent,
+  children : [
+    {path: "", component : NavComponent, outlet: 'nav'},
+  ]
+},
+{path: "register-patient", component: RegisterPatientComponent,
+  children : [
+    {path: "", component : NavComponent, outlet: 'nav'},
+  ]
+},
+{path: "register-superman", component: RegisterSupermanComponent,
   children : [
     {path: "", component : NavComponent, outlet: 'nav'},
   ]
@@ -112,6 +157,7 @@ const routes: Routes = [
     {path: "", component : BlankComponent, outlet: 'prescription'},
     {path: "", component : BlankComponent, outlet: 'history'},
     {path: "prescription-form", component: PrescriptionFormComponent, outlet: 'prescription'},
+    {path: "prescription-form-full", component: PrescriptionFormFullComponent, outlet: 'prescription'},
     {path: "prescription-history", component : PrescriptionHistoryComponent, outlet: 'history'},
     {path: "blank", component: BlankComponent, outlet: 'prescription'},
     {path: "blank", component: BlankComponent, outlet: 'history'}
@@ -120,8 +166,6 @@ const routes: Routes = [
 
 
 
-
-  
 ]  
 
 @NgModule({

@@ -1,14 +1,12 @@
-import { RegistrationService } from './../registration.service';
-import { User } from './../User.model';
 import { Component, OnInit } from '@angular/core';
+import { RegistrationService } from '../registration.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-register-superman',
+  templateUrl: './register-superman.component.html',
+  styleUrls: ['./register-superman.component.css']
 })
-export class SignupComponent implements OnInit {
-
+export class RegisterSupermanComponent implements OnInit {
   name: string;
   mail: string;
   number: string;
@@ -22,7 +20,7 @@ export class SignupComponent implements OnInit {
   }
   
   signUp(){
-    let status = this.registration.UserSignUp(this.name, this.mail, this.number, this.password);
+    let status = this.registration.registerSuperman(this.name, this.mail, this.number, this.password);
     status.subscribe((status)=>{
       if(status == 'success'){
         this.alertExist = true;
@@ -46,5 +44,4 @@ export class SignupComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
 }

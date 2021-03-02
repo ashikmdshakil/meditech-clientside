@@ -23,8 +23,8 @@ export class PrescriptionHistoryComponent implements OnInit {
     this.userService.getUserPrescriptions(this.patientId).subscribe(result =>{
       this.prescriptions = result;
       this.prescriptions.forEach(element => {
-        console.log("patient name is "+element.user.name);
-        console.log("doctor name is "+element.doctorName);
+        //console.log("patient name is "+element.user.name);
+        //console.log("doctor name is "+element.doctorName);
       });
     })
   }

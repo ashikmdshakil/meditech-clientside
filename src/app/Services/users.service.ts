@@ -79,7 +79,7 @@ export class UsersService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.post(ipAdress+'/savePrescription',prescription,{headers: headers,'responseType': 'text'});
+    return this.http.post(ipAdress+'/savePrescriptionMedicine',prescription,{headers: headers,'responseType': 'text'});
    }
 
    getUserPrescriptions(id: number): Observable<any>{
@@ -90,6 +90,36 @@ export class UsersService {
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
       return this.http.get(ipAdress+'/getPrescriptions',{headers: headers,params: param})
+   }
+
+   getAdminDoctors(mobileNumber: string): Observable<any>{
+    let param = new HttpParams()
+    .set('number' , mobileNumber);
+    let user :any = JSON.parse(localStorage.getItem('currentUser'));
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAdress+'/getAdminDoctors',{headers: headers,params: param});
+   }
+
+   getAdminPatients(mobileNumber: string): Observable<any>{
+    let param = new HttpParams()
+    .set('number' , mobileNumber);
+    let user :any = JSON.parse(localStorage.getItem('currentUser'));
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAdress+'/getAdminPatients',{headers: headers,params: param});
+   }
+
+   getAdminSupermen(mobileNumber: string): Observable<any>{
+    let param = new HttpParams()
+    .set('number' , mobileNumber);
+    let user :any = JSON.parse(localStorage.getItem('currentUser'));
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAdress+'/getAdminSupermen',{headers: headers,params: param});
    }
   
 

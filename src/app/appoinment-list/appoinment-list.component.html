@@ -21,7 +21,7 @@
                             <td class = "userNumber">{{appoinment.user.mobileNumber}}</td>
                             <td class = "userMail">{{appoinment.user.email}}</td>
                             <input type = "hidden" value = {{appoinment.user.userId}}>
-                            <td><button (click)="getPrescriptionForm(appoinment.user.userId, appoinment.user.name)" class="btn btn-primary deleteRow">Prescribe</button></td>
+                            <td><button (click)="getPrescriptionForm(i)" class="btn btn-primary deleteRow">Prescribe</button></td>
                             <td><button  (click)="getHistory(appoinment.user.userId, appoinment.user.name)" class="btn btn-primary deleteRow">See prescription</button></td>
                           </tr>
                         </tbody>

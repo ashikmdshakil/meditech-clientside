@@ -12,6 +12,7 @@ import { User } from '../User.model';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
+  userRole: string;
   logoutService: LogoutService;
   router: Router;
   userService: UsersService;
@@ -34,6 +35,8 @@ export class NavComponent implements OnInit {
       localStorage.setItem("name", this.user.name);
       let image = 'data:image/png;base64, '+this.user.userAvatar.image;
       this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image);
+      this.userRole = localStorage.getItem("role");
+      console.log("User role is "+this.userRole);
     })
   }
   logout(){
@@ -69,6 +72,16 @@ export class NavComponent implements OnInit {
 
     myAppoinments(){
       this.router.navigateByUrl('/my-appoinments');
+    }
+
+    getDoctorList(){
+      this.router.navigateByUrl('/admin-pannel/(users:doctors)');
+    }
+    getPatientList(){
+      this.router.navigateByUrl("/admin-pannel/(users:patients)");
+    }
+    getSupermanList(){
+      this.router.navigateByUrl('/admin-pannel/(users:supermen)');
     }
   }
   

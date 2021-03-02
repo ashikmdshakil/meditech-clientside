@@ -1,9 +1,12 @@
+import { Test } from './Test.model';
+import { Medicine } from './Medicine.model';
 import { User } from './../User.model';
 export class Prescription{
     id: number;
-    medicine: string;
-    test: string;
-    doctorName: string;
+    appoinmentId: number;
     referredTo: string;
-    user: User;
+    doctor: User;
+    patient: User;
+    medicines: Medicine[] = [];
+    tests: Test[] = [];
 }

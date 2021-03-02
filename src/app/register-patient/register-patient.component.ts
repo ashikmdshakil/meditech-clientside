@@ -1,13 +1,12 @@
-import { RegistrationService } from './../registration.service';
-import { User } from './../User.model';
 import { Component, OnInit } from '@angular/core';
+import { RegistrationService } from '../registration.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-register-patient',
+  templateUrl: './register-patient.component.html',
+  styleUrls: ['./register-patient.component.css']
 })
-export class SignupComponent implements OnInit {
+export class RegisterPatientComponent implements OnInit {
 
   name: string;
   mail: string;
@@ -22,7 +21,7 @@ export class SignupComponent implements OnInit {
   }
   
   signUp(){
-    let status = this.registration.UserSignUp(this.name, this.mail, this.number, this.password);
+    let status = this.registration.registerPatient(this.name, this.mail, this.number, this.password);
     status.subscribe((status)=>{
       if(status == 'success'){
         this.alertExist = true;

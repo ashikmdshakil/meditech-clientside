@@ -1,3 +1,4 @@
+import { Medicine } from './Model/Medicine.model';
 import { Prescription } from './Model/Prescription.model';
 import { Chamber } from './Model/Chamber.model';
 import { Speciality } from './Model/Speciality.model';
@@ -23,4 +24,5 @@ export class User{
     chambers: Chamber[] = [];
     doctorSlots: DoctorSlot[] = [];
     prescriptions: Prescription[] = [];
-}
+    adminNumber: string;
+} 

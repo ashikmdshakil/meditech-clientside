@@ -40,6 +40,12 @@ import { MyAppoinmentsComponent } from './my-appoinments/my-appoinments.componen
 import { AppoinmentListComponent } from './appoinment-list/appoinment-list.component';
 import { PrescriptionFormComponent } from './prescription-form/prescription-form.component';
 import { PrescriptionHistoryComponent } from './prescription-history/prescription-history.component';
+import { RegisterPatientComponent } from './register-patient/register-patient.component';
+import { RegisterSupermanComponent } from './register-superman/register-superman.component';
+import { PatientsComponent } from './patients/patients.component';
+import { DoctorsComponent } from './doctors/doctors.component';
+import { SupermenComponent } from './supermen/supermen.component';
+import { PrescriptionFormFullComponent } from './prescription-form-full/prescription-form-full.component';
 
 
 @NgModule({
@@ -74,7 +80,13 @@ import { PrescriptionHistoryComponent } from './prescription-history/prescriptio
     MyAppoinmentsComponent,
     AppoinmentListComponent,
     PrescriptionFormComponent,
-    PrescriptionHistoryComponent
+    PrescriptionHistoryComponent,
+    RegisterPatientComponent,
+    RegisterSupermanComponent,
+    PatientsComponent,
+    DoctorsComponent,
+    SupermenComponent,
+    PrescriptionFormFullComponent
   ],
   imports: [
     BrowserModule,

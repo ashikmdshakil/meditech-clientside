@@ -13,6 +13,7 @@ import { User } from '../User.model';
   styleUrls: ['./update-slots.component.css']
 })
 export class UpdateSlotsComponent implements OnInit {
+  message: string;
   doctorSlot: DoctorSlot = new DoctorSlot();
   doctorSlotService: DoctorSlotService;
   chamberService: ChamberServiceService;
@@ -41,7 +42,12 @@ export class UpdateSlotsComponent implements OnInit {
     this.user.mobileNumber = localStorage.getItem("username");
     this.doctorSlot.user = this.user;
     this.doctorSlotService.updateDoctorSlots(this.doctorSlot).subscribe(result =>{
-    
+      if(result === 'success'){
+        this.message = "Slot has been updated sucessfully .";
+      }
+      else{
+        this.message = "Slot has not been updated. Something went wrong.";
+      }
     })
 
   }

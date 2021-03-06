@@ -22,8 +22,10 @@ export class RegistrationService {
     this.user.email = email;
     this.user.mobileNumber = number;
     this.user.password = password;
-    this.user.adminNumber = localStorage.getItem("username");
-    console.log("admin number is "+this.user.adminNumber);
+    if(localStorage.getItem('role') === 'superman'){
+      this.user.adminNumber = localStorage.getItem("username");
+      console.log("admin number is "+this.user.adminNumber);
+    }
     let status: string;
     return this.http.post(ip+'/signup',this.user,{'responseType': 'text'});
   }
@@ -32,8 +34,10 @@ export class RegistrationService {
     this.user.email = email;
     this.user.mobileNumber = number;
     this.user.password = password;
-    this.user.adminNumber = localStorage.getItem("username");
-    console.log("admin number is "+this.user.adminNumber);
+    if(localStorage.getItem('role') === 'superman'){
+      this.user.adminNumber = localStorage.getItem("username");
+      console.log("admin number is "+this.user.adminNumber);
+    }
     let status: string;
     return this.http.post(ip+'/registerDoctor',this.user,{'responseType': 'text'});
   }
@@ -42,8 +46,10 @@ export class RegistrationService {
     this.user.email = email;
     this.user.mobileNumber = number;
     this.user.password = password;
-    this.user.adminNumber = localStorage.getItem("username");
-    console.log("admin number is "+this.user.adminNumber);
+    if(localStorage.getItem('role') === 'superman'){
+      this.user.adminNumber = localStorage.getItem("username");
+      console.log("admin number is "+this.user.adminNumber);
+    }
     let status: string;
     return this.http.post(ip+'/registerPatient',this.user,{'responseType': 'text'});
   }
@@ -52,8 +58,8 @@ export class RegistrationService {
     this.user.email = email;
     this.user.mobileNumber = number;
     this.user.password = password;
-    this.user.adminNumber = localStorage.getItem("username");
-    console.log("admin number is "+this.user.adminNumber);
+    //this.user.adminNumber = localStorage.getItem("username");
+    //console.log("admin number is "+this.user.adminNumber);
     let status: string;
     return this.http.post(ip+'/registerSuperman',this.user,{'responseType': 'text'});
   }

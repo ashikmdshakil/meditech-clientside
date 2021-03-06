@@ -7,8 +7,11 @@
     <div class="col-6">
         <div style="margin-top: 50px;">
             <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: bolder;">{{user.name}}</h2>
-            <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{user.email}}</p>
-            <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{user.mobileNumber}}</p>
+            <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Email Address: {{user.email}}</p>
+            <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Mobile Number: {{user.mobileNumber}}</p>
+            <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Degrees: {{user.degree.degreeName}}</p>
+            <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Speciality: {{user.speciality.speciality}}</p>
+            <p *ngFor= "let category of user.categories">Categories: <strong>{{category.name}}</strong></p>
         </div>
     </div>
     <div class="col-2"></div>

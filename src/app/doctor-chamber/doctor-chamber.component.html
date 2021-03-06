@@ -1,7 +1,8 @@
 <div class="row">
-    <div class="col-sm-3"></div>
-    <div class="col-sm-6">
-
+    <div class="col-sm-2"></div>
+    <div class="col-sm-7">
+        <h2 style="margin-bottom: 35px;">{{doctorName}}'s chambers list</h2>
+        <h2  *ngIf = "chambers == null">You dont have any chambers yet.</h2>
         <div class="card shadow p-3 mb-5 bg-white rounded" *ngFor= "let chamber of chambers">
             <div class="row">
                 <div class="col-sm-2">
@@ -9,11 +10,11 @@
                 <div class="col-sm-8">
                     <div>
                         <h3>{{chamber.name}}</h3>
-                        <p>{{chamber.adress}}</p>
+                        <p><strong>Address</strong>: {{chamber.adress}}</p>
                         <button type="button" (click) = "slotList(chamber.id)" class="btn btn-link">See Appoinment Slots</button>   
                     </div>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-3">
                 </div>
             </div>
         </div>

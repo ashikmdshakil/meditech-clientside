@@ -1,1 +1,85 @@
-<p>prescription-form-full works!</p>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        <h3>{{prescription.patient.name}}</h3>
+        <div class="form-group" style="margin-top: 15px;">
+            <!-- Medicine List-->
+            <div class="row" *ngFor= "let scedule of scedules" style="margin-top: 15px;">
+                <div class="col-sm-3" >
+                    <p>{{scedule.medicine.medicineName}}</p>
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" [(ngModel)]= "scedule.morning" list="test" style="width: 50px;">
+                    <datalist id="test">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>1.5</option>
+                        <option>2</option>
+                    </datalist>
+                    +
+                    <input type="text" [(ngModel)]= "scedule.day" list="test" style="width: 50px;">
+                    <datalist id="test">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>1.5</option>
+                        <option>2</option>
+                    </datalist>
+                    +
+                    <input type="text" [(ngModel)]= "scedule.night" list="test" style="width: 50px;">
+                    <datalist id="test">
+                        <option>0</option>
+                        <option>1</option>
+                        <option>1.5</option>
+                        <option>2</option>
+                    </datalist>
+
+                    <!-- <input type="text" class="form-control" style="width: 50px;"> -->
+                </div>
+                <div class="col-sm-2">
+                    <input type="text" [(ngModel)]= "scedule.days"  class="form-control" placeholder="days">
+                </div>
+                <div class="col-sm-2">
+                    
+                </div>
+            </div>
+           
+        </div>
+   
+       <div class="row">
+            <div class="col-sm-8">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Tests</label>
+                    <input type="text" [(ngModel)]= "testName" class="form-control" list="testList">
+                    <datalist id="testList">
+                        <option *ngFor= "let test of tests"  [value]="test.testName">{{test.testName}}</option>
+                    </datalist>
+                </div>
+            </div>
+            <div class="col-sm-4" style="margin-top: 30px;">
+                <button type="button" (click)="addTest()" class="btn btn-success">Add</button>
+            </div>
+            <p style="margin-left: 17px;"><strong *ngFor= "let test of assignedTest"  [value]="test.testName">{{test.testName}} , </strong></p>
+        </div>
+        
+        <div class="form-group">
+            <label for="formGroupExampleInput">Another Doctor Reference</label>
+            <input type="text" [(ngModel)]= "referredDoctor" class="form-control" list="referredTo">
+            <datalist id = "referredTo">
+                <option *ngFor= "let doctor of referenceDoctors" [value]="doctor.name">{{doctor.name}}</option>
+            </datalist>
+        </div>
+        <div class="form-group">
+            <label for="exampleFormControlTextarea1">Advice</label>
+            <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]= "advice" rows="3"></textarea>
+          </div>
+
+       <button type="button" (click)="finalPrescription()" class="btn btn-success">Next</button> 
+
+    </div>
+    <div class="col-1"></div>
+</div>
+
+
+
+
+

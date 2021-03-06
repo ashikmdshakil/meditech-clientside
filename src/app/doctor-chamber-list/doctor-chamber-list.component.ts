@@ -9,6 +9,7 @@ import { Chamber } from '../Model/Chamber.model';
   styleUrls: ['./doctor-chamber-list.component.css']
 })
 export class DoctorChamberListComponent implements OnInit {
+  doctorName: string;
   router: ActivatedRoute;
   routerA: Router;
   userService: UsersService;
@@ -22,9 +23,10 @@ export class DoctorChamberListComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe(param =>{
-      console.log("The passing value is "+ param.id);
       this.userService.getUserById(param.id).subscribe(result =>{
+        console.log(result);
         this.chambers = result["chambers"];
+        this.doctorName = result['name'];
       })
     })
   }

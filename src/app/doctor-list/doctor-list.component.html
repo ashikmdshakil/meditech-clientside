@@ -1,6 +1,13 @@
 <div class="row">
     <div class="col-sm-3"></div>
     <div class="col-sm-6">
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Doctor's List</h2>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
 
         <div class="card shadow p-3 mb-5 bg-white rounded" *ngFor= "let doctor of doctors">
             <div class="row">
@@ -10,8 +17,9 @@
                 <div class="col-sm-8">
                     <div>
                         <h3>{{doctor.name}}</h3>
-                        <p>{{doctor.degree.degreeName}}</p>
-                        <p>{{doctor.speciality.speciality}}</p>
+                        <p>Degrees: {{doctor.degree.degreeName}}</p>
+                        <p>Speciality: {{doctor.speciality.speciality}}</p>
+                        <p *ngFor= "let category of doctor.categories">Categories: <strong>{{category.name}}</strong> </p>
                         <button type="button" (click) = "visitDoctor(doctor.userId)" class="btn btn-link">Chambers and Appoinments</button> 
                     </div>
                 </div>

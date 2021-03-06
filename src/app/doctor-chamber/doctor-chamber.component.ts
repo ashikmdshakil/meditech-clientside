@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./doctor-chamber.component.css']
 })
 export class DoctorChamberComponent implements OnInit {
+  doctorName: string;
   chambers :Chamber[] = [];
   userTransferService: UserTransferService;
   userService: UsersService;
@@ -25,10 +26,10 @@ export class DoctorChamberComponent implements OnInit {
 
   ngOnInit(): void {
     this.userService.getUser(localStorage.getItem("username")).subscribe(result =>{
+      console.log(result);
       this.chambers = result['chambers'];
-      this.chambers.forEach(element => {
-        console.log(element.name);
-      });
+      this.doctorName = result['name'];
+      console.log("This Doctor's name is "+this.doctorName);
     }) 
   }
 

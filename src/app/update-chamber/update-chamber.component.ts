@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./update-chamber.component.css']
 })
 export class UpdateChamberComponent implements OnInit {
+  message: string;
   user : User = new User();
   chamber: Chamber = new Chamber();
   chamberService: ChamberServiceService;
@@ -27,6 +28,12 @@ export class UpdateChamberComponent implements OnInit {
     this.user.mobileNumber = localStorage.getItem("username");
     this.chamber.user = this.user;
     this.chamberService.updateChamber(this.chamber).subscribe(result =>{
+      if(result === 'success'){
+        this.message = "Successfully created a chamber.";
+      }
+      else{
+        this.message = "Chamber is not created. SOmething went wrong.";
+      }
     })
   }
 

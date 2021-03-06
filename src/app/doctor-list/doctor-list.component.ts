@@ -26,10 +26,10 @@ export class DoctorListComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.params.subscribe(param =>{
-      console.log("param id is "+param.id);
       this.categoryId = param.id;
     })
     this.categoryService.getUserDoctorList(this.categoryId).subscribe(result =>{
+      console.log(result);
       this.doctors = result;
       this.doctors.forEach(element => {
         element.userAvatar.image = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+element.userAvatar.image);

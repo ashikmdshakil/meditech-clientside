@@ -121,6 +121,13 @@ export class UsersService {
   });
       return this.http.get(ipAdress+'/getAdminSupermen',{headers: headers,params: param});
    }
+
+   getAppDoctors(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAdress+'/getAppDoctors',{headers: headers});
+   }
   
 
 }

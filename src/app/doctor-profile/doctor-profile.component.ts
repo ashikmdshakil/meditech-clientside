@@ -58,9 +58,10 @@ export class DoctorProfileComponent implements OnInit {
         console.log("This image id is "+ this.user.userAvatar.avatarId);
         this.imageId = this.user.userAvatar.avatarId;
         this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image); 
+
         if(this.user.categories !== null){
           this.currentCategories = result['categories'];
-        }
+        } 
         
         if(this.user.degree !== null){
           this.degree = result['degree'];
@@ -154,7 +155,7 @@ updateCategory(id, name){
   category.name = name;
   this.currentCategories.push(category);
   this.currentCategories.forEach(element => {
-    console.log(element.name);
+    console.log("current categories are "+element.name);
   });
 }
 

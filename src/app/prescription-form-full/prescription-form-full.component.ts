@@ -16,8 +16,9 @@ import { elementEventFullName } from '@angular/compiler/src/view_compiler/view_c
   styleUrls: ['./prescription-form-full.component.css']
 })
 export class PrescriptionFormFullComponent implements OnInit {
+  message: string;
   testName: string;
-  referredDoctor: string;
+  referredDoctor: User = new User();
   advice: string;
   prescriptionTransferService : PrescriptionTransferService;
   prescriptionService: PrescriptionService;
@@ -40,20 +41,28 @@ export class PrescriptionFormFullComponent implements OnInit {
   ngOnInit(): void {
     this.prescription = this.prescriptionTransferService.prescription;
      this.prescriptionService.getUserPrescriptions(this.prescription.appoinmentId.toString()).subscribe(result =>{
-      this.prescription = result; 
+      this.prescription = result;
+      this.scedules = result['scedules'];
+      this.assignedTest = result['tests'];
+      this.referredDoctor = result['referredDoctor'];
+      this.advice = result['advice'];
       console.log(result);
+
+      if(this.scedules.length == 0){
        this.prescription.medicines.forEach(medicine => {
         let schedule = new MedicineScedule();
         schedule.medicine = medicine; 
         this.scedules.push(schedule);
-      }); 
+      });
+    }
+      
     })  
-   /*  this.testService.getTests().subscribe(result =>{
+    this.testService.getTests().subscribe(result =>{
       this.tests = result;
     })
-    this.userService.getAppDoctors().subscribe(result =>{
+   this.userService.getAppDoctors().subscribe(result =>{
       this.referenceDoctors = result;
-    }) */
+    }) 
 
   }
 
@@ -88,12 +97,17 @@ finalPrescription(){
   this.prescription.tests = this.assignedTest;
   this.prescription.advice = this.advice;
   this.referenceDoctors.forEach(element => {
-    if(element.name === this.referredDoctor){
+    if(element.name === this.referredDoctor.name){
       this.prescription.referredDoctor = element;
     }
   });
-  console.log("This very refence doctor's id is "+this.prescription.referredDoctor.userId);
   this.prescriptionService.saveUserPrescription(this.prescription).subscribe(result =>{
+      if(result === 'success'){
+        this.message = 'This Prescription is saved successfully.';
+      }
+      else{
+        this.message = 'Sorry something went wrong. Prescription is not saved.'; 
+      }
   })
 }
 

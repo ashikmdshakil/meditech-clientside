@@ -63,7 +63,7 @@
         
         <div class="form-group">
             <label for="formGroupExampleInput">Another Doctor Reference</label>
-            <input type="text" [(ngModel)]= "referredDoctor" class="form-control" list="referredTo">
+            <input type="text" [(ngModel)]= "referredDoctor.name" class="form-control" list="referredTo">
             <datalist id = "referredTo">
                 <option *ngFor= "let doctor of referenceDoctors" [value]="doctor.name">{{doctor.name}}</option>
             </datalist>
@@ -73,7 +73,8 @@
             <textarea class="form-control" id="exampleFormControlTextarea1" [(ngModel)]= "advice" rows="3"></textarea>
           </div>
 
-       <button type="button" (click)="finalPrescription()" class="btn btn-success">Next</button> 
+       <button type="button" (click)="finalPrescription()" class="btn btn-success">Next</button>
+       <p style="color: chocolate;">{{message}}</p> 
 
     </div>
     <div class="col-1"></div>

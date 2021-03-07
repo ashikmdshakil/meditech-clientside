@@ -2,16 +2,34 @@
 <div class="row">
     <div class="col-2"></div>
     <div class="col-8">
+        <div class="row" style="margin-bottom: 25px;">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <h2 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">My Appoinments</h2>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
         <div class="card shadow p-3 mb-5 bg-white rounded" *ngFor= "let appoinment of appoinments">
             <div class="row">
                 <div class="col-sm-2"></div>
                 <div class="col-sm-8">
                     <div>
-                        <h3>{{appoinment.doctorSlot.chamber.name}}</h3>
-                        <p>{{appoinment.doctorSlot.chamber.user.name}}</p>
-                        <p>{{appoinment.doctorSlot.startTime}}</p>
-                        <p>{{appoinment.doctorSlot.endTime}}</p>
+                        <h3>Chamber : {{appoinment.doctorSlot.chamber.name}}</h3>
+                        <h4>Doctor : {{appoinment.doctorSlot.chamber.user.name}}</h4>
+                        <p>Doctor sits at : {{appoinment.doctorSlot.startTime}}</p>
+                        <p>Your time : {{appoinment.time}}</p>
+                        <p>Serial Number : {{appoinment.serialNumber}}</p>
                     </div>
+                    <form>
+                        <div class="form-group">
+                          <label for="exampleFormControlFile1" style="color: darkblue;">Upload previous report pictures</label>
+                          <input type="file" (change) = 'uploadImage($event)' class="form-control-file" id="exampleFormControlFile1">
+                        </div>
+                        <p><strong *ngFor= "let report of reports"  [value]="report.name">{{report.image.name}} , </strong></p>
+                        <button type="button" (click) = "submitReports(appoinment.id)" class="btn btn-primary">Send Reports</button>
+                        <p style="color: chocolate;">{{message}}</p>
+                      </form>
+
                 </div>
                 <div class="col-sm-2"></div>
             </div>

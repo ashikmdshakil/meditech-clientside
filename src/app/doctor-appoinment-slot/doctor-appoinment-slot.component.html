@@ -23,7 +23,7 @@
                         <p>End Time   : {{slot.endTime}}</p>
                         <p>Fees       : {{slot.fees}}</p>
                         <p>Max Appoinment : {{slot.maximumNumberOfAppoinment}}</p>
-                        <button *ngIf = "canTakeAppoinment" type="button" (click) = "takeAppoinment(slot.id, slot.maximumNumberOfAppoinment)" class="btn btn-link">Take Appoinment</button> 
+                        <button *ngIf = "canTakeAppoinment" type="button" (click) = "takeAppoinment(slot.id, slot.maximumNumberOfAppoinment, slot.startTime, slot.endTime)" class="btn btn-link">Take Appoinment</button> 
                         <button *ngIf = "canSeePatients" type="button" (click) = "seeAppoinments(slot.id)" class="btn btn-link">See Patients</button>  
                         <p style="color: chocolate;">{{message}}</p>  
                     </div>

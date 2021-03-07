@@ -3,12 +3,14 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Prescription } from '../Model/Prescription.model';
+import { PrescriptionReport } from '../Model/PrescriptionReport.model';
 const ipAdress = "http://10.0.0.3:8080";
 @Injectable({
   providedIn: 'root'
 })
 export class PrescriptionService {
   http: HttpClient;
+  
 
   constructor(http: HttpClient) {
     this.http = http;
@@ -31,5 +33,17 @@ export class PrescriptionService {
   });
     return this.http.post(ipAdress+'/savePrescription',prescription,{headers: headers,'responseType': 'text'});
    }
+
+   uploadReports(reports: PrescriptionReport[], id: number): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    let formData: FormData = new FormData();
+    reports.forEach(report => {
+      formData.append('reports', report.image);
+    });
+      formData.append('appoinmentId', id.toString());
+    return this.http.post(ipAdress+'/uploadReports',formData,{headers: headers,'responseType': 'text'});
+  }
 
 }

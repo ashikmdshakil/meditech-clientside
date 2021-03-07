@@ -1,3 +1,5 @@
+import { PrescriptionService } from './../Services/prescription.service';
+import { PrescriptionReport } from './../Model/PrescriptionReport.model';
 import { AppoinmentsService } from './../Services/appoinments.service';
 import { Component, OnInit } from '@angular/core';
 import { Appoinment } from '../Model/Appoinment.model';
@@ -12,25 +14,42 @@ export class MyAppoinmentsComponent implements OnInit {
   appoinmentService: AppoinmentsService;
   appoinments: Appoinment[] = [];
   chamber: Chamber = new Chamber();
+  reports: PrescriptionReport[] = [];
+  prescriptionService: PrescriptionService;
+  message: string;
 
-  constructor(appoinmentService: AppoinmentsService) {
+  constructor(appoinmentService: AppoinmentsService, prescriptionService: PrescriptionService) {
     this.appoinmentService = appoinmentService;
+    this.prescriptionService = prescriptionService;
    }
 
   ngOnInit(): void {
     this.appoinmentService.myAppoinments(localStorage.getItem("username")).subscribe(result =>{
       console.log(result);
       this.appoinments = result;
-      this.appoinments.forEach(appoinment => {
-        console.log("Chamber name is "+appoinment.doctorSlot.chamber.name);
-        console.log("Chamber name is "+appoinment.doctorSlot.chamber.user.name);
-        console.log("start time is "+ appoinment.doctorSlot.startTime);
-        console.log("end time "+appoinment.doctorSlot.endTime);
-      });
-      //this.appoinment = result;
-      //this.chamber = this.appoinment.doctorSlot.chamber;
-      //console.log(this.chamber.name);    
     })
+  }
+  uploadImage(event){
+    let report: PrescriptionReport = new PrescriptionReport();
+    report.image = event.target.files[0];
+    this.reports.push(report);
+  }
+
+  submitReports(id){
+    this.prescriptionService.uploadReports(this.reports, id).subscribe(result =>{
+      this.reports = [];
+      if(result ===  'success'){
+          this.message = "Report has been successfully sent.";
+      }
+      else{
+        this.message = "Sorry, something went wrong.";
+      }
+    },
+    error =>{
+      this.message =  "Sorry, something went wrong.";
+    }
+    
+    )
   }
 
 }

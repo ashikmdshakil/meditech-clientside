@@ -62,10 +62,12 @@ export class DoctorAppoinmentSlotComponent implements OnInit {
     }
   
 
-  takeAppoinment(id, maximum_number){
+  takeAppoinment(id, maximum_number, startTime, endTime){
     this.user.mobileNumber = localStorage.getItem("username");
     this.appoinment.user = this.user;
     this.doctorSlot.id = id;
+    this.doctorSlot.startTime = startTime;
+    this.doctorSlot.endTime = endTime;
     this.doctorSlot.maximumNumberOfAppoinment = maximum_number;
     this.appoinment.doctorSlot = this.doctorSlot;
     this.appoinmentService.takeAppoinment(this.appoinment).subscribe(result =>{

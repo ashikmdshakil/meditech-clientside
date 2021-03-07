@@ -84,6 +84,7 @@ export class ProfileFormComponent implements OnInit {
     else{
       this.isChecked = false;
     }
+    
   }
   uploadImage(event){
       if(event.target.files[0]){
@@ -101,5 +102,6 @@ export class ProfileFormComponent implements OnInit {
         } 
   }
 }
+
  
 }

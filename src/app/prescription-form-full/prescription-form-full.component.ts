@@ -42,16 +42,23 @@ export class PrescriptionFormFullComponent implements OnInit {
     this.prescription = this.prescriptionTransferService.prescription;
      this.prescriptionService.getUserPrescriptions(this.prescription.appoinmentId.toString()).subscribe(result =>{
       this.prescription = result;
-      this.scedules = result['scedules'];
-      this.assignedTest = result['tests'];
-      this.referredDoctor = result['referredDoctor'];
-      this.advice = result['advice'];
-      console.log(result);
-
+      if( result['scedules'] !== null){
+        this.scedules = result['scedules'];
+      }
+      if( result['tests'] !== null){
+        this.assignedTest = result['tests'];
+      }
+      if(result['referredDoctor'] !== null){
+        this.referredDoctor = result['referredDoctor'];
+      }
+      if(result['advice'] !== null){
+        this.advice = result['advice'];
+      }
       if(this.scedules.length == 0){
        this.prescription.medicines.forEach(medicine => {
         let schedule = new MedicineScedule();
-        schedule.medicine = medicine; 
+        schedule.medicine = medicine;
+        console.log("The medicine name is "+ schedule) 
         this.scedules.push(schedule);
       });
     }

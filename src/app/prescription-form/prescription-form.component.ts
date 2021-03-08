@@ -45,19 +45,24 @@ export class PrescriptionFormComponent implements OnInit {
         this.medicineList = result;
     })
     this.prescriptionService.getUserPrescriptions(this.prescription.appoinmentId.toString()).subscribe(result =>{
-      this.prescription = result;
-      this.assignedMedicineList = this.prescription.medicines;
-    })
-    
+      if(result !== null){
+        this.prescription = result;
+        console.log(result);
+        this.assignedMedicineList = result['medicines'];
+      }
+    }) 
   }
 
   prescribeMedicine(){
     this.prescription.medicines = this.assignedMedicineList;
-    this.userService.saveUserPrescription(this.prescription).subscribe(result =>{
+    this.prescription.medicines.forEach(element => {
+      console.log(element.medicineName);
+    });
+   this.userService.saveUserPrescription(this.prescription).subscribe(result =>{
       if(result === 'success'){
           this.router.navigateByUrl('/patient-list/'+this.slotId+'/(prescription:prescription-form-full)');
       }
-    })  
+    })
   }
 
   add(){

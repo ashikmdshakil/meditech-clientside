@@ -34,20 +34,13 @@ export class AppoinmentListComponent implements OnInit {
   ngOnInit(): void {
     this.router.params.subscribe(param =>{
       this.slotId = param.id;
-      console.log("Slot id is "+this.slotId);
     })
 
     this.doctorSlotService.getPatientList(this.slotId.toString()).subscribe(result =>{
       console.log(result);
       this.appoinments = result;
-      console.log("Appoinment Doctor details are");
       this.appoinments.forEach(appoinment => {
-        console.log("Appoinment Doctor details are");
         this.doctorSlot = appoinment.doctorSlot;
-        console.log(this.doctorSlot.user);
-        console.log("Patients information is");
-        console.log(appoinment.user);
-        console.log("This appoinment id is "+appoinment.id);
       });
     })
   }
@@ -56,8 +49,7 @@ export class AppoinmentListComponent implements OnInit {
     this.prescription.doctor = this.appoinments[index].doctorSlot.user;
     this.prescription.patient = this.appoinments[index].user;
     this.prescription.appoinmentId = this.appoinments[index].id;
-    this.prescriptionTransferService.prescription = null;
-    this.prescriptionTransferService.prescription = this.prescription; 
+    this.prescriptionTransferService.setPrescription(this.prescription);
     this.routerA.navigateByUrl('/patient-list/'+this.slotId+'/(prescription:blank)').then(()=>{
     this.routerA.navigateByUrl('/patient-list/'+this.slotId+'/(prescription:prescription-form)',{ state: { id: this.slotId }});
     })

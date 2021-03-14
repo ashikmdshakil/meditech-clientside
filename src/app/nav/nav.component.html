@@ -53,7 +53,7 @@
                     <p style="float: left;"><strong>></strong></p>
                   </div>
                 </div>
-                <div class="row"  style="margin-top: 25px;" *ngIf = "userRole == 'doctor'">
+                <div class="row"  style="margin-top: 25px;" *ngIf = "userRole === 'doctor'">
                   <div class="col-sm-8">
                     <p style="position: relative; left: 10px"><a [routerLink]=""  (click) = "seeDashboard()">Dashboard</a></p>
                   </div>

@@ -1,3 +1,4 @@
+import { SearchbarComponent } from './searchbar/searchbar.component';
 import { PrescriptionFormFullComponent } from './prescription-form-full/prescription-form-full.component';
 import { SupermenComponent } from './supermen/supermen.component';
 import { DoctorsComponent } from './doctors/doctors.component';
@@ -49,7 +50,8 @@ const routes: Routes = [
     {path : "reset-password", component : ForgotPasswordComponent},
     {path : "", component : CategoryComponent},
     {path : "doctor-category", component : DoctorCategoryComponent},
-    {path : "doctor-list/:id", component : DoctorListComponent}
+    {path : "doctor-list/:id", component : DoctorListComponent},
+    {path: "", component : SearchbarComponent, outlet: 'search'},
   ]
 },
 {path: "admin-pannel", component: AdminPannelComponent,

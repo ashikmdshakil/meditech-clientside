@@ -1,0 +1,17 @@
+<div class="row" style="margin-bottom: 25px;">
+    <div class="col-3">
+    </div>
+    <div class="col-5">
+      <!--Search bar-->
+      <div class="input-group">
+        <input type="search" class="form-control rounded" placeholder="Search" (input)="onSearchChange($event)" aria-label="Search"
+          aria-describedby="search-addon" list ='result'/>
+          <datalist id="result">
+            <option *ngFor= "let user of users"  [value]="user.name">{{user.name}}</option>
+        </datalist>
+        <button type="button" class="btn btn-outline-primary">search</button>
+      </div>   
+    </div>
+    <div class="col-4">
+    </div>
+  </div>

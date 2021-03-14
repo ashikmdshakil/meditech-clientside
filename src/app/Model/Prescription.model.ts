@@ -1,3 +1,4 @@
+import { Appoinment } from './Appoinment.model';
 import { MedicineScedule } from './MedicineScedule.model';
 import { Test } from './Test.model';
 import { Medicine } from './Medicine.model';
@@ -13,4 +14,5 @@ export class Prescription{
     tests: Test[] = [];
     scedules: MedicineScedule[] = [];
     referredDoctor: User;
+    appoinment: Appoinment;
 }

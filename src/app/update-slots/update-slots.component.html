@@ -39,6 +39,43 @@
                         <strong>{{chamber.name}}</strong>
                     </div>
                 </div>
+                <div class="row">
+                    <!-- <div class="col-sm-2"></div> -->
+                    <div class="col-sm-12">
+                        <p><strong>If you want to make this time as a scedule.</strong></p>
+                    </div>
+                    <!-- <div class="col-sm-2"></div> -->
+                </div>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Day</label>
+                            <input type="text" [(ngModel)] = "doctorSlot.dayName" class="form-control" list = "day" placeholder="No Schedule" value="No Schedule">
+                            <datalist id="day">
+                                <option>No Schedule</option>
+                                <option>SATURDAY</option>
+                                <option>SUNDAY</option>
+                                <option>MONDAY</option>
+                                <option>TUESDAY</option>
+                                <option>WEDNESDAY</option>
+                                <option>THURSDAY</option>
+                                <option>FRIDAY</option>
+                            </datalist>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="formGroupExampleInput">Duration</label>
+                            <input type="text" [(ngModel)] = "doctorSlot.weekToRepeat" class="form-control" list = "duration">
+                            <datalist id = "duration">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                            </datalist>
+                        </div>
+                    </div>
+                </div>
 
                 <button id = "save" (click)="saveDoctorSlots()" class="btn btn-success">Save Chamber</button>
                 <p>{{message}}</p>

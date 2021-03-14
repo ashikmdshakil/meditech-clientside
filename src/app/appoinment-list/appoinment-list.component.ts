@@ -18,7 +18,7 @@ export class AppoinmentListComponent implements OnInit {
   prescriptionTransferService: PrescriptionTransferService;
   doctorSlot: DoctorSlot = new DoctorSlot();
   prescription: Prescription = new Prescription();
-  appoinment: any;
+  appoinment: Appoinment = new Appoinment();
   router: ActivatedRoute;
   routerA: Router;
   slotId: number;
@@ -48,7 +48,8 @@ export class AppoinmentListComponent implements OnInit {
   getPrescriptionForm(index : number){
     this.prescription.doctor = this.appoinments[index].doctorSlot.user;
     this.prescription.patient = this.appoinments[index].user;
-    this.prescription.appoinmentId = this.appoinments[index].id;
+    this.appoinment.id = this.appoinments[index].id;
+    this.prescription.appoinment = this.appoinment;
     this.prescriptionTransferService.setPrescription(this.prescription);
     this.routerA.navigateByUrl('/patient-list/'+this.slotId+'/(prescription:blank)').then(()=>{
     this.routerA.navigateByUrl('/patient-list/'+this.slotId+'/(prescription:prescription-form)',{ state: { id: this.slotId }});

@@ -36,7 +36,7 @@ export class NavComponent implements OnInit {
       let image = 'data:image/png;base64, '+this.user.userAvatar.image;
       this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image);
       this.userRole = localStorage.getItem("role");
-      console.log("User role is "+this.userRole);
+      localStorage.setItem('userId', this.user.userId.toString());
     })
   }
   logout(){

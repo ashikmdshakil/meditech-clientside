@@ -51,11 +51,13 @@ export class DoctorProfileComponent implements OnInit {
       this.name = this.user.name;
       this.mail = this.user.email;
       this.number = this.user.mobileNumber;
+
+      console.log(result);
+
       if(this.user.addressBooks !== null){
         this.addressBooks = this.user.addressBooks;
       }
         let image = 'data:image/png;base64, '+this.user.userAvatar.image;
-        console.log("This image id is "+ this.user.userAvatar.avatarId);
         this.imageId = this.user.userAvatar.avatarId;
         this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image); 
 

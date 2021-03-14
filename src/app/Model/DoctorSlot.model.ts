@@ -13,5 +13,7 @@ export class DoctorSlot{
     user: User;
     chamber: Chamber;
     appoinments: Appoinment[] = [];
+    dayName: string;
+    weekToRepeat: string;
     
 }

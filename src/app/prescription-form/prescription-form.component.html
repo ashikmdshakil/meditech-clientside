@@ -15,7 +15,7 @@
                     <button type="button" (click)="add()" class="btn btn-success">Add</button>
                 </div>
             </div>
-           <p><strong *ngFor= "let medicinee of assignedMedicineList"  [value]="medicinee.medicineName">{{medicinee.medicineName}} , </strong></p>
+           <p><strong *ngFor= "let medicinee of assignedMedicineList"  [value]="medicinee.medicineName">{{medicinee.medicineName}} , </strong></p><button type="button" (click)="freshList()" class="btn btn-link">clear</button>
         </div>
 
         <button type="button" (click)="prescribeMedicine()" class="btn btn-success">Next</button>

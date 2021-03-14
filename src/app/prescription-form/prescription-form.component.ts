@@ -9,6 +9,7 @@ import { User } from './../User.model';
 import { Component, OnInit } from '@angular/core';
 import { Prescription } from '../Model/Prescription.model';
 import { PrescriptionTransferService } from '../Services/prescription-transfer.service';
+import { Appoinment } from '../Model/Appoinment.model';
 
 @Component({
   selector: 'app-prescription-form',
@@ -20,6 +21,7 @@ export class PrescriptionFormComponent implements OnInit {
   medicineName: string;
   testName: string;
   prescription: Prescription = new Prescription();
+  appoinment: Appoinment = new Appoinment();
   router: Router;
   userService: UsersService;
   prescriptionTransferService: PrescriptionTransferService;
@@ -41,10 +43,11 @@ export class PrescriptionFormComponent implements OnInit {
   ngOnInit(): void {
     this.slotId = history.state.id;
     this.prescription = this.prescriptionTransferService.prescription;
+    this.appoinment = this.prescription.appoinment;
     this.medicineService.getMedicineList().subscribe(result =>{
         this.medicineList = result;
     })
-    this.prescriptionService.getUserPrescriptions(this.prescription.appoinmentId.toString()).subscribe(result =>{
+    this.prescriptionService.getUserPrescriptions(this.prescription.appoinment.id.toString()).subscribe(result =>{
       if(result !== null){
         this.prescription = result;
         console.log(result);
@@ -92,6 +95,9 @@ export class PrescriptionFormComponent implements OnInit {
         }
       }
     return exist;
+  }
+  freshList(){
+    this.assignedMedicineList = [];
   }
 
 }

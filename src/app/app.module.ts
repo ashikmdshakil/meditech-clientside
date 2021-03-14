@@ -45,6 +45,7 @@ import { RegisterSupermanComponent } from './register-superman/register-superman
 import { PatientsComponent } from './patients/patients.component';
 import { DoctorsComponent } from './doctors/doctors.component';
 import { SupermenComponent } from './supermen/supermen.component';
+import { SearchbarComponent } from './searchbar/searchbar.component';
 import { PrescriptionFormFullComponent } from './prescription-form-full/prescription-form-full.component';
 
 
@@ -86,6 +87,7 @@ import { PrescriptionFormFullComponent } from './prescription-form-full/prescrip
     PatientsComponent,
     DoctorsComponent,
     SupermenComponent,
+    SearchbarComponent,
     PrescriptionFormFullComponent
   ],
   imports: [

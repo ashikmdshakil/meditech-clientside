@@ -20,14 +20,14 @@ export class UpdateSlotsComponent implements OnInit {
   chamberList: Chamber[] = [];
   chamber: Chamber = new Chamber();
   user: User = new User();
-
+ 
   constructor(doctorSlotService: DoctorSlotService, chamberService: ChamberServiceService) {
     this.doctorSlotService = doctorSlotService;
     this.chamberService = chamberService;
    }
 
   ngOnInit(): void {
-      this.chamberService.getChambers().subscribe(result =>{
+      this.chamberService.getChamberOfDoctor(localStorage.getItem('userId')).subscribe(result =>{
         this.chamberList = result;
       })
 
@@ -44,9 +44,11 @@ export class UpdateSlotsComponent implements OnInit {
     this.doctorSlotService.updateDoctorSlots(this.doctorSlot).subscribe(result =>{
       if(result === 'success'){
         this.message = "Slot has been updated sucessfully .";
+        this.doctorSlot.dayName = null;
       }
       else{
         this.message = "Slot has not been updated. Something went wrong.";
+        this.doctorSlot.dayName = null;
       }
     })
 

@@ -40,11 +40,8 @@ export class PrescriptionFormFullComponent implements OnInit {
 
   ngOnInit(): void {
     this.prescription = this.prescriptionTransferService.prescription;
-     this.prescriptionService.getUserPrescriptions(this.prescription.appoinmentId.toString()).subscribe(result =>{
+     this.prescriptionService.getUserPrescriptions(this.prescription.appoinment.id).subscribe(result =>{
       this.prescription = result;
-      if( result['scedules'] !== null){
-        this.scedules = result['scedules'];
-      }
       if( result['tests'] !== null){
         this.assignedTest = result['tests'];
       }
@@ -54,14 +51,14 @@ export class PrescriptionFormFullComponent implements OnInit {
       if(result['advice'] !== null){
         this.advice = result['advice'];
       }
-      if(this.scedules.length == 0){
+     
        this.prescription.medicines.forEach(medicine => {
         let schedule = new MedicineScedule();
         schedule.medicine = medicine;
         console.log("The medicine name is "+ schedule) 
         this.scedules.push(schedule);
       });
-    }
+    
       
     })  
     this.testService.getTests().subscribe(result =>{

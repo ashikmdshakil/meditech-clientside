@@ -16,9 +16,9 @@ export class PrescriptionService {
     this.http = http;
    }
  
-   getUserPrescriptions(appoinmentId: string): Observable<any>{
+   getUserPrescriptions(appoinmentId: number): Observable<any>{
     let param = new HttpParams()
-    .set('appoinmentId',appoinmentId);
+    .set('appoinmentId',appoinmentId.toString());
     //let user :any = JSON.parse(localStorage.getItem('currentUser'));
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))

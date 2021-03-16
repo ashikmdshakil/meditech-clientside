@@ -38,7 +38,7 @@ export class DoctorChamberComponent implements OnInit {
   }
 
   seeAppoinments(id){
-    
-  }
+  } 
+  
 
 }

@@ -20,7 +20,7 @@ export class UpdateSlotsComponent implements OnInit {
   chamberList: Chamber[] = [];
   chamber: Chamber = new Chamber();
   user: User = new User();
- 
+  
   constructor(doctorSlotService: DoctorSlotService, chamberService: ChamberServiceService) {
     this.doctorSlotService = doctorSlotService;
     this.chamberService = chamberService;

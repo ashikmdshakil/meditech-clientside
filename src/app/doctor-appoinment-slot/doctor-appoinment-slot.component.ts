@@ -14,6 +14,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./doctor-appoinment-slot.component.css']
 })
 export class DoctorAppoinmentSlotComponent implements OnInit {
+  date: Date = new Date(); 
   canTakeAppoinment: boolean = false;
   canSeePatients: boolean = false;
   chamberId: number;
@@ -88,6 +89,18 @@ export class DoctorAppoinmentSlotComponent implements OnInit {
 
   seeAppoinments(id){
     this.routerA.navigateByUrl('/patient-list/'+id);
+  }
+  deleteSlot(id){
+    this.doctorSlot.id = id;
+    this.slotService.deleteSlot(this.doctorSlot).subscribe(result =>{
+    })
+  }
+  searchSlots(){
+    console.log("Date is "+this.date);
+    console.log("This chamber id is "+this.chamber.id);
+    this.slotService.searchSlotsByDate(this.date.toString(),this.chamber.id.toString()).subscribe(result =>{
+      console.log(result);
+    })
   }
 
 }

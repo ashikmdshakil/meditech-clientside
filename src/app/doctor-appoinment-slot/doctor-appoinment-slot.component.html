@@ -12,6 +12,16 @@
             <div class="col-sm-3"></div>
         </div>
 
+        <div class="row" style="margin-bottom: 35px;">
+            <div class="col-sm-3"></div>
+            <div class="col-sm-6">
+                <label for="birthday">Search Day</label>
+                <input type="date"  [(ngModel)] = "date" id="day" name="day">
+                <button type="button" (click)="searchSlots()" class="btn btn-link">Search Slots</button>
+            </div>
+            <div class="col-sm-3"></div>
+        </div>
+
         <div class="card shadow p-3 mb-5 bg-white rounded" *ngFor= "let slot of appoinmentSlots">
             <div class="row">
                 <div class="col-sm-4">
@@ -25,6 +35,7 @@
                         <p>Max Appoinment : {{slot.maximumNumberOfAppoinment}}</p>
                         <button *ngIf = "canTakeAppoinment" type="button" (click) = "takeAppoinment(slot.id, slot.maximumNumberOfAppoinment, slot.startTime, slot.endTime)" class="btn btn-link">Take Appoinment</button> 
                         <button *ngIf = "canSeePatients" type="button" (click) = "seeAppoinments(slot.id)" class="btn btn-link">See Patients</button>  
+                        <button *ngIf = "canSeePatients" type="button" (click) = "deleteSlot(slot.id)" class="btn btn-link">delete</button> 
                         <p style="color: chocolate;">{{message}}</p>  
                     </div>
                 </div>

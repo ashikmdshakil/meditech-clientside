@@ -1,14 +1,13 @@
-import { RegistrationService } from './../registration.service';
-import { User } from './../User.model';
 import { Component, OnInit } from '@angular/core';
+import { RegistrationService } from 'src/app/registration.service';
 
 @Component({
-  selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class SignupComponent implements OnInit {
-
+export class RegisterComponent implements OnInit {
+  roleId: number;
   name: string;
   mail: string;
   number: string;
@@ -22,7 +21,16 @@ export class SignupComponent implements OnInit {
   }
   
   signUp(){
-    let status = this.registration.registerDoctor(this.name, this.mail, this.number, this.password);
+    let status;
+    if(this.roleId == 1){
+      status = this.registration.registerPatient(this.name, this.mail, this.number, this.password);
+    }
+    else if(this.roleId == 2){
+      status = this.registration.registerDoctor(this.name, this.mail, this.number, this.password);
+    }
+    else if(this.roleId == 4){
+      status = this.registration.registerSuperman(this.name, this.mail, this.number, this.password);
+    }
     status.subscribe((status)=>{
       if(status == 'success'){
         this.alertExist = true;
@@ -41,7 +49,10 @@ export class SignupComponent implements OnInit {
         this.password = null;
       }
     })
-    
+  }
+
+  setRole(id: number){
+    this.roleId = id;
   }
 
   ngOnInit(): void {

@@ -47,6 +47,14 @@ import { DoctorsComponent } from './doctors/doctors.component';
 import { SupermenComponent } from './supermen/supermen.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { PrescriptionFormFullComponent } from './prescription-form-full/prescription-form-full.component';
+import { SuperAdminDashboardComponent } from './SuperAdminPannel/super-admin-dashboard/super-admin-dashboard.component';
+import { RegisterComponent } from './SuperAdminPannel/register/register.component';
+import { DashboardComponent } from './SuperAdminPannel/dashboard/dashboard.component';
+import { AppoinmentsComponent } from './SuperAdminPannel/appoinments/appoinments.component';
+import { SupermanListComponent } from './SuperAdminPannel/superman-list/superman-list.component';
+import { PatientAllComponent } from './SuperAdminPannel/patient-all/patient-all.component';
+import { DoctorAllComponent } from './SuperAdminPannel/doctor-all/doctor-all.component';
+import { CategoriesComponent } from './SuperAdminPannel/categories/categories.component';
 
 
 @NgModule({
@@ -88,7 +96,15 @@ import { PrescriptionFormFullComponent } from './prescription-form-full/prescrip
     DoctorsComponent,
     SupermenComponent,
     SearchbarComponent,
-    PrescriptionFormFullComponent
+    PrescriptionFormFullComponent,
+    SuperAdminDashboardComponent,
+    RegisterComponent,
+    DashboardComponent,
+    AppoinmentsComponent,
+    SupermanListComponent,
+    PatientAllComponent,
+    DoctorAllComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,

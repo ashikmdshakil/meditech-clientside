@@ -45,7 +45,7 @@ export class ProfileFormComponent implements OnInit {
       if(this.user.addressBooks !== null){
         this.addressBooks = this.user.addressBooks;
       }
-     
+      
         let image = 'data:image/png;base64, '+this.user.userAvatar.image;
         console.log("This image id is "+ this.user.userAvatar.avatarId);
         this.imageId = this.user.userAvatar.avatarId;

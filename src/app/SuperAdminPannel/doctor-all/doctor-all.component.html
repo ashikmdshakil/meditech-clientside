@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor= "let doctor of doctors ; let i = index">
+                <th scope="row">{{i+1}}</th>
+                <td>{{doctor.name}}</td>
+                <td>{{doctor.mobileNumber}}</td>
+                <td>{{doctor.email}}</td>
+                <td><button class="btn btn-danger deleteRow">Cancel</button></td>
+                <td><button class="btn btn-info deleteRow">Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+

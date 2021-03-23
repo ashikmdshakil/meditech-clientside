@@ -47,7 +47,7 @@ export class PrescriptionFormComponent implements OnInit {
     this.medicineService.getMedicineList().subscribe(result =>{
         this.medicineList = result;
     })
-    this.prescriptionService.getUserPrescriptions(this.prescription.appoinment.id.toString()).subscribe(result =>{
+    this.prescriptionService.getUserPrescriptions(this.prescription.appoinment.id).subscribe(result =>{
       if(result !== null){
         this.prescription = result;
         console.log(result);

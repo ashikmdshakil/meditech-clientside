@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-10">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Patient</th>
+                <th scope="col">Doctor</th>
+                <th scope="col">Time</th>
+                <th scope="col">Payment Status</th>
+              </tr>
+            </thead>
+            <tbody *ngFor= "let appoinment of appoinments; let i = index">
+              <tr>
+                <th scope="row">{{i+1}}</th>
+                <td>{{appoinment.user.name}}</td>
+                <td>{{appoinment.doctorSlot.chamber.user.name}}</td>
+                <td>{{appoinment.time | date:'medium'}}</td>
+                <td>{{appoinment.status}}</td>
+                <td><button class="btn btn-danger deleteRow">Cancel</button></td>
+                <td><button class="btn btn-info deleteRow">Details</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+    <div class="col-sm-1"></div>
+</div>
+
+

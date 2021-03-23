@@ -1,3 +1,9 @@
+import { CategoriesComponent } from './SuperAdminPannel/categories/categories.component';
+import { DoctorAllComponent } from './SuperAdminPannel/doctor-all/doctor-all.component';
+import { PatientAllComponent } from './SuperAdminPannel/patient-all/patient-all.component';
+import { SupermanListComponent } from './SuperAdminPannel/superman-list/superman-list.component';
+import { DashboardComponent } from './SuperAdminPannel/dashboard/dashboard.component';
+import { SuperAdminDashboardComponent } from './SuperAdminPannel/super-admin-dashboard/super-admin-dashboard.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { PrescriptionFormFullComponent } from './prescription-form-full/prescription-form-full.component';
 import { SupermenComponent } from './supermen/supermen.component';
@@ -37,6 +43,8 @@ import { DoctorDashboardComponent } from './doctor-dashboard/doctor-dashboard.co
 import { DoctorDetailsComponent } from './doctor-details/doctor-details.component';
 import { DoctorChamberComponent } from './doctor-chamber/doctor-chamber.component';
 import { UpdateSlotsComponent } from './update-slots/update-slots.component';
+import { RegisterComponent } from './SuperAdminPannel/register/register.component';
+import { AppoinmentsComponent } from './SuperAdminPannel/appoinments/appoinments.component';
 
 const routes: Routes = [
   {path: "", redirectTo : "home", pathMatch: 'full'},
@@ -150,6 +158,21 @@ const routes: Routes = [
 {path: "my-appoinments", component: MyAppoinmentsComponent,
   children: [
     {path: "", component : NavComponent, outlet: 'nav'}
+  ]
+},
+
+{path: "super-admin-pannel", component: SuperAdminDashboardComponent,
+  children: [
+    {path: "", component : NavComponent, outlet: 'nav'},
+    {path: "", component : DashboardComponent, outlet: 'pannel'},
+    {path: "dashboard", component : DashboardComponent, outlet: 'pannel'},
+    {path: "register", component : RegisterComponent, outlet: 'pannel'},
+    {path: "doctors", component : DoctorAllComponent, outlet: 'pannel'},
+    {path: "patients", component : PatientAllComponent, outlet: 'pannel'},
+    {path: "supermen", component : SupermanListComponent, outlet: 'pannel'},
+    {path: "appoinments", component : AppoinmentsComponent, outlet: 'pannel'},
+    {path: "categories", component : CategoriesComponent, outlet: 'pannel'},
+    {path: "blank", component : BlankComponent, outlet: 'pannel'},
   ]
 },
 

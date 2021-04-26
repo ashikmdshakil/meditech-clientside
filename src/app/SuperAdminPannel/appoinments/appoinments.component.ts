@@ -13,6 +13,8 @@ export class AppoinmentsComponent implements OnInit {
   
   superAdminService: SuperAdminService;
   appoinments: Appoinment[] = [];
+  selectedAppoinment: Appoinment = new Appoinment();
+  message: string;
 
   constructor(superAdminService: SuperAdminService) {
     this.superAdminService = superAdminService;
@@ -21,6 +23,39 @@ export class AppoinmentsComponent implements OnInit {
   ngOnInit(): void {
     this.superAdminService.getAppoinments().subscribe(result =>{
       this.appoinments = result;
+      console.log(result);
     })
+  }
+
+  appoinmentInfo(id: number){
+    this.appoinments.forEach(appoinment => {
+      if(appoinment.id === id){
+        this.selectedAppoinment = null;
+        this.selectedAppoinment = appoinment;
+        console.log("This appoinment status is "+ appoinment.status);
+      }
+  });
+  }
+
+  deleteAppoinment(){
+      console.log("Ready to delete ....");
+      this.superAdminService.deleteAppoinments(this.selectedAppoinment).subscribe(result =>{
+        console.log("The result is "+result);
+        if(result === "archived"){
+          this.message = "This user has been archived.";
+        }
+        else if(result === "activated"){
+          this.message = "This user has been activated again!";
+        }
+        else if(result === "failed"){
+          this.message = "Sorry Something went wrong.";
+        }
+        else{
+          this.message = "Sorry Something went wrong.";
+        }
+      },
+      error =>{
+        this.message = "Sorry something went wrong. It might be connection problem with server.";
+      });
   }
 }

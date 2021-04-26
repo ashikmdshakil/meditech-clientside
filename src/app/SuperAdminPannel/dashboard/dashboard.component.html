@@ -61,76 +61,11 @@
             <th scope="col">Phone Number</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor= "let emmergencyDoc of emmergencyDocs; let i = index">
           <tr>
-            <th scope="row">1</th>
-            <td>Dr. Amzad Hossain</td>
-            <td>01716260331</td>
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>Dr. Lutfunnahar</td>
-            <td>01965266133</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Dr. Pran Gopal Datta</td>
-            <td>01720024944</td>
+            <th scope="row">{{i+1}}</th>
+            <td>{{emmergencyDoc.name}}</td>
+            <td>{{emmergencyDoc.mobileNumber}}</td>
           </tr>
         </tbody>
       </table>
@@ -140,15 +75,17 @@
     <div  class="row shadow p-3 mb-5 bg-white rounded" style="height: 480px; margin-top: 55px; margin-right: 25px; margin-left: 25px;">
       <!-- <div class="form-group" style="margin-left: 15px;"> -->
         <label for="exampleInputEmail1">Name</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="text" [(ngModel)] = "emmergencyDoc.name" class="form-control"  aria-describedby="emailHelp" placeholder="Enter name" required>
         <label for="exampleInputEmail1">Mobile number</label>
-        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="text" [(ngModel)] = "emmergencyDoc.mobileNumber" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Mobile Number" required>
         <label for="exampleInputEmail1">Email address</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <input type="email" [(ngModel)] = "emmergencyDoc.email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email">
         <label for="exampleInputEmail1">Password</label>
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-        <button type="button" class="btn btn-outline-success" style="margin-left: 55px;">Register 24/7 Doctors</button>
+        <input type="password" [(ngModel)] = "emmergencyDoc.password" class="form-control"  aria-describedby="emailHelp" placeholder="Enter Password" required>
+        <button type="button" (click)="saveDoc()" class="btn btn-outline-success" style="margin-left: 55px;">Register 24/7 Doctors</button>
       <!-- </div> -->
+      <p style="color: chocolate;">{{message}}</p>
     </div>
+    
   </div>
 </div>

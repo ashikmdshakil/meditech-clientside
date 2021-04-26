@@ -1,3 +1,4 @@
+import { AdvertisementComponent } from './SuperAdminPannel/advertisement/advertisement.component';
 import { CategoriesComponent } from './SuperAdminPannel/categories/categories.component';
 import { DoctorAllComponent } from './SuperAdminPannel/doctor-all/doctor-all.component';
 import { PatientAllComponent } from './SuperAdminPannel/patient-all/patient-all.component';
@@ -172,6 +173,7 @@ const routes: Routes = [
     {path: "supermen", component : SupermanListComponent, outlet: 'pannel'},
     {path: "appoinments", component : AppoinmentsComponent, outlet: 'pannel'},
     {path: "categories", component : CategoriesComponent, outlet: 'pannel'},
+    {path: "advertisements", component : AdvertisementComponent, outlet: 'pannel'},
     {path: "blank", component : BlankComponent, outlet: 'pannel'},
   ]
 },

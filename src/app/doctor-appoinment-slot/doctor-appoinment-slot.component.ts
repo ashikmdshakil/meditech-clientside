@@ -43,6 +43,7 @@ export class DoctorAppoinmentSlotComponent implements OnInit {
     this.router.params.subscribe(param =>{
       this.chamberId = param.id;
       this.slotService.getSlots(this.chamberId.toString()).subscribe(result =>{
+        console.log(result);
         this.appoinmentSlots = result;
       })
       })

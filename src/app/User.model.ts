@@ -25,4 +25,5 @@ export class User{
     doctorSlots: DoctorSlot[] = [];
     prescriptions: Prescription[] = [];
     adminNumber: string;
+    archived: boolean;
 } 

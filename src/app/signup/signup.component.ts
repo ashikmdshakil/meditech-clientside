@@ -22,7 +22,7 @@ export class SignupComponent implements OnInit {
   }
   
   signUp(){
-    let status = this.registration.registerDoctor(this.name, this.mail, this.number, this.password);
+    let status = this.registration.registerPatient(this.name, this.mail, this.number, this.password);
     status.subscribe((status)=>{
       if(status == 'success'){
         this.alertExist = true;

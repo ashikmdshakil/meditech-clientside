@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 import { User } from 'src/app/User.model';
 import { SuperAdminService } from '../super-admin.service';
 
@@ -8,10 +9,16 @@ import { SuperAdminService } from '../super-admin.service';
   styleUrls: ['./superman-list.component.css']
 })
 export class SupermanListComponent implements OnInit {
+  imageUrl: any;
+  message: string;
   superAdminService: SuperAdminService;
   supermen: User[] = [];
-  constructor(superAdminService: SuperAdminService) {
+  selectedSuperman: User = new User();
+  domSanitizer: DomSanitizer;
+
+  constructor(superAdminService: SuperAdminService, domSanitizer: DomSanitizer) {
     this.superAdminService = superAdminService;
+    this.domSanitizer = domSanitizer;
    }
 
   ngOnInit(): void {
@@ -19,5 +26,32 @@ export class SupermanListComponent implements OnInit {
       this.supermen = result;
       console.log(result);
     })
+  }
+
+  userInfo(number: string){
+    this.supermen.forEach(superman => {
+        if(superman.mobileNumber === number){
+          this.selectedSuperman = null;
+          this.selectedSuperman = superman;
+        }
+    });
+  }
+
+  archiveUser(){
+    this.superAdminService.deleteUser(this.selectedSuperman).subscribe(result =>{
+      if(result === "archived"){
+        this.message = "This user has been archived.";
+      }
+      else if(result === "activated"){
+        this.message = "This user has been activated again!";
+      }
+      else if(result === "failed"){
+        this.message = "Sorry Something went wrong.";
+      }
+    },
+    error =>{
+      this.message = "Sorry something went wrong. It might be connection problem with server.";
+    }
+    )
   }
 }

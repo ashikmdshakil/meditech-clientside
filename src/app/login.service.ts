@@ -19,9 +19,9 @@ export class LoginService {
     .set('number' , number)
     .set('password' , password);
    
-    const headers = new HttpHeaders({
+  const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(number + ':' + password)
-  });
-     return this.http.get(ip+'/login',{headers: headers,params: param});
+  }); 
+     return this.http.get(ip+'/login',{headers: headers, params: param});
   }
 }

@@ -1,7 +1,11 @@
+import { Advertisement } from './../Model/Advertisement.model';
+import { Appoinment } from './../Model/Appoinment.model';
+import { User } from './../User.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Categories } from '../Model/Categories.model';
+import { AdvertisementCategory } from '../Model/AdvertisementCategory.model';
 const ipAddress = "http://10.0.0.3:8080";
 @Injectable({
   providedIn: 'root'
@@ -114,6 +118,73 @@ export class SuperAdminService {
   });
     return this.http.post(ipAddress+'/adminDeleteCategory',category,{headers: headers,'responseType': 'text'});
   }
+
+  saveEmmergencyDoc(emmergencyDoc: User): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/adminSaveEmmergencyDoc',emmergencyDoc,{headers: headers,'responseType': 'text'});
+  }
+
+  getEmmergencyDoctors(): Observable<any>{
+    /* let param = new HttpParams()
+    .set('mobileNumber' , mobileNumber); */
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/getEmmergencyDoctors',{headers: headers})
+   }
+
+   getUser(mobileNumber: string): Observable<any>{
+    let param = new HttpParams()
+    .set('number' , mobileNumber);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/getUser',{headers: headers,params: param})
+   }
+
+   deleteUser(user: User): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/adminArchiveUser',user,{headers: headers,'responseType': 'text'});
+  }
+
+  deleteAppoinments(appoinment: Appoinment): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/adminDeleteAppoinment',appoinment,{headers: headers,'responseType': 'text'});
+  }
+
+  saveAdvertisementCategory(category: AdvertisementCategory): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/adminSaveAdvertisementCategory',category,{headers: headers,'responseType': 'text'});
+  }
+
+  getAdvertisementCategories(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/adminGetsAdvertisementCategories',{headers: headers})
+   }
+
+   saveAdvertisement(advertise: Advertisement): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    let formData: FormData = new FormData();
+
+      formData.append('advertisement', advertise.advertisement);
+      formData.append('youtubeLink', advertise.youtubeLink);
+      formData.append('categoryId', advertise.advertisementCategory.id.toString());
+
+    return this.http.post(ipAddress+'/adminSaveAdvertisement',formData,{headers: headers,'responseType': 'text'});
+  }
+   
 
    
 }

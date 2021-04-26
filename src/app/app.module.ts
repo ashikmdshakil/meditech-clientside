@@ -6,7 +6,6 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule,HttpErrorResponse } from '@angular/common/http'
 import { retry, catchError } from 'rxjs/operators';
 
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
@@ -55,6 +54,7 @@ import { SupermanListComponent } from './SuperAdminPannel/superman-list/superman
 import { PatientAllComponent } from './SuperAdminPannel/patient-all/patient-all.component';
 import { DoctorAllComponent } from './SuperAdminPannel/doctor-all/doctor-all.component';
 import { CategoriesComponent } from './SuperAdminPannel/categories/categories.component';
+import { AdvertisementComponent } from './SuperAdminPannel/advertisement/advertisement.component';
 
 
 @NgModule({
@@ -104,7 +104,8 @@ import { CategoriesComponent } from './SuperAdminPannel/categories/categories.co
     SupermanListComponent,
     PatientAllComponent,
     DoctorAllComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    AdvertisementComponent
   ],
   imports: [
     BrowserModule,

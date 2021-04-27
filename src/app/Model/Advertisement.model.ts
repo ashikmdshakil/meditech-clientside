@@ -4,6 +4,7 @@ export class Advertisement{
     id: number;
     advertisement: File;
     youtubeLink: string;
+    youtubeUrl: any;
     advertisementUrl: any;
-    advertisementCategory: AdvertisementCategory = new AdvertisementCategory();
+    category: AdvertisementCategory = new AdvertisementCategory();
 }

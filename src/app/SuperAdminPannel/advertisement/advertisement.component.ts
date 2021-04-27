@@ -20,6 +20,7 @@ export class AdvertisementComponent implements OnInit {
   advertisementCategories: AdvertisementCategory[] = [];
   selectedAdCategories: AdvertisementCategory[] = [];
   category: Categories = new Categories();
+  advertisements: Advertisement[] = [];
   advertisement: Advertisement = new Advertisement();
   advertisementCategory: AdvertisementCategory = new AdvertisementCategory(); 
   domSanitizer: DomSanitizer;
@@ -32,10 +33,11 @@ export class AdvertisementComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.superAdminService.getCategories().subscribe(result =>{
-      this.categories = result;
-      this.categories.forEach(category => {
-          category.iconUrl = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+category.icon);
+    this.superAdminService.getAllAdvertisements().subscribe(result =>{
+      this.advertisements = result;
+      this.advertisements.forEach(advertise => {
+          advertise.advertisementUrl = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+ advertise.advertisement); 
+          advertise.youtubeUrl= this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+advertise.youtubeLink.slice(16));     
       });
     })
 
@@ -56,11 +58,14 @@ export class AdvertisementComponent implements OnInit {
     this.advertisement.advertisementUrl = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+this.advertisement.advertisement);
   }
   save(){
-    this.advertisement.advertisementCategory = this.selectedAdCategories[0];
+    this.advertisement.category = this.selectedAdCategories[0];
 
     this.superAdminService.saveAdvertisement(this.advertisement).subscribe(result =>{
       if(result == "success"){
         this.message = "Category is saved successfully ! Refresh the page."; 
+        this.router.navigateByUrl('/super-admin-pannel/(pannel:blank)').then(next =>{
+          this.router.navigateByUrl('/super-admin-pannel/(pannel:advertisements)');
+        })
       }
       else{
         this.message = "Sorry ! Something went wrong !";
@@ -74,20 +79,27 @@ export class AdvertisementComponent implements OnInit {
     
 }
 
-delete(){
-  this.superAdminService.saveAdvertisement(this.advertisement).subscribe(result =>{
-    if(result == "success"){
-      this.message = "Category is deleted successfully ! Please refresh the page."; 
+delete(id: number){
+  this.advertisements.forEach(ad => {
+    if(ad.id === id){
+      let advertise: Advertisement = new Advertisement();
+      advertise = ad;
+      this.superAdminService.deleteAdvertise(advertise).subscribe(result =>{
+        if(result === "success"){
+          this.message = "Deletion is successfull !";
+          this.router.navigateByUrl('/super-admin-pannel/(pannel:blank)').then(next =>{
+            this.router.navigateByUrl('/super-admin-pannel/(pannel:advertisements)');
+          })
+        }
+        else{
+          this.message = "Sorry ! Something went wrong !";
+        }
+      }),
+      error =>{
+        this.message = "Sorry ! Something went wrong !";
+      }
     }
-    else{
-      this.message = "Sorry ! Something went wrong !";
-    }
-  },
-  error =>{
-    console.log("Sorry ! There might be any connection issue with server.")
   });
-  delete this.category;
-  this.category = new Categories();
 }
 
 //advertisement

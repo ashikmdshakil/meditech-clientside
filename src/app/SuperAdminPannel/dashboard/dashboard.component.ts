@@ -1,3 +1,5 @@
+import { MeditecWallet } from './../../Model/MeditecWallet.model';
+import { Commision } from './../../Model/Commision.model';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/User.model';
 import { SuperAdminService } from '../super-admin.service';
@@ -13,9 +15,13 @@ export class DashboardComponent implements OnInit {
   totalDoctors: number;
   totalSupermen: number;
   totalAppoinments: number;
+  totalIncome: number;
   superAdminService: SuperAdminService;
   emmergencyDoc: User = new User();
+  commision: Commision = new Commision();
+  meditecWallet: MeditecWallet = new MeditecWallet();
   emmergencyDocs: User[] = [];
+  commisionMessage: string;
 
   constructor(superAdminService: SuperAdminService) {
     this.superAdminService = superAdminService;
@@ -41,6 +47,18 @@ export class DashboardComponent implements OnInit {
     this.superAdminService.getEmmergencyDoctors().subscribe(result =>{
       this.emmergencyDocs = result;
     })
+
+    this.superAdminService.getCommision().subscribe(result =>{
+      this.commision = result;
+    })
+
+    this.superAdminService.getAdminWallet().subscribe(result =>{
+      this.meditecWallet = result;
+      this.totalIncome = this.meditecWallet.totalIncome;
+    })
+
+
+
   }
 
   saveDoc(){
@@ -58,6 +76,20 @@ export class DashboardComponent implements OnInit {
     )
     delete this.emmergencyDoc;
     this.emmergencyDoc = new User();
+  }
+
+  saveCommision(){
+    this.superAdminService.saveCommision(this.commision).subscribe(result =>{
+      if(result === "success"){
+        this.commisionMessage = "Saving is successfull !";
+      }
+      else{
+        this.commisionMessage = "Sorry ! something went wrong !";
+      }
+    }),
+    error =>{
+      this.commisionMessage = "Sorry ! something went wrong !";
+    }
   }
 
 }

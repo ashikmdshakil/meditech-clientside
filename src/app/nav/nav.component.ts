@@ -67,7 +67,7 @@ export class NavComponent implements OnInit {
     }
     seeDashboard(){
       //this.userTransferService.number = localStorage.getItem("username");
-      this.router.navigateByUrl('/doctor-dashboard');
+      this.router.navigateByUrl('/super-admin-pannel/(pannel:dashboard)'); 
     }
 
     myAppoinments(){

@@ -3,7 +3,7 @@
       <button class="btn btn-light dropdown-toggle"  type="button" data-toggle="dropdown">Meditech
         <span class="caret"></span></button>
     
-        <div class="dropdown-menu" style="height: 500px; width: 280px; margin-top: 17px;">
+        <div class="dropdown-menu" style="height: 100%; width: 250px; margin-top: 17px;">
           <table class="table table-dark" style="margin-top: -10px;">
             <!--User Image and name-->
              <tr>
@@ -18,61 +18,27 @@
                     <div class="col-sm-8">
                       <div style="margin-top: 15px;">
                         <p style="font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif ;font-size: large;"><strong>{{user.name}}</strong></p>
-                        <p></p>
+                        
                       </div>
                     </div> 
                     <div class="col-sm-2">
                     </div>
                   </div>
               </td>
-            </tr>
-             <!--User Accounts-->
-              <tr>
-              <td style="height: 350px; width: 300px;">
-                <div class="row">
-                  <div class="col-sm-3"></div>
-                  <div class="col-sm-4">
-                    <h4>Account</h4>
-                  </div>
-                  <div class="col-sm-5"></div>
-                </div>
-                <div class="row"  style="margin-top: 25px;">
-                  <div class="col-sm-8">
-                    <p style="position: relative; left: 10px"><a [routerLink]=""  (click) = "routeProfile()">Edit Account</a></p>
-                  </div>
-                  <div class="col-sm-4">
-                    <p style="float: left;"><strong>></strong></p>
-                  </div>
-                </div>
-
-                <div class="row"  style="margin-top: 25px;">
-                  <div class="col-sm-8">
-                    <p style="position: relative; left: 10px"><a [routerLink]=""  (click) = "myAppoinments()">My Appoinments</a></p>
-                  </div>
-                  <div class="col-sm-4">
-                    <p style="float: left;"><strong>></strong></p>
-                  </div>
-                </div>
-                <div class="row"  style="margin-top: 25px;" *ngIf = "userRole === 'doctor'">
-                  <div class="col-sm-8">
-                    <p style="position: relative; left: 10px"><a [routerLink]=""  (click) = "seeDashboard()">Dashboard</a></p>
-                  </div>
-                  <div class="col-sm-4">
-                    <p style="float: left;"><strong>></strong></p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-8">
-                    <p style="position: relative; left: 10px">Reset Password</p>
-                  </div>
-                  <div class="col-sm-4">
-                    <p style="float: left;"><strong>></strong></p>
-                  </div>
-                </div>
-             </td>
-             </tr>
-           </table>
-        </div>
+            </tr>     
+        <tr>
+          <td style="height: 350px; width: 300px;">
+            <a (click) = "routeProfile()">Edit Account</a>
+            <a (click) = "seeDashboard()">Dashboard</a>
+            <a>Reset Password</a>
+            <div style="margin-left: 55px; margin-top: 30px;">
+              <button type="button" class="btn btn-light">Logout</button>
+            </div>  
+          </td>
+        </tr>      
+</table>
+</div>
+       
 
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto">

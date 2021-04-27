@@ -1,3 +1,4 @@
+import { Commision } from './../Model/Commision.model';
 import { Advertisement } from './../Model/Advertisement.model';
 import { Appoinment } from './../Model/Appoinment.model';
 import { User } from './../User.model';
@@ -180,11 +181,45 @@ export class SuperAdminService {
 
       formData.append('advertisement', advertise.advertisement);
       formData.append('youtubeLink', advertise.youtubeLink);
-      formData.append('categoryId', advertise.advertisementCategory.id.toString());
+      formData.append('categoryId', advertise.category.id.toString());
 
     return this.http.post(ipAddress+'/adminSaveAdvertisement',formData,{headers: headers,'responseType': 'text'});
   }
-   
+
+  getAllAdvertisements(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/getAdvertisements',{headers: headers})
+   }
+
+   deleteAdvertise(advertise: Advertisement): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/adminDeleteAdvertise',advertise,{headers: headers,'responseType': 'text'});
+  }
+
+  saveCommision(commision: Commision){
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/adminSaveCommision',commision,{headers: headers,'responseType': 'text'});
+  }
+
+  getCommision(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/getCommision',{headers: headers})
+   }
+
+   getAdminWallet(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/adminGetsWallet',{headers: headers})
+   }
 
    
 }

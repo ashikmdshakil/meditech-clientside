@@ -1,3 +1,4 @@
+import { SuperAdminService } from './../SuperAdminPannel/super-admin.service';
 import { UserTransferService } from './../Services/user-transfer.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { UsersService } from './../Services/users.service';
@@ -13,6 +14,10 @@ import { User } from '../User.model';
 })
 export class NavComponent implements OnInit {
   userRole: string;
+  previousPass: string;
+  newPass: string;
+  newPassAgain: string;
+  message: string;
   logoutService: LogoutService;
   router: Router;
   userService: UsersService;
@@ -20,13 +25,16 @@ export class NavComponent implements OnInit {
   imageUrl: any;
   domSanitizer: DomSanitizer;
   userTransferService: UserTransferService;
+  superAdminService: SuperAdminService;
 
-  constructor(logoutService: LogoutService, router: Router, userService: UsersService, domSanitizer: DomSanitizer, userTransferService: UserTransferService) {
+
+  constructor(logoutService: LogoutService, router: Router, userService: UsersService, domSanitizer: DomSanitizer, userTransferService: UserTransferService, superAdminService: SuperAdminService) {
     this.logoutService = logoutService;
     this.router = router;
     this.userService = userService;
     this.domSanitizer = domSanitizer;
     this.userTransferService = userTransferService;
+    this.superAdminService = superAdminService;
    }
 
   ngOnInit(): void {
@@ -51,8 +59,8 @@ export class NavComponent implements OnInit {
       localStorage.removeItem('username');
         localStorage.removeItem('password');
         localStorage.removeItem('role');
-        this.router.navigateByUrl('/home/(nav:refresh)').then(()=>{
-        this.router.navigateByUrl('/home');
+        this.router.navigateByUrl('/meditec/(nav:refresh)').then(()=>{
+        this.router.navigateByUrl('/meditec');
       })
     } 
 
@@ -82,6 +90,25 @@ export class NavComponent implements OnInit {
     }
     getSupermanList(){
       this.router.navigateByUrl('/admin-pannel/(users:supermen)');
+    }
+    changePassword(){
+      console.log(this.previousPass);
+      console.log(this.newPass);
+        if(this.newPass === this.newPassAgain){
+            this.superAdminService.changePassword(this.previousPass, this.newPass).subscribe(result =>{
+              if(result === "success"){
+                this.message = "Password is changed successfully !";
+              }
+            },
+            error =>{
+              this.message = "Soory ! Something went wrong !";
+            }
+            )
+        }
+        else{
+          this.message = "Passwords did not match."
+        }
+        console.log(this.message);
     }
   }
   

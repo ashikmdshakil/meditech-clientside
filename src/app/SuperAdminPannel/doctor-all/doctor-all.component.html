@@ -16,7 +16,7 @@
                 <td>{{doctor.name}}</td>
                 <td>{{doctor.mobileNumber}}</td>
                 <td>{{doctor.email}}</td>
-                <td><button class="btn btn-danger deleteRow"  data-toggle="modal" data-target="#exampleModal" (click)="userInfo(doctor.mobileNumber)">Archive/Activate</button></td>
+                <td><button class="btn btn-danger deleteRow"  data-toggle="modal" data-target="#exampleModalDoctor" (click)="userInfo(doctor.mobileNumber)">Delete</button></td>
                 <td><button class="btn btn-info deleteRow">Details</button></td>
               </tr>
             </tbody>
@@ -25,7 +25,7 @@
     <div class="col-sm-1"></div>
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModalDoctor" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -49,7 +49,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" (click)="archiveUser()">Archive</button>
+            <button type="button" class="btn btn-primary" (click)="archiveUser()">Delete</button>
           </div>
         </div>
       </div>

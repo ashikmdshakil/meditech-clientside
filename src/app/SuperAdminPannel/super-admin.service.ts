@@ -220,6 +220,17 @@ export class SuperAdminService {
   });
       return this.http.get(ipAddress+'/adminGetsWallet',{headers: headers})
    }
+   
+   changePassword(previousPass: string, newPass: string){
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    let formData: FormData = new FormData();
+      formData.append('previousPass', previousPass);
+      formData.append('newPass', newPass);
+      formData.append('mobileNumber', localStorage.getItem('username'));
+    return this.http.post(ipAddress+'/changePassword',formData,{headers: headers,'responseType': 'text'});
+  }
 
    
 }

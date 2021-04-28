@@ -16,7 +16,7 @@
                 <td>{{superman.name}}</td>
                 <td>{{superman.mobileNumber}}</td>
                 <td>{{superman.email}}</td>
-                <td><button class="btn btn-danger deleteRow" data-toggle="modal" data-target="#exampleModal" (click)="userInfo(superman.mobileNumber)">Archive/Activate</button></td>
+                <td><button class="btn btn-danger deleteRow" data-toggle="modal" data-target="#exampleModalSuperman" (click)="userInfo(superman.mobileNumber)">Delete</button></td>
                 <td><button class="btn btn-info deleteRow">Details</button></td>
               </tr>
             </tbody>
@@ -24,7 +24,7 @@
     </div>
     <div class="col-sm-1"></div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModalSuperman" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -39,8 +39,7 @@
               </div>
               <div class="col-sm-8">
                   <p><strong>Are you sure you want to delete {{selectedSuperman.name}}?</strong></p>
-                  <p style="color: chocolate;">{{message}}</p>
-                  
+                  <p style="color: chocolate;">{{message}}</p>         
               </div>
               <div class="col-sm-2">
               </div>
@@ -48,7 +47,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" (click)="archiveUser()">Archive</button>
+            <button type="button" class="btn btn-primary" (click)="archiveUser()">Delete</button>
           </div>
         </div>
       </div>

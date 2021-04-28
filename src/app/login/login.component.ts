@@ -36,11 +36,14 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('username',user.username);
         localStorage.setItem('password',user.password);
         localStorage.setItem('role',user.authorities[0].authority)
-        console.log(' ' +localStorage.getItem('username')+ ' ' + localStorage.getItem('password'));
-        console.log(localStorage.getItem('role')); 
-        this.router.navigateByUrl('/home/(nav:refresh)').then(()=>{
+
+        /* this.router.navigateByUrl('/home/(nav:refresh)').then(()=>{
           this.router.navigateByUrl('/home');
-        })
+        }) */
+
+        if(localStorage.getItem('role') === 'doctor'){
+          this.router.navigateByUrl('/super-admin-pannel');
+        }
       },
       error =>{
         this.failureMessage = error;

@@ -18,7 +18,7 @@
                 <td>{{appoinment.doctorSlot.chamber.user.name}}</td>
                 <td>{{appoinment.time | date:'medium'}}</td>
                 <td>{{appoinment.status}}</td>
-                <td><button class="btn btn-danger deleteRow" data-toggle="modal" data-target="#exampleModal"  (click)="appoinmentInfo(appoinment.id)">Archive</button></td>
+                <td><button class="btn btn-danger deleteRow" data-toggle="modal" data-target="#exampleModalAppoinment"  (click)="appoinmentInfo(appoinment.id)">Archive</button></td>
                 <td><button class="btn btn-info deleteRow">Details</button></td>
               </tr>
             </tbody>
@@ -26,11 +26,11 @@
     </div>
     <div class="col-sm-1"></div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModalAppoinment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Archive Appoinment</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Delete Appoinment</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -50,7 +50,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" (click)="deleteAppoinment()">Archive</button>
+            <button type="button" class="btn btn-primary" (click)="deleteAppoinment()">Delete</button>
           </div>
         </div>
       </div>

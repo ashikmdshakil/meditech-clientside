@@ -48,7 +48,7 @@ import { RegisterComponent } from './SuperAdminPannel/register/register.componen
 import { AppoinmentsComponent } from './SuperAdminPannel/appoinments/appoinments.component';
 
 const routes: Routes = [
-  {path: "", redirectTo : "home", pathMatch: 'full'},
+  {path: "", redirectTo : "meditec", pathMatch: 'full'},
   {path : "home", 
   component : HomeComponent,
   children : [
@@ -61,6 +61,14 @@ const routes: Routes = [
     {path : "doctor-category", component : DoctorCategoryComponent},
     {path : "doctor-list/:id", component : DoctorListComponent},
     {path: "", component : SearchbarComponent, outlet: 'search'},
+  ]
+},
+{path : "meditec", 
+  component : HomeComponent,
+  children : [
+    {path: "", component : NavComponent, outlet: 'nav'},
+    {path : "", component : LoginComponent},
+    {path: "refresh", component : BlankComponent, outlet: 'nav'},
   ]
 },
 {path: "admin-pannel", component: AdminPannelComponent,
@@ -190,8 +198,6 @@ const routes: Routes = [
     {path: "blank", component: BlankComponent, outlet: 'history'}
   ]
 },
-
-
 
 ]  
 

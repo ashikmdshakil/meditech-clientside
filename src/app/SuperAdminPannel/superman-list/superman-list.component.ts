@@ -38,9 +38,10 @@ export class SupermanListComponent implements OnInit {
   }
 
   archiveUser(){
+    this.message = null;
     this.superAdminService.deleteUser(this.selectedSuperman).subscribe(result =>{
       if(result === "archived"){
-        this.message = "This user has been archived.";
+        this.message = "This user has been removed.";
       }
       else if(result === "activated"){
         this.message = "This user has been activated again!";

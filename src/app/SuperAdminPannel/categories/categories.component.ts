@@ -47,9 +47,35 @@ export class CategoriesComponent implements OnInit {
     this.category.iconUrl = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+this.category.icon);
   }
   save(){
-    this.superAdminService.postCategory(this.category).subscribe(result =>{
+    if(this.category.name === '24/7'){
+      this.message = "24/7 category can not be updated."; 
+    }
+    else{
+      this.superAdminService.postCategory(this.category).subscribe(result =>{
+        if(result == "success"){
+          this.message = "Category is saved successfully ! Refresh the page."; 
+        }
+        else{
+          this.message = "Sorry ! Something went wrong !";
+        }
+      },
+      error =>{
+        console.log("Sorry ! There might be any connection issue with server.")
+      }
+      );
+      delete this.category;
+      this.category = new Categories();
+    }
+}
+
+delete(){
+  if(this.category.name === '24/7'){
+    this.message = "24/7 category can not be deleted."; 
+  }
+  else{
+    this.superAdminService.deleteCategory(this.category).subscribe(result =>{
       if(result == "success"){
-        this.message = "Category is saved successfully ! Refresh the page."; 
+        this.message = "Category is deleted successfully ! Please refresh the page."; 
       }
       else{
         this.message = "Sorry ! Something went wrong !";
@@ -57,27 +83,9 @@ export class CategoriesComponent implements OnInit {
     },
     error =>{
       console.log("Sorry ! There might be any connection issue with server.")
-    }
-    );
+    });
     delete this.category;
     this.category = new Categories();
-    
+  }  
 }
-
-delete(){
-  this.superAdminService.deleteCategory(this.category).subscribe(result =>{
-    if(result == "success"){
-      this.message = "Category is deleted successfully ! Please refresh the page."; 
-    }
-    else{
-      this.message = "Sorry ! Something went wrong !";
-    }
-  },
-  error =>{
-    console.log("Sorry ! There might be any connection issue with server.")
-  });
-  delete this.category;
-  this.category = new Categories();
-}
-
 }

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  router: Router;
+  constructor(router: Router) {
+    this.router = router;
+   }
 
   ngOnInit(): void {
+    if(localStorage.getItem('role') === 'admin'){
+      this.router.navigateByUrl('/super-admin-pannel');
+    }
   }
 
 }

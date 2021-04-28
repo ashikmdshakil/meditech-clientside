@@ -13,7 +13,6 @@ import { User } from '../User.model';
   styleUrls: ['./nav.component.css']
 })
 export class NavComponent implements OnInit {
-  userRole: string;
   previousPass: string;
   newPass: string;
   newPassAgain: string;
@@ -43,7 +42,6 @@ export class NavComponent implements OnInit {
       localStorage.setItem("name", this.user.name);
       let image = 'data:image/png;base64, '+this.user.userAvatar.image;
       this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image);
-      this.userRole = localStorage.getItem("role");
       localStorage.setItem('userId', this.user.userId.toString());
     })
   }
@@ -75,7 +73,9 @@ export class NavComponent implements OnInit {
     }
     seeDashboard(){
       //this.userTransferService.number = localStorage.getItem("username");
-      this.router.navigateByUrl('/super-admin-pannel/(pannel:dashboard)'); 
+      if(localStorage.getItem('role')==='admin'){
+        this.router.navigateByUrl('/super-admin-pannel/(pannel:dashboard)'); 
+      }
     }
 
     myAppoinments(){

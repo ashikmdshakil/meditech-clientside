@@ -8,6 +8,7 @@ import { UserAvatar } from './UserAvatar.model';
 import { AddressBook } from './AddressBook.model';
 import { Role } from './Role.model';
 import { DoctorSlot } from './Model/DoctorSlot.model';
+
 export class User{
     userId: number;
     name: string;

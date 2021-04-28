@@ -1,15 +1,15 @@
 <div class="container-fluid">
     <div class="row" style="margin-top: 30px;">
-        <div class="col-sm-3">
+        <div class="col-sm-4">
         </div>
-        <div class="col-sm-6">
+        <div class="col-sm-4">
             <div *ngIf = "alertExist" class="alert alert-danger" role="alert">
                 <strong>{{failureMessage}}</strong>
                 <button type="button" (click) = "close()" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
               </div>
-            <h1 style="position: relative; left: 250px;">Log IN</h1>
+            <h2 style="position: relative; left: 100px; margin-bottom: 35px;">Admin Login</h2>
             <div class="form-group">
                 <label for="formGroupExampleInput2">Phone Number</label>
                 <input type="email" [(ngModel)] = "number" class="form-control" id="number">
@@ -18,12 +18,13 @@
                 <label for="formGroupExampleInput2">Password</label>
                 <input type="password" [(ngModel)] = "password" class="form-control" id="password">
             </div>
-            <div>
+            <!-- <div>
                 <a  routerLink = "/home/reset-password"><p>Forgot Password?</p></a>
-            </div>
+            </div> -->
             <button id = "save" (click) = "authenticate()" class="btn btn-success">Log In</button>
+            <p style="color: chocolate;">{{message}}</p>
         </div>
-        <div class="col-sm-3">
+        <div class="col-sm-4">
         </div>
     </div>
     </div>

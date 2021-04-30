@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   router: Router;
+  
   constructor(router: Router) {
     this.router = router;
    }

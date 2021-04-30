@@ -16,6 +16,7 @@ export class SuperAdminDashboardComponent implements OnInit {
    }
 
   ngOnInit(): void {
+    
   }
 
   dashboard(){

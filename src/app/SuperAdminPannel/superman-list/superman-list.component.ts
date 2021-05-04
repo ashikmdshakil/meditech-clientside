@@ -24,7 +24,6 @@ export class SupermanListComponent implements OnInit {
   ngOnInit(): void {
     this.superAdminService.getSupermen().subscribe(result =>{
       this.supermen = result;
-      console.log(result);
     })
   }
 
@@ -35,6 +34,10 @@ export class SupermanListComponent implements OnInit {
           this.selectedSuperman = superman;
         }
     });
+  }
+
+  userDetails(number : string){
+    window.open("http://139.162.19.50:80/user-details/"+number,"_blank");
   }
 
   archiveUser(){

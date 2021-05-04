@@ -1,3 +1,4 @@
+import { UserDetailsComponent } from './SuperAdminPannel/user-details/user-details.component';
 import { AdvertisementComponent } from './SuperAdminPannel/advertisement/advertisement.component';
 import { CategoriesComponent } from './SuperAdminPannel/categories/categories.component';
 import { DoctorAllComponent } from './SuperAdminPannel/doctor-all/doctor-all.component';
@@ -113,6 +114,8 @@ const routes: Routes = [
       ]},
     ]
   },
+  {path: "user-details/:id", component : UserDetailsComponent},
+  {path: "blank", component : BlankComponent},
   {path: "admin-pannel/refresh", component: BlankComponent},
   {path: "profile", component: ProfileComponent,
     children: [

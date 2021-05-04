@@ -1,0 +1,290 @@
+<div class="row">
+    <div class="col-sm-4">
+    </div>
+    <div class="col-sm-4">
+        <img *ngIf="isImage" [src] = "user.userAvatar.image" style=" width: 250px;
+        height: 250px; border-radius: 50%; position: relative; margin-top: 20px;" alt="Avatar" class="img-fluid" id = "profilePicture">  
+        <img *ngIf="!isImage" src = "../../../assets/blank_image.png" style=" width: 280px;
+        height: 250px; border-radius: 50%; position: relative; margin-top: 20px;" alt="Avatar" class="img-fluid" id = "profilePicture">
+    </div>
+    <div class="col-sm-4">
+    </div>
+  </div>
+
+  <div *ngIf="isDoctor" class="row" style="margin-top: 25px;">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="card-columns">
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+              <div class="card-body text-center" >
+                <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">{{todaysAppoinments}}</h1>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Today's Appoinments</p>
+              </div>
+            </div>
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+              <div class="card-body text-center">
+                <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{completeAppoinments}}</h1>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Complete Appoinments</p>
+              </div>
+            </div>
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+              <div class="card-body text-center">
+                <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{totalIncome}} Taka</h1>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Total Income</p>
+              </div>
+            </div>    
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+  <div *ngIf="isUser" class="row" style="margin-top: 25px;">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="card-columns">
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+              <div class="card-body text-center" >
+                <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">{{todaysAppoinments}}</h1>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Today's Appoinments</p>
+              </div>
+            </div>
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+              <div class="card-body text-center">
+                <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{completeAppoinments}}</h1>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Complete Appoinments</p>
+              </div>
+            </div>    
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+  <div *ngIf="isSuperman" class="row" style="margin-top: 25px;">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="card-columns">
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+              <div class="card-body text-center" >
+                <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">{{completeAppoinments}}</h1>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Complete Appoinments</p>
+              </div>
+            </div>
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+              <div class="card-body text-center">
+                <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{countUsers}}</h1>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Users</p>
+              </div>
+            </div>
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+                <div class="card-body text-center">
+                  <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{countDoctors}}</h1>
+                  <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Doctors</p>
+                </div>
+              </div>
+              <div class="card bg-light shadow p-3 mb-5 rounded">
+                <div class="card-body text-center">
+                  <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{totalIncome}}</h1>
+                  <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Total Income</p>
+                </div>
+              </div>    
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
+
+<div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="row" style="margin-top: 25px;">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Personal Information</p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        
+        
+        <div class="form-group">
+            <label for="formGroupExampleInput">Name</label>
+            <input type="text" name = "name" class="form-control" id="name" [(ngModel)] = 'user.name'>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Email</label> 
+            <input type="email" name = "email" class="form-control" id="mail" [(ngModel)] = 'user.email'>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput2">Mobile Number</label>
+            <input type="text" name="number" class="form-control" id="number" [(ngModel)] = 'user.mobileNumber'>
+        </div>
+        <div *ngIf="isDoctor" class="form-group">
+            <label for="formGroupExampleInput2">Hospital Name</label>
+            <input type="text" name="hospitalName" class="form-control" id="hospitalName" [(ngModel)] = 'user.hospitalName'>
+        </div>
+        <div *ngIf="isDoctor" class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">First time fee</label>
+                    <input type="text" name="fee" class="form-control" [(ngModel)] = 'user.doctorFee' id="doctor_first_time_fee" >
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Second time fee</label>
+                    <input type="text" name="fee" class="form-control" [(ngModel)] = 'user.doctorSecondTimeFee' id="doctor_second_time_fee" >
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="isDoctor" class="row" style="margin-top: 25px;">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Degree Names</p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div *ngIf="isDoctor" class="form-group">
+            <label for="formGroupExampleInput">Degree</label>
+            <input type="text" name = "street1" class="form-control" id="degree"  [(ngModel)] = 'user.degree.degreeName'>
+        </div>
+        
+        <div *ngIf="isDoctor" class="row" style="margin-top: 25px;">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Speciality</p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div *ngIf="isDoctor" class="form-group">
+            <label for="formGroupExampleInput">Speciality</label>
+            <input type="text" name = "street1" class="form-control" id="speciality" [(ngModel)] = 'user.speciality.speciality'>
+        </div>
+        
+        
+        <div *ngIf="isDoctor" class="row" style="margin-top: 25px;">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Category</p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        
+        <div *ngIf="isDoctor" class="row">
+            <div class="col-6">
+                <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Check Categories
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown" >
+                      <ul *ngFor= "let category of categories">
+                          <li style="list-style-type: none;"><a class="dropdown-item" (click)= "updateCategory(category.id, category.name)" >{{category.name}}</a></li>
+                      </ul>   
+                  </div>
+            </div>
+            <div *ngIf="isDoctor" class="col-6">
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 900;">Present Categories</p>
+                <ul  *ngFor= "let category of currentCategories">
+                    <li style="list-style-type: none;">{{category.name}}</li>
+                </ul>
+                <button style="margin-left: 29px;" type="button" (click) = "clearCategories()" class="btn btn-light">clear</button>
+            </div>
+        </div>
+        
+        <div *ngIf="isDoctor" class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Admin share from appoinment fee</p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div *ngIf="isDoctor" class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">For first time fee</label>
+                    <input type="text" name="fee" class="form-control" [(ngModel)] = 'user.adminFee' id="admin_first_time_fee" >
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">For second time fee</label>
+                    <input type="text" name="fee" class="form-control" [(ngModel)] = 'user.adminSecondTimeFee' id="admin_second_time_fee" >
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="isSuperman" class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Commision</p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div *ngIf="isSuperman" class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Agent commision per appoinment(%)</label>
+                    <input type="text" name="perAppoinment" class="form-control" [(ngModel)] = 'user.agentCommisionPerAppoinment' id="commision" >
+                </div>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        
+
+
+        
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Address Information</p>
+            </div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Street 1</label>
+            <input type="text" name = "street1" class="form-control" [(ngModel)] = 'addressBook.street1' id="street1">
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Street 2</label>
+            <input type="text" name = "street2" class="form-control" [(ngModel)] = 'addressBook.street2' id="street2" >
+        </div>
+        <div class="form-group">
+            <label for="formGroupExampleInput">Street 3</label>
+            <input type="text" name = "street3" class="form-control" [(ngModel)] = 'addressBook.street3' id="street3">
+        </div>
+        
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">city</label>
+                    <input type="text" name="city" class="form-control" [(ngModel)] = 'addressBook.city' id="city" >
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Country</label>
+                    <input type="text" name="country" class="form-control" [(ngModel)] = 'addressBook.country' id="country">
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Zip</label>
+                    <input type="text" name="zip" class="form-control" [(ngModel)] = 'addressBook.zip' id="zip">
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+
+<div class="row" style="margin-top: 25px; margin-bottom: 25px;">
+    <div class="col-sm-4"></div>
+    <div class="col-sm-4">
+        <div class="form-check">
+            <button type="button" class="btn btn-primary" (click)="update()">Save updates</button>
+        </div>
+    </div>
+    <div class="col-sm-4"></div>
+</div>
+<p style="color: chocolate;">{{message}}</p>

@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Categories } from '../Model/Categories.model';
 import { AdvertisementCategory } from '../Model/AdvertisementCategory.model';
-const ipAddress = "http://10.0.0.3:8080";
+const ipAddress = "http://139.162.19.50:8080";
 @Injectable({
   providedIn: 'root'
 })
@@ -231,6 +231,33 @@ export class SuperAdminService {
       formData.append('mobileNumber', localStorage.getItem('username'));
     return this.http.post(ipAddress+'/changePassword',formData,{headers: headers,'responseType': 'text'});
   }
+
+  getDoctorBasicInfo(id: string): Observable<any>{
+    let param = new HttpParams()
+    .set('doctorId' , id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/doctorBasicInfos',{headers: headers, params: param})
+   }
+
+   getUserBasicInfo(id: string): Observable<any>{
+    let param = new HttpParams()
+    .set('userId' , id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/userBasicInfos',{headers: headers, params: param})
+   }
+
+   getSupermanBasicInfo(id: string): Observable<any>{
+    let param = new HttpParams()
+    .set('supermanId' , id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/supermanBasicInfos',{headers: headers, params: param});
+   }
 
    
 }

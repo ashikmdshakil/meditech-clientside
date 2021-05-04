@@ -23,7 +23,7 @@ export class DoctorListComponent implements OnInit {
     this.domSanitizer = domSanitizer;
     this.routerA = routerA;
    }
-
+ 
   ngOnInit(): void {
     this.router.params.subscribe(param =>{
       this.categoryId = param.id;

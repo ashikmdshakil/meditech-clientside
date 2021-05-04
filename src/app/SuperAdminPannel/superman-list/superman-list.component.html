@@ -17,7 +17,7 @@
                 <td>{{superman.mobileNumber}}</td>
                 <td>{{superman.email}}</td>
                 <td><button class="btn btn-danger deleteRow" data-toggle="modal" data-target="#exampleModalSuperman" (click)="userInfo(superman.mobileNumber)">Delete</button></td>
-                <td><button class="btn btn-info deleteRow" data-toggle="modal" data-target="#exampleModalSupermanDetails" (click)="userInfo(superman.mobileNumber)">Details</button></td>
+                <td><button class="btn btn-info deleteRow" (click)="userDetails(superman.userId)">Details</button></td>
               </tr>
             </tbody>
           </table>
@@ -49,34 +49,6 @@
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary" (click)="archiveUser()">Delete</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Details modal -->
-    <div class="modal fade" id="exampleModalSupermanDetails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Delete Superman</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="row">
-              <div class="col-sm-2">
-              </div>
-              <div class="col-sm-8">
-                         
-              </div>
-              <div class="col-sm-2">
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

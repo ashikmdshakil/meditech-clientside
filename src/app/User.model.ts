@@ -15,6 +15,7 @@ export class User{
     email: string;
     mobileNumber: string;
     password: string;
+    hospitalName: string;
     roles: Role;
     addressBooks: AddressBook;
     userAvatar: UserAvatar;
@@ -27,4 +28,9 @@ export class User{
     prescriptions: Prescription[] = [];
     adminNumber: string;
     archived: boolean;
+    adminFee: string;
+    adminSecondTimeFee: string;
+    doctorFee: string;
+    doctorSecondTimeFee: string;
+    agentCommisionPerAppoinment: number;
 } 

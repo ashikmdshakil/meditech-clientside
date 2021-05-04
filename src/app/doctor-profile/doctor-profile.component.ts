@@ -52,8 +52,6 @@ export class DoctorProfileComponent implements OnInit {
       this.mail = this.user.email;
       this.number = this.user.mobileNumber;
 
-      console.log(result);
-
       if(this.user.addressBooks !== null){
         this.addressBooks = this.user.addressBooks;
       }
@@ -156,9 +154,6 @@ updateCategory(id, name){
   category.id = id;
   category.name = name;
   this.currentCategories.push(category);
-  this.currentCategories.forEach(element => {
-    console.log("current categories are "+element.name);
-  });
 }
 
 clearCategories(){

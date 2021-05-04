@@ -25,7 +25,6 @@ export class PatientAllComponent implements OnInit {
   ngOnInit(): void {
     this.superAdminService.getPatients().subscribe(result =>{
       this.patients = result;
-      console.log(result);
     })
   }
 
@@ -36,6 +35,10 @@ export class PatientAllComponent implements OnInit {
           this.selectedPatient = patient;
         }
     });
+  }
+
+  userDetails(number : string){
+    window.open("http://139.162.19.50:80/user-details/"+number,"_blank");
   }
 
   archiveUser(){

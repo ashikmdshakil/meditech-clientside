@@ -15,6 +15,7 @@ export class DoctorAllComponent implements OnInit {
   superAdminService: SuperAdminService;
   doctors: User[] = [];
   selectedDoctor: User = new User();
+  selectedUserAvatar: UserAvatar = new UserAvatar();
   domSanitizer: DomSanitizer;
 
   constructor(superAdminService: SuperAdminService, domSanitizer: DomSanitizer) {
@@ -25,7 +26,6 @@ export class DoctorAllComponent implements OnInit {
   ngOnInit(): void {
     this.superAdminService.getDoctors().subscribe(result =>{
       this.doctors = result;
-      console.log(result);
     })
   }
 
@@ -36,6 +36,10 @@ export class DoctorAllComponent implements OnInit {
           this.selectedDoctor = doctor;
         }
     });
+  }
+
+  userDetails(number : string){
+    window.open("http://139.162.19.50:80/user-details/"+number,"_blank");
   }
 
   archiveUser(){

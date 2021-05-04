@@ -55,6 +55,7 @@ import { PatientAllComponent } from './SuperAdminPannel/patient-all/patient-all.
 import { DoctorAllComponent } from './SuperAdminPannel/doctor-all/doctor-all.component';
 import { CategoriesComponent } from './SuperAdminPannel/categories/categories.component';
 import { AdvertisementComponent } from './SuperAdminPannel/advertisement/advertisement.component';
+import { UserDetailsComponent } from './SuperAdminPannel/user-details/user-details.component';
 
 
 @NgModule({
@@ -105,7 +106,8 @@ import { AdvertisementComponent } from './SuperAdminPannel/advertisement/adverti
     PatientAllComponent,
     DoctorAllComponent,
     CategoriesComponent,
-    AdvertisementComponent
+    AdvertisementComponent,
+    UserDetailsComponent
   ],
   imports: [
     BrowserModule,

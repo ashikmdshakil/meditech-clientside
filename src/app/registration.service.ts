@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './User.model';
 
-const ip = "http://10.0.0.3:8080";
+const ip = "http://139.162.19.50:8080";
 
 @Injectable({
   providedIn: 'root'

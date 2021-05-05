@@ -23,6 +23,7 @@ export class AppoinmentsComponent implements OnInit {
   ngOnInit(): void {
     this.superAdminService.getAppoinments().subscribe(result =>{
       this.appoinments = result;
+      console.log(result);
     })
   }
 
@@ -31,13 +32,11 @@ export class AppoinmentsComponent implements OnInit {
       if(appoinment.id === id){
         this.selectedAppoinment = null;
         this.selectedAppoinment = appoinment;
-        console.log("This appoinment status is "+ appoinment.status);
       }
   });
   }
 
   deleteAppoinment(){
-      console.log("Ready to delete ....");
       this.message = null;
       this.superAdminService.deleteAppoinments(this.selectedAppoinment).subscribe(result =>{
         console.log("The result is "+result);

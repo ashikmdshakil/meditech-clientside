@@ -6,6 +6,9 @@ export class Appoinment{
     id: number;
     time: Date;
     status: string;
+    fee: number;
+    supermanFee: number;
+    adminFee: number;
     doctorSlot: DoctorSlot;
     user: User;
     serialNumber: number;

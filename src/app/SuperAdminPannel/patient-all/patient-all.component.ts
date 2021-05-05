@@ -38,7 +38,7 @@ export class PatientAllComponent implements OnInit {
   }
 
   userDetails(number : string){
-    window.open("http://139.162.19.50:80/user-details/"+number,"_blank");
+    window.open("http://localhost:4200/user-details/"+number,"_blank");
   }
 
   archiveUser(){

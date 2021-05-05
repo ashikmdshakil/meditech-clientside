@@ -26,11 +26,6 @@ export class UserDetailsComponent implements OnInit {
   categories: any = [];
   currentCategories: Categories[] = [];
   message: string; 
-  todaysAppoinments: number;
-  completeAppoinments: number;
-  totalIncome: number;
-  countUsers: number;
-  countDoctors: number;
   isImage: boolean = false;
   isDoctor: boolean = false;
   isUser: boolean = false;
@@ -53,13 +48,20 @@ export class UserDetailsComponent implements OnInit {
       this.user = result;
       if(this.user.roles.name==='doctor'){
           this.isDoctor = true;
+          this.getDoctorBasicInfos();
+          this.categoryService.getCategories().subscribe(result =>{
+          this.categories = result;
+          })
       }
-      if(this.user.roles.name==='patient'){
+      else if(this.user.roles.name==='patient'){
         this.isUser = true;
-    }
-    if(this.user.roles.name==='super_admin'){
-      this.isSuperman = true;
-    }
+        this.getUserBasicInfo();
+      }
+      else if(this.user.roles.name==='super_admin'){
+        this.isSuperman = true;
+        this.getSupermanBasicInfo();
+      }
+
       if(this.user.addressBooks !== null){
         this.addressBook = this.user.addressBooks;
       }
@@ -71,28 +73,35 @@ export class UserDetailsComponent implements OnInit {
         this.isImage = true;
       } 
     })
-        this.superAdminService.getDoctorBasicInfo(this.number.toString()).subscribe(result =>{
-          this.todaysAppoinments = result['todaysAppoinments'];
-          this.completeAppoinments = result['completeAppoinments'];
-          this.totalIncome = result['totalIncome'];
-      })
 
-      this.superAdminService.getUserBasicInfo(this.number.toString()).subscribe(result =>{
-        this.todaysAppoinments = result['todaysAppoinments'];
-        this.completeAppoinments = result['completeAppoinments'];
-    })
-
-    this.superAdminService.getSupermanBasicInfo(this.number.toString()).subscribe(result =>{
-      this.completeAppoinments = result['completeAppoinments'];
-      this.countUsers = result['countUsers'];
-      this.countDoctors = result['countDoctors'];
-      this.totalIncome = result['totalIncome'];
-  })
-      
-    this.categoryService.getCategories().subscribe(result =>{
-      this.categories = result;
-    })
+       
+    
   }
+
+  getDoctorBasicInfos(){
+    this.superAdminService.getDoctorBasicInfo(this.number.toString()).subscribe(result =>{
+      this.user.todaysAppoinments = result.todaysAppoinments;
+      this.user.completeAppoinments = result.completeAppoinments;
+      this.user.totalIncome = result.totalIncome;
+  })
+  }
+
+  getUserBasicInfo(){
+    this.superAdminService.getUserBasicInfo(this.number.toString()).subscribe(result =>{
+      this.user.todaysAppoinments = result.todaysAppoinments;
+      this.user.completeAppoinments = result.completeAppoinments;
+  })
+  }
+
+  getSupermanBasicInfo(){
+    this.superAdminService.getSupermanBasicInfo(this.number.toString()).subscribe(result =>{
+      this.user.completeAppoinments = result.completeAppoinments;
+      this.user.countUsers = result.countUsers;
+      this.user.countDoctors = result.countDoctors;
+      this.user.totalIncome = result.totalIncome;
+  })
+  }
+
 
   updateCategory(id, name){
     let category: Categories = new Categories();

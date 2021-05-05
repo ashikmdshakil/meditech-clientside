@@ -33,4 +33,9 @@ export class User{
     doctorFee: string;
     doctorSecondTimeFee: string;
     agentCommisionPerAppoinment: number;
+    todaysAppoinments: number = null;
+    completeAppoinments: number = null;
+    totalIncome: number = null;
+    countUsers: number = null;
+    countDoctors: number = null;
 } 

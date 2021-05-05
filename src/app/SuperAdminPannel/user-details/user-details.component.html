@@ -117,6 +117,48 @@
             <label for="formGroupExampleInput2">Mobile Number</label>
             <input type="text" name="number" class="form-control" id="number" [(ngModel)] = 'user.mobileNumber'>
         </div>
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Gender</label>
+                    <input type="text" name="gender" class="form-control" [(ngModel)] = 'user.gender' id="gender">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Weight</label>
+                    <input type="text" name="weight" class="form-control" [(ngModel)] = 'user.weight' id="weight">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Age</label>
+                    <input type="text" name="age" class="form-control" [(ngModel)] = 'user.age' id="age">
+                </div>
+            </div>
+            <div class="col-sm-2">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Blood Group</label>
+                    <input type="text" name="blood" class="form-control" [(ngModel)] = 'user.bloodGroup' id="blood">
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
+        </div> 
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Agent Name</label>
+                    <input type="text" name="agentName" class="form-control" [(ngModel)] = 'superman.name' id="agentName" disabled>
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Agent Number</label>
+                    <input type="text" name="agentNumber" class="form-control" [(ngModel)] = 'superman.mobileNumber' id="agentNumber" disabled>
+                </div>
+            </div>
+        </div>
         <div *ngIf="isDoctor" class="form-group">
             <label for="formGroupExampleInput2">Hospital Name</label>
             <input type="text" name="hospitalName" class="form-control" id="hospitalName" [(ngModel)] = 'user.hospitalName'>
@@ -283,6 +325,7 @@
     <div class="col-sm-4">
         <div class="form-check">
             <button type="button" class="btn btn-primary" (click)="update()">Save updates</button>
+            <button type="button" class="btn btn-primary" (click)="close()" style="margin-left: 15px;">Close</button>
         </div>
     </div>
     <div class="col-sm-4"></div>

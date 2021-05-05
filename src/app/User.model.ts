@@ -15,6 +15,10 @@ export class User{
     email: string;
     mobileNumber: string;
     password: string;
+    gender: string;
+    weight: number;
+    age: number;
+    bloodGroup: string;
     hospitalName: string;
     roles: Role;
     addressBooks: AddressBook;

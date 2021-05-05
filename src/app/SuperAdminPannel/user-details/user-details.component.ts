@@ -22,6 +22,7 @@ export class UserDetailsComponent implements OnInit {
   router: Router;
   aRoute: ActivatedRoute;
   user: User = new User();
+  superman: User = new User();
   addressBook: AddressBook = new AddressBook();
   categories: any = [];
   currentCategories: Categories[] = [];
@@ -56,6 +57,11 @@ export class UserDetailsComponent implements OnInit {
       else if(this.user.roles.name==='patient'){
         this.isUser = true;
         this.getUserBasicInfo();
+        if(this.user.adminNumber !== null){
+            this.userSevice.getUser(this.user.adminNumber).subscribe(result =>{
+              this.superman = result;
+            })
+        }
       }
       else if(this.user.roles.name==='super_admin'){
         this.isSuperman = true;
@@ -132,6 +138,10 @@ export class UserDetailsComponent implements OnInit {
       this.message = "Sorry ! Something went wrong! It might ba a connection error.";
     }
     )
+  }
+
+  close(){
+    window.close();
   }
 
 }

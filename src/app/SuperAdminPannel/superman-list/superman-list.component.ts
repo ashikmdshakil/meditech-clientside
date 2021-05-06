@@ -13,6 +13,7 @@ export class SupermanListComponent implements OnInit {
   message: string;
   superAdminService: SuperAdminService;
   supermen: User[] = [];
+  doctor: User = new User();
   selectedSuperman: User = new User();
   domSanitizer: DomSanitizer;
 

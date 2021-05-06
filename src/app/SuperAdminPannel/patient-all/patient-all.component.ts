@@ -14,6 +14,7 @@ export class PatientAllComponent implements OnInit {
   message: string;
   superAdminService: SuperAdminService;
   patients: User[] = [];
+  user: User = new User();
   selectedPatient: User = new User();
   domSanitizer: DomSanitizer;
 

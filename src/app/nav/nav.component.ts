@@ -57,8 +57,8 @@ export class NavComponent implements OnInit {
       localStorage.removeItem('username');
         localStorage.removeItem('password');
         localStorage.removeItem('role');
-        this.router.navigateByUrl('/meditec/(nav:refresh)').then(()=>{
-        this.router.navigateByUrl('/meditec');
+        this.router.navigateByUrl('/Dacicil/(nav:refresh)').then(()=>{
+        this.router.navigateByUrl('/Dacicil');
       })
     } 
 

@@ -1,11 +1,11 @@
   <div class="container-fluid">
     <nav class="navbar navbar-expand-lg navbar-light bg-light shadow-lg p-3 mb-5 bg-white rounded">
-      <button class="btn btn-light dropdown-toggle"  type="button" data-toggle="dropdown">Dacicil
-        <span class="caret"></span></button>
+      <!-- <button class="btn btn-light dropdown-toggle"  type="button" data-toggle="dropdown">Dacicil
+        <span class="caret"></span></button> -->
     
-        <div class="dropdown-menu" style="height: 100%; width: 270px; margin-top: 17px;">
+      <!--   <div class="dropdown-menu" style="height: 100%; width: 270px; margin-top: 17px;">
           <table class="table table-dark" style="margin-top: -10px;">
-            <!--User Image and name-->
+            
              <tr>
                <td style="height: 150px; width: 300px;">
                   <img *ngIf="!imageUrl" src = "../../assets/blank_image.png" style=" width: 100px;
@@ -37,38 +37,49 @@
           </td>
         </tr>      
 </table>
-</div>
-        <!-- <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
-            <a class="nav-link"  routerLink = "/home">Home<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item dropdown" *ngIf="userRole === 'super_admin'">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              Admin Pannel
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item" routerLink = "/admin-pannel">User Management</a>
-              <a class="dropdown-item" routerLink ="/register-doctor">Register Doctor</a>
-              <a class="dropdown-item" routerLink="/register-patient">Register Patient</a>
-              <a class="dropdown-item" routerLink="/register-superman">Register Superman</a>
-              <a class="dropdown-item" (click)="getDoctorList()">Doctor List</a>
-              <a class="dropdown-item" (click)="getPatientList()">Patient List</a>
-              <a class="dropdown-item" (click)="getSupermanList()">Supermen List</a>
-            </div>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link"  routerLink = "/home/login">Log In<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLink = "/home/signup">Sign Up</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" (click)='logout()' routerLink = "/login">Log Out</a>
+</div> -->
+        <!-- <span class="navbar-text"  style="position: relative; left: 950px;">
+            <strong *ngIf = "user">{{user.name}}</strong>        
+        </span> -->
+        <!-- <ul class="navbar-nav ml-auto">
+          <li>Hello</li>
+        </ul>
+        <ul class="nav navbar-nav">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Hello <span class="glyphicon glyphicon-user pull-right">Mr Admin</span></a>
+            <ul class="dropdown-menu" style="width: 100%;">
+              <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+              <li class="divider"></li>
+              <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+              <li class="divider"></li>
+              <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
+              <li class="divider"></li>
+              <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+              <li class="divider"></li>
+              <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+            </ul>
           </li>
         </ul> -->
-        <span class="navbar-text"  style="position: relative; left: 950px;">
-            <strong *ngIf = "user">{{user.name}}</strong>        
-        </span>
+
+
+        <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
+          <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
+              <img *ngIf="!imageUrl" class="mr-2" class= "picture" src="../../assets/blank_image.png" alt="avatar" style="display: inline-block;">
+              <img *ngIf="imageUrl" class="mr-2" class= "picture" [src] = "imageUrl" alt="avatar" style="display: inline-block;">
+              <div class="media-body" style="display: inline-block; margin-left: 10px;">
+                  <span style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{user.name}}</span>
+              </div>
+              <i class="material-icons md-light ml-2 pmd-sm" style="display: inline-block;"></i>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-right" role="menu">
+              <a class="dropdown-item" (click) = "routeProfile()" href="javascript:void(0);">Edit Profile</a>
+              <a class="dropdown-item" (click) = "seeDashboard()" href="javascript:void(0);">Dashboard</a>
+              <a class="dropdown-item" data-toggle="modal" href="javascript:void(0);" data-target="#exampleModal">Change Password</a>
+              <a class="dropdown-item" (click) = "logout()" href="javascript:void(0);">Logout</a>
+          </ul>
+      </div>
+
+        
     </nav>
   </div>
 

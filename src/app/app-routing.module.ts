@@ -49,7 +49,7 @@ import { RegisterComponent } from './SuperAdminPannel/register/register.componen
 import { AppoinmentsComponent } from './SuperAdminPannel/appoinments/appoinments.component';
 
 const routes: Routes = [
-  {path: "", redirectTo : "meditec", pathMatch: 'full'},
+  {path: "", redirectTo : "Dacicil", pathMatch: 'full'},
   {path : "home", 
   component : HomeComponent,
   children : [
@@ -64,7 +64,7 @@ const routes: Routes = [
     {path: "", component : SearchbarComponent, outlet: 'search'},
   ]
 },
-{path : "meditec", 
+{path : "Dacicil", 
   component : HomeComponent,
   children : [
     {path: "", component : NavComponent, outlet: 'nav'},

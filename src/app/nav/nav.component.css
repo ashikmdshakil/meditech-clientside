@@ -5,7 +5,12 @@ a {
     color: #818181;
     display: block;
   }
-  
-a:hover {
-    color: #f1f1f1;
-  }
+
+  body {
+    background:#f0f0f0;
+}
+.picture{
+  max-width: 40px;
+            max-height: 40px; border-radius: 50%;
+}
+

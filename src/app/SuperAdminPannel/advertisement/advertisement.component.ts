@@ -16,13 +16,12 @@ export class AdvertisementComponent implements OnInit {
   id: string;
   message: string;
   superAdminService: SuperAdminService;
-  categories: Categories[] = [];
   advertisementCategories: AdvertisementCategory[] = [];
   selectedAdCategories: AdvertisementCategory[] = [];
-  category: Categories = new Categories();
   advertisements: Advertisement[] = [];
   advertisement: Advertisement = new Advertisement();
-  advertisementCategory: AdvertisementCategory = new AdvertisementCategory(); 
+  advertisementCategory: AdvertisementCategory = new AdvertisementCategory();
+  updateCategory: AdvertisementCategory = new AdvertisementCategory(); 
   domSanitizer: DomSanitizer;
   router: Router;
 
@@ -40,12 +39,11 @@ export class AdvertisementComponent implements OnInit {
           advertise.youtubeUrl= this.domSanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/'+advertise.youtubeLink.slice(16));     
       });
     })
-
     this.superAdminService.getAdvertisementCategories().subscribe(result =>{
       this.advertisementCategories = result;
     })
   }
-
+/* 
   categoryInfo(id: number){
     this.categories.forEach(element => {
       if(element.id == id){
@@ -100,11 +98,11 @@ delete(id: number){
       }
     }
   });
-}
+} */
 
 //advertisement
 saveCategory(){
-  console.log("New advertisement category name is "+ this.advertisementCategory.categoryName);
+  
   this.superAdminService.saveAdvertisementCategory(this.advertisementCategory).subscribe(result =>{
     if(result === "success"){
       this.message = "Category created successfully.";
@@ -125,7 +123,51 @@ saveCategory(){
         this.selectedAdCategories[0] = category;
       }
     });
+  }
 
+  uploadImage(event){
+    this.advertisement.advertisement = event.target.files[0];
+    this.advertisement.advertisementUrl = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+this.advertisement.advertisement);
+  }
+  save(){
+    this.advertisement.category = this.selectedAdCategories[0];
+
+    this.superAdminService.saveAdvertisement(this.advertisement).subscribe(result =>{
+      if(result == "success"){
+        this.message = "Category is saved successfully ! Refresh the page."; 
+        this.router.navigateByUrl('/super-admin-pannel/(pannel:blank)').then(next =>{
+          this.router.navigateByUrl('/super-admin-pannel/(pannel:advertisements)');
+        })
+      }
+      else{
+        this.message = "Sorry ! Something went wrong !";
+      }
+    },
+    error =>{
+      console.log("Sorry ! There might be any connection issue with server.")
+    }
+    );     
+}
+  selectName(id: number){
+    this.advertisementCategories.forEach(category => {
+      if(category.id === id){
+        this.updateCategory = category;
+      }
+    });
+  } 
+
+  updateCategoryName(){
+    this.superAdminService.saveAdvertisementCategory(this.updateCategory).subscribe(result =>{
+      if(result === "success"){
+        this.message = "Category is updated successfully.";
+      }
+      else{
+        this.message = "Sorry, Something went wrong !";
+      }
+    },
+    error =>{
+      this.message = "Sorry, Something went wrong !";
+    })
   }
 
 }

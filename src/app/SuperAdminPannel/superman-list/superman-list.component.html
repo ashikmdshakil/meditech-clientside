@@ -62,10 +62,10 @@
     </div>
     <!-- Register Agent -->
     <div class="modal fade" id="exampleModalSupermanRegister" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
+      <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Register Agent</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Register User</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
@@ -74,9 +74,126 @@
             <div class="row">
               <div class="col-sm-2">
               </div>
-              <div class="col-sm-8">
-                  
-                  <p style="color: chocolate;">{{message}}</p>         
+              <div class="col-sm-8">             
+              <div class="row">
+                  <div class="col-sm-2"></div>
+                  <div class="col-sm-8">
+                      <div class="row" style="margin-top: 25px;">
+                          <div class="col-sm-4"></div>
+                          <div class="col-sm-4">
+                              <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Personal Information</p>
+                          </div>
+                          <div class="col-sm-4"></div>
+                      </div>
+                      
+                      
+                      <div class="form-group">
+                          <label for="formGroupExampleInput">Name</label>
+                          <input type="text" name = "name" class="form-control" id="name" [(ngModel)] = 'agent.name'>
+                      </div>
+                      <div class="form-group">
+                          <label for="formGroupExampleInput2">Email</label> 
+                          <input type="email" name = "email" class="form-control" id="mail" [(ngModel)] = 'agent.email'>
+                      </div>
+                      <div class="form-group">
+                          <label for="formGroupExampleInput2">Mobile Number</label>
+                          <input type="text" name="number" class="form-control" id="number" [(ngModel)] = 'agent.mobileNumber'>
+                      </div>
+                      <div class="row">
+                          <div class="col-sm-2"></div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput">Gender</label>
+                                  <input type="text" name="gender" class="form-control" [(ngModel)] = 'agent.gender' id="gender">
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput">Weight</label>
+                                  <input type="text" name="weight" class="form-control" [(ngModel)] = 'agent.weight' id="weight">
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput">Age</label>
+                                  <input type="text" name="age" class="form-control" [(ngModel)] = 'agent.age' id="age">
+                              </div>
+                          </div>
+                          <div class="col-sm-2">
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput">Blood</label>
+                                  <input type="text" name="blood" class="form-control" [(ngModel)] = 'agent.bloodGroup' id="blood">
+                              </div>
+                          </div>
+                          <div class="col-sm-2"></div>
+                      </div> 
+
+                      <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Commision</p>
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Agent commision per appoinment(%)</label>
+                                <input type="text" name="perAppoinment" class="form-control" [(ngModel)] = 'agent.agentCommisionPerAppoinment' id="commision" >
+                            </div>
+                        </div>
+                        <div class="col-sm-4"></div>
+                    </div>
+                      
+                      <div class="row">
+                          <div class="col-sm-4"></div>
+                          <div class="col-sm-4">
+                              <p style="font-size: large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">Address Information</p>
+                          </div>
+                          <div class="col-sm-4"></div>
+                      </div>
+                      <div class="form-group">
+                          <label for="formGroupExampleInput">Street 1</label>
+                          <input type="text" name = "street1" class="form-control" [(ngModel)] = 'addressBook.street1' id="street1">
+                      </div>
+                      <div class="form-group">
+                          <label for="formGroupExampleInput">Street 2</label>
+                          <input type="text" name = "street2" class="form-control" [(ngModel)] = 'addressBook.street2' id="street2" >
+                      </div>
+                      <div class="form-group">
+                          <label for="formGroupExampleInput">Street 3</label>
+                          <input type="text" name = "street3" class="form-control" [(ngModel)] = 'addressBook.street3' id="street3">
+                      </div>
+                      
+                      <div class="row">
+                          <div class="col-sm-6">
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput">city</label>
+                                  <input type="text" name="city" class="form-control" [(ngModel)] = 'addressBook.city' id="city" >
+                              </div>
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput">Country</label>
+                                  <input type="text" name="country" class="form-control" [(ngModel)] = 'addressBook.country' id="country">
+                              </div>
+                          </div>
+                          <div class="col-sm-3">
+                              <div class="form-group">
+                                  <label for="formGroupExampleInput">Zip</label>
+                                  <input type="text" name="zip" class="form-control" [(ngModel)] = 'addressBook.zip' id="zip">
+                              </div>
+                          </div>
+                      </div>
+                      
+                  </div>
+                  <div class="col-sm-2"></div>
+              </div>
+              
+              <p style="color: chocolate;">{{message}}</p>
+
+     
               </div>
               <div class="col-sm-2">
               </div>
@@ -84,7 +201,7 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" (click)="archiveUser()">Register</button>
+            <button type="button" class="btn btn-primary" (click)="registerUser()">Register</button>
           </div>
         </div>
       </div>

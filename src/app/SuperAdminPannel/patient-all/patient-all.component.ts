@@ -2,6 +2,8 @@ import { SuperAdminService } from './../super-admin.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/User.model';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AddressBook } from 'src/app/AddressBook.model';
+import { RegistrationService } from 'src/app/registration.service';
 
 @Component({
   selector: 'app-patient-all',
@@ -18,9 +20,14 @@ export class PatientAllComponent implements OnInit {
   selectedPatient: User = new User();
   domSanitizer: DomSanitizer;
 
-  constructor(superAdminService: SuperAdminService, domSanitizer: DomSanitizer) {
+  patient: User = new User();
+  addressBook: AddressBook = new AddressBook();
+  registrationService: RegistrationService;
+
+  constructor(superAdminService: SuperAdminService, domSanitizer: DomSanitizer, registrationService: RegistrationService) {
     this.superAdminService = superAdminService;
     this.domSanitizer = domSanitizer;
+    this.registrationService = registrationService;
    }
 
   ngOnInit(): void {
@@ -60,6 +67,20 @@ export class PatientAllComponent implements OnInit {
       this.message = "Sorry something went wrong. It might be connection problem with server.";
     }
     )
+  }
+  registerUser(){
+    this.patient.addressBooks = this.addressBook;
+    this.registrationService.registerPatientDetails(this.patient).subscribe(result =>{
+      if(result === "success"){
+        this.message = "Registration is successfull";
+      }
+      else{
+        this.message = "Sorry ! Something went wrong.";
+      }
+    }),
+    error =>{
+      this.message = "Soory! something went wrong. It might be a connection error";
+    }
   }
 
 }

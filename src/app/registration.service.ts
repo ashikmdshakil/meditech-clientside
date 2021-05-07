@@ -45,6 +45,13 @@ export class RegistrationService {
   registerDoctorWithDetails(user: User): Observable<string>{
     return this.http.post(ip+'/registerDoctor',user,{'responseType': 'text'});
   }
+  registerPatientDetails(user: User): Observable<string>{
+    return this.http.post(ip+'/registerPatient',user,{'responseType': 'text'});
+  }
+  registerSupermanDetails(user: User): Observable<string>{
+
+    return this.http.post(ip+'/registerSuperman',user,{'responseType': 'text'});
+  }
   
   registerPatient(name: string, email: string, number: string, password: string): Observable<string>{
     this.user.name = name;

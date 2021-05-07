@@ -225,8 +225,8 @@
             </div>
             <div *ngIf="isDoctor" class="col-6">
                 <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-weight: 900;">Present Categories</p>
-                <ul  *ngFor= "let category of currentCategories">
-                    <li style="list-style-type: none;">{{category.name}}</li>
+                <ul  *ngFor= "let ccategory of currentCategories">
+                    <li style="list-style-type: none;">{{ccategory.name}}</li>
                 </ul>
                 <button style="margin-left: 29px;" type="button" (click) = "clearCategories()" class="btn btn-light">clear</button>
             </div>

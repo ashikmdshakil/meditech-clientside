@@ -96,7 +96,7 @@ export class DoctorAllComponent implements OnInit {
     this.user.addressBooks = this.addressBook;
     this.user.degree = this.degree;
     this.user.speciality = this.speciality;
-    this.user.categories = this.categories;
+    this.user.categories = this.currentCategories;
     this.registrationService.registerDoctorWithDetails(this.user).subscribe(result =>{
       if(result === "success"){
         this.message = "Registration is successfull";

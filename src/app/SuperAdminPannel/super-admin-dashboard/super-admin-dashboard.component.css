@@ -74,4 +74,13 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn { background-color: #111;}
+
+.sr-only{
+  float: right;
+}
+
+.my-list{
+  background-color: whitesmoke;
+}
+
   

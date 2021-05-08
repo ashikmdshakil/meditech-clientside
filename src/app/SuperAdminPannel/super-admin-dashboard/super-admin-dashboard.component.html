@@ -2,10 +2,10 @@
 <!-- Admin Dashboard sidebar -->
 <div class="row" style="min-height: 500px;">
     <div class="col-sm-2">
-        <div class="sidenav">
+        <!-- <div class="sidenav">
             <a (click)="dashboard()" href="javascript:void(0);">Dashboard</a>
             <a (click)="registerUser()" href="javascript:void(0);>Dashboard">Register Users</a>
-            <a (click)="doctorList()" href="javascript:void(0);>Dashboard">Doctor list</a>
+            <a (click)="doctorList()" href="javascript:void(0);>Dashboard">Doctor list</a> -->
            <!--  <div class="dropdown">
                 <a class="dropbtn" (click)="doctorList()">Doctor list</a>
                 <div class="dropdown-content">
@@ -14,12 +14,35 @@
                     <a href="#">Link 3</a>
                  </div>
             </div> -->
-            <a (click)="patientList()" href="javascript:void(0);>Dashboard">Patient List</a>
+           <!--  <a (click)="patientList()" href="javascript:void(0);>Dashboard">Patient List</a>
             <a (click)="supermanList()" href="javascript:void(0);>Dashboard">Superman List</a>
             <a (click)="appoinments()" href="javascript:void(0);>Dashboard">Appoinments</a>
             <a (click)="categories()" href="javascript:void(0);>Dashboard">Doctor Categories</a>
             <a (click)="advertisements()" href="javascript:void(0);>Dashboard">Advertisements</a>
-        </div>
+        </div> -->
+        <div class="list-group my-list" style="margin-left: 15px;">
+            <!-- <a href="#" class="list-group-item list-group-item-action active">
+              Cras justo odio
+            </a> -->
+            <!-- <div  class="btn-group dropright">
+                <a  href="#" class="list-group-item list-group-item-action dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user-md" style="font-size:24px;"></i> <span style="margin-left: 10px;">Doctors</span>
+                    <span class="sr-only;"></span>
+                </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#" style="margin-right: 20px;">Hello</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </div> -->
+            <a href="javascript:void(0)" (click)="dashboard()" class="list-group-item list-group-item-action"><i class="fa fa-bank" style="font-size:24px"></i><span style="margin-left: 10px;">Dashboard</span></a>
+            <a href="javascript:void(0)" (click)="registerUser()" class="list-group-item list-group-item-action"><i class="fa fa-pencil-square-o" style="font-size:24px"></i><span style="margin-left: 10px;">Register Users</span></a>
+            <a href="javascript:void(0)" (click)="doctorList()" class="list-group-item list-group-item-action"><i class="fa fa-user-md" style="font-size:24px;"></i> <span style="margin-left: 15px;">Doctors</span></a>
+            <a href="javascript:void(0)" (click)="patientList()" class="list-group-item list-group-item-action"><i class="fa fa-wheelchair" style="font-size:24px"></i><span style="margin-left: 10px;">Patients</span></a>
+            <a href="javascript:void(0)" (click)="supermanList()" class="list-group-item list-group-item-action "><i class="fa fa-user-secret" style="font-size:24px"></i><span style="margin-left: 10px;">Agents</span></a>
+            <a href="javascript:void(0)" (click)="categories()" class="list-group-item list-group-item-action "><i class="fa fa-window-restore" style="font-size:24px"></i><span style="margin-left: 10px;">Doctor Categories</span></a>
+            <a href="javascript:void(0)" (click)="advertisements()" class="list-group-item list-group-item-action "><i class="fa fa-newspaper-o" style="font-size:21px"></i><span style="margin-left: 10px;">Banners</span></a>
+            
+          </div>
     </div>
 
     <!-- Dashboard -->

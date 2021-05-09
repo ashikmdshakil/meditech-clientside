@@ -43,7 +43,14 @@ export class DoctorAllComponent implements OnInit {
  
   ngOnInit(): void {
     this.superAdminService.getDoctors().subscribe(result =>{
-      this.doctors = result;
+      result.forEach(element => {
+        let doctor = new User();
+        doctor.userId = element[0];
+        doctor.name = element[1];
+        doctor.mobileNumber = element[2];
+        doctor.email = element[3];
+        this.doctors.push(doctor);
+      });
     })
     this.categoryService.getCategories().subscribe(result =>{
       this.categories = result;

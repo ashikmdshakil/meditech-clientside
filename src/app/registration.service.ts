@@ -22,11 +22,6 @@ export class RegistrationService {
     this.user.email = email;
     this.user.mobileNumber = number;
     this.user.password = password;
-    if(localStorage.getItem('role') === 'superman'){
-      this.user.adminNumber = localStorage.getItem("username");
-      console.log("admin number is "+this.user.adminNumber);
-    }
-    let status: string;
     return this.http.post(ip+'/signup',this.user,{'responseType': 'text'});
   }
   registerDoctor(name: string, email: string, number: string, password: string): Observable<string>{
@@ -34,11 +29,6 @@ export class RegistrationService {
     this.user.email = email;
     this.user.mobileNumber = number;
     this.user.password = password;
-    if(localStorage.getItem('role') === 'superman'){
-      this.user.adminNumber = localStorage.getItem("username");
-      console.log("admin number is "+this.user.adminNumber);
-    }
-    let status: string;
     return this.http.post(ip+'/registerDoctor',this.user,{'responseType': 'text'});
   }
 
@@ -58,11 +48,6 @@ export class RegistrationService {
     this.user.email = email;
     this.user.mobileNumber = number;
     this.user.password = password;
-    if(localStorage.getItem('role') === 'superman'){
-      this.user.adminNumber = localStorage.getItem("username");
-      console.log("admin number is "+this.user.adminNumber);
-    }
-    let status: string;
     return this.http.post(ip+'/registerPatient',this.user,{'responseType': 'text'});
   }
   registerSuperman(name: string, email: string, number: string, password: string): Observable<string>{

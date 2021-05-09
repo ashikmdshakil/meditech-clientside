@@ -31,7 +31,14 @@ export class SupermanListComponent implements OnInit {
 
   ngOnInit(): void {
     this.superAdminService.getSupermen().subscribe(result =>{
-      this.supermen = result;
+      result.forEach(element => {
+        let agent = new User();
+        agent.userId = element[0];
+        agent.name = element[1];
+        agent.mobileNumber = element[2];
+        agent.email = element[3];
+        this.supermen.push(agent);
+      });
     })
   }
 

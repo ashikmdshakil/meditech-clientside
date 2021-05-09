@@ -23,7 +23,6 @@ export class AppoinmentsComponent implements OnInit {
   ngOnInit(): void {
     this.superAdminService.getAppoinments().subscribe(result =>{
       this.appoinments = result;
-      console.log(result);
     })
   }
 

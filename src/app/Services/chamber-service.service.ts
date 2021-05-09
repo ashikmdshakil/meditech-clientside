@@ -1,8 +1,9 @@
+import { environment } from './../../environments/environment';
 import { Chamber } from './../Model/Chamber.model';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-const ipAdress = "http://139.162.19.50:8080";
+const ipAdress = environment.ip;
 @Injectable({
   providedIn: 'root'
 })
@@ -19,7 +20,7 @@ export class ChamberServiceService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.post('http://139.162.19.50:8080/updateChamber',chamber,{headers: headers,'responseType': 'text'});
+    return this.http.post(ipAdress+'/updateChamber',chamber,{headers: headers,'responseType': 'text'});
    }
  
    getChamber(id: string): Observable<any>{

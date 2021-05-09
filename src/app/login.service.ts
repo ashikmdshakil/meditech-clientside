@@ -1,8 +1,9 @@
+import { environment } from './../environments/environment';
 import { catchError, map } from 'rxjs/operators';
 import { HttpClient, HttpHeaders,HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-const ip = "http://139.162.19.50:8080";
+const ip = environment.ip;
 @Injectable({
   providedIn: 'root'
 })

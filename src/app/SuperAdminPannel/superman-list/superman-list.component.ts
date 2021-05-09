@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AddressBook } from 'src/app/AddressBook.model';
@@ -22,11 +23,13 @@ export class SupermanListComponent implements OnInit {
   agent: User = new User();
   addressBook: AddressBook = new AddressBook();
   registrationService: RegistrationService;
+  router: Router;
 
-  constructor(superAdminService: SuperAdminService, domSanitizer: DomSanitizer, registrationService: RegistrationService) {
+  constructor(superAdminService: SuperAdminService, domSanitizer: DomSanitizer, registrationService: RegistrationService, router: Router) {
     this.superAdminService = superAdminService;
     this.domSanitizer = domSanitizer;
     this.registrationService = registrationService;
+    this.router = router;
    }
 
   ngOnInit(): void {
@@ -52,7 +55,7 @@ export class SupermanListComponent implements OnInit {
   }
 
   userDetails(number : string){
-    window.open("/user-details/"+number,"_blank");
+    window.open("/user-details/"+number,"_blank"); 
   }
 
   archiveUser(){
@@ -87,5 +90,10 @@ export class SupermanListComponent implements OnInit {
     error =>{
       this.message = "Soory! something went wrong. It might be a connection error";
     }
+  }
+
+  agentUsers(number: string){
+    this.router.navigateByUrl('/super-admin-pannel/(pannel:agent-users/'+number+')/');
+    
   }
 }

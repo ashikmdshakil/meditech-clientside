@@ -25,6 +25,7 @@
                 <td>{{superman.email}}</td>
                 <td><button class="btn btn-danger deleteRow" data-toggle="modal" data-target="#exampleModalSuperman" (click)="userInfo(superman.mobileNumber)">Delete</button></td>
                 <td><button class="btn btn-info deleteRow" (click)="userDetails(superman.userId)">Details</button></td>
+                <td><button class="btn btn-success deleteRow" (click)="agentUsers(superman.mobileNumber)">Show Users</button></td>
               </tr>
             </tbody>
           </table>

@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { DoctorSlot } from './../Model/DoctorSlot.model';
 import { Injectable } from '@angular/core';
@@ -19,7 +20,7 @@ export class DoctorSlotService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.post('http://139.162.19.50:8080/updateDoctorSlots',doctorSlot,{headers: headers,'responseType': 'text'});
+    return this.http.post(environment.ip+'/updateDoctorSlots',doctorSlot,{headers: headers,'responseType': 'text'});
    }
 
    getSlots(id: string): Observable<any>{
@@ -29,7 +30,7 @@ export class DoctorSlotService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-      return this.http.get('http://139.162.19.50:8080/getSlots',{headers: headers,params: param})
+      return this.http.get(environment.ip+'/getSlots',{headers: headers,params: param})
    }
 
    getPatientList(id: string): Observable<any>{
@@ -39,14 +40,14 @@ export class DoctorSlotService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-      return this.http.get('http://139.162.19.50:8080/getPatientList',{headers: headers,params: param})
+      return this.http.get(environment.ip+'/getPatientList',{headers: headers,params: param})
    }
 
    deleteSlot(doctorSlot: DoctorSlot): Observable<any>{
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.post('http://139.162.19.50:8080/deleteSlot',doctorSlot,{headers: headers,'responseType': 'text'});
+    return this.http.post(environment.ip+'/deleteSlot',doctorSlot,{headers: headers,'responseType': 'text'});
    }
 
    searchSlotsByDate(date, chamberId): Observable<any>{
@@ -57,7 +58,7 @@ export class DoctorSlotService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-      return this.http.get('http://139.162.19.50:8080/slotsByDate',{headers: headers,params: param})
+      return this.http.get(environment.ip+'/slotsByDate',{headers: headers,params: param})
    }
 
    

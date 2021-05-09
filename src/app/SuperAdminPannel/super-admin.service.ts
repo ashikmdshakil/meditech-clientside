@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment';
 import { Commision } from './../Model/Commision.model';
 import { Advertisement } from './../Model/Advertisement.model';
 import { Appoinment } from './../Model/Appoinment.model';
@@ -7,7 +8,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Categories } from '../Model/Categories.model';
 import { AdvertisementCategory } from '../Model/AdvertisementCategory.model';
-const ipAddress = "http://139.162.19.50:8080";
+const ipAddress = environment.ip;
 @Injectable({
   providedIn: 'root'
 })
@@ -258,6 +259,16 @@ export class SuperAdminService {
   });
       return this.http.get(ipAddress+'/supermanBasicInfos',{headers: headers, params: param});
    }
+
+   getAgentUsers(number: string): Observable<any>{
+    let param = new HttpParams()
+    .set('number' , number);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/getAdminPatients',{headers: headers, params: param});
+   }
+
 
    
 }

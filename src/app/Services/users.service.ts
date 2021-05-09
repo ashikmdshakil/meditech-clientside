@@ -1,9 +1,10 @@
+import { environment } from './../../environments/environment';
 import { User } from './../User.model';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Prescription } from '../Model/Prescription.model';
-const ipAdress = "http://139.162.19.50:8080";
+const ipAdress = environment.ip;
 
 @Injectable({
   providedIn: 'root'

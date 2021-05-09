@@ -1,8 +1,9 @@
+import { environment } from './../../environments/environment';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { UserAvatar } from '../UserAvatar.model';
-const ip = "http://139.162.19.50:8080";
+const ip = environment.ip;
 @Injectable({
   providedIn: 'root'
 })

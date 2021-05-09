@@ -1,3 +1,4 @@
+import { AgentUsersComponent } from './SuperAdminPannel/agent-users/agent-users.component';
 import { UserDetailsComponent } from './SuperAdminPannel/user-details/user-details.component';
 import { AdvertisementComponent } from './SuperAdminPannel/advertisement/advertisement.component';
 import { CategoriesComponent } from './SuperAdminPannel/categories/categories.component';
@@ -185,6 +186,7 @@ const routes: Routes = [
     {path: "appoinments", component : AppoinmentsComponent, outlet: 'pannel'},
     {path: "categories", component : CategoriesComponent, outlet: 'pannel'},
     {path: "advertisements", component : AdvertisementComponent, outlet: 'pannel'},
+    {path: "agent-users/:number", component : AgentUsersComponent, outlet: 'pannel'},
     {path: "blank", component : BlankComponent, outlet: 'pannel'},
   ]
 },

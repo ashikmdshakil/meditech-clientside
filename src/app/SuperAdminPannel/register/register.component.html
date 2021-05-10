@@ -4,12 +4,12 @@
         <div class="col-sm-3">
         </div>
         <div class="col-sm-6">
-            <div *ngIf = "alertExist" class="alert alert-danger" role="alert">
+           <!--  <div *ngIf = "alertExist" class="alert alert-danger" role="alert">
                 <strong>{{alertMessage}}</strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                   </button>
-              </div>
+              </div> -->
             <input type="hidden">
             <div class="form-group">
                 <label for="formGroupExampleInput">Name</label>
@@ -40,9 +40,7 @@
               <div style="margin-top: 20px;">
                 <button id = "save" (click) = "signUp()" class="btn btn-success">Register Doctors</button>
               </div>
-            <div id = "message" style="margin-top:9px">
-                
-            </div>
+            <p style="color: chocolate;">{{message}}</p>
         </div>
         <div class="col-sm-3">
         </div>

@@ -14,3 +14,10 @@ a {
             max-height: 40px; border-radius: 50%;
 }
 
+.notification{
+  overflow-x: hidden;
+  width: 450px;
+  overflow-y: scroll;
+  max-height: 550px;
+  
+}

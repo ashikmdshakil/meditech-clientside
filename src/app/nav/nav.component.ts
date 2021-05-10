@@ -21,6 +21,7 @@ export class NavComponent implements OnInit {
   router: Router;
   userService: UsersService;
   user: User = new User();
+  notifications: Notification[] = [];
   imageUrl: any;
   domSanitizer: DomSanitizer;
   userTransferService: UserTransferService;
@@ -44,6 +45,16 @@ export class NavComponent implements OnInit {
       this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image);
       localStorage.setItem('userId', this.user.userId.toString());
     })
+    this.superAdminService.getNotifications().subscribe(result =>{
+        this.notifications = result;
+        console.log(this.notifications);
+    })
+    setInterval(()=>{
+      this.superAdminService.getNotifications().subscribe(result =>{
+        this.notifications = result;
+        console.log(this.notifications);
+    })
+    },60000);
   }
   logout(){
     this.logoutService.doLogout().subscribe(

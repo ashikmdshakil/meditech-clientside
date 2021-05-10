@@ -63,7 +63,10 @@
         </ul> -->
 
 
-        <div class="dropdown pmd-dropdown pmd-user-info ml-auto">
+        <div class="ml-auto">
+
+         <!-- Profile -->
+          <div class="dropdown pmd-dropdown pmd-user-info" style="display: inline-block;">
           <a href="javascript:void(0);" class="btn-user dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false">
               <img *ngIf="!imageUrl" class="mr-2" class= "picture" src="../../assets/blank_image.png" alt="avatar" style="display: inline-block;">
               <img *ngIf="imageUrl" class="mr-2" class= "picture" [src] = "imageUrl" alt="avatar" style="display: inline-block;">
@@ -78,6 +81,29 @@
               <a class="dropdown-item" data-toggle="modal" href="javascript:void(0);" data-target="#exampleModal">Change Password</a>
               <a class="dropdown-item" (click) = "logout()" href="javascript:void(0);">Logout</a>
           </ul>
+          </div>
+
+          <!-- Notifications -->
+         <!--  <a href="#" class="dropdown-toggle media align-items-center" data-toggle="dropdown" data-sidebar="true" aria-expanded="false" style="display: inline-block; margin-right: 15px;"><i class="fa fa-bell" style="font-size:24px"></i><span style="margin-left: 5px;">notifications</span></a> -->
+         <div class="dropdown" style="display: inline-block;">
+          <a href="javascript:void(0);" data-toggle="dropdown" data-sidebar="true" aria-expanded="false"><i class="fa fa-bell" style="font-size:20px; color: skyblue;"></i><span style="margin-left: 5px;"></span></a>
+          <ul class="dropdown-menu dropdown-menu-right notification">    
+            <div *ngFor = "let notification of notifications" >
+              <div class="row" style="margin-top: 5px;">
+                <div class="col-sm-2">
+                  <img class="picture" src="../../assets/Logo-Outline.png" height="40px" width="40px" style="margin-left: 15px;">
+                </div>
+                <div class="col-sm-9">
+                  <p style="font-size: smaller;">{{notification.notification}}</p>
+                  <p style="font-size: smaller; float: right;">{{notification.time | date:'medium'}}</p>
+                </div>
+                <div class="col-sm-1"></div>
+            </div>  
+            </div>   
+        </ul>
+        </div>
+
+
       </div>
 
         

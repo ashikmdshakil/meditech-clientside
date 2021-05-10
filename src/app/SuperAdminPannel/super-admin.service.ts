@@ -269,6 +269,13 @@ export class SuperAdminService {
       return this.http.get(ipAddress+'/getAdminPatients',{headers: headers, params: param});
    }
 
+   getNotifications(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/adminGetsAllNotifications',{headers: headers});
+   }
+
 
    
 }

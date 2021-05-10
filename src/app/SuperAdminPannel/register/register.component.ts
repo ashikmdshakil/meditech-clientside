@@ -15,6 +15,7 @@ export class RegisterComponent implements OnInit {
   registration : RegistrationService;
   alertExist: boolean = false;
   alertMessage: string = null;
+  message: string;
 
   constructor(registration: RegistrationService) {
     this.registration = registration;
@@ -39,16 +40,22 @@ export class RegisterComponent implements OnInit {
         this.mail = null;
         this.number = null;
         this.password = null;
+        this.message = "Registration is successfull!";
       }
-      if(status == 'wrong'){
+      else{
         this.alertExist = true;
         this.alertMessage = "Something went wrong or you already have an account.";
         this.name = null;
         this.mail = null;
         this.number = null;
         this.password = null;
+        this.message = "Sorry ! Something went wrong. It might be this user already exists";
       }
-    })
+    },
+    error =>{
+        this.message = "Sorry ! Something went wrong. It might be a connection error.";
+    }
+    )
   }
 
   setRole(id: number){

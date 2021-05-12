@@ -26,8 +26,8 @@ export class CategoriesComponent implements OnInit {
 
   ngOnInit(): void {
     this.superAdminService.getCategories().subscribe(result =>{
-      this.categories = result;
-    
+      console.log(result);
+      this.categories = result;   
       this.categories.forEach(category => {
           category.iconUrl = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+category.icon);
          

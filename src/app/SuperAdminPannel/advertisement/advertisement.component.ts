@@ -170,4 +170,28 @@ saveCategory(){
     })
   }
 
+  
+delete(id: number){
+  this.advertisements.forEach(ad => {
+    if(ad.id === id){
+      let advertise: Advertisement = new Advertisement();
+      advertise = ad;
+      this.superAdminService.deleteAdvertise(advertise).subscribe(result =>{
+        if(result === "success"){
+          this.message = "Deletion is successfull !";
+          this.router.navigateByUrl('/super-admin-pannel/(pannel:blank)').then(next =>{
+            this.router.navigateByUrl('/super-admin-pannel/(pannel:advertisements)');
+          })
+        }
+        else{
+          this.message = "Sorry ! Something went wrong !";
+        }
+      }),
+      error =>{
+        this.message = "Sorry ! Something went wrong !";
+      }
+    }
+  });
+}
+
 }

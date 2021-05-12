@@ -24,7 +24,7 @@ export class UserDetailsComponent implements OnInit {
   user: User = new User();
   superman: User = new User();
   addressBook: AddressBook = new AddressBook();
-  categories: any = [];
+  categories: Categories[] = [];
   currentCategories: Categories[] = [];
   message: string; 
   isImage: boolean = false;
@@ -51,9 +51,6 @@ export class UserDetailsComponent implements OnInit {
       if(this.user.roles.name==='doctor'){
           this.isDoctor = true;
           this.getDoctorBasicInfos();
-          this.categoryService.getCategories().subscribe(result =>{
-          this.categories = result;
-          })
       }
       else if(this.user.roles.name==='patient'){
         this.isUser = true;
@@ -80,9 +77,10 @@ export class UserDetailsComponent implements OnInit {
         this.isImage = true;
       } 
     })
-
-       
-    
+    this.categoryService.getCategories().subscribe(result =>{
+      console.log(result);
+      this.categories = result;
+      })   
   }
 
   getDoctorBasicInfos(){

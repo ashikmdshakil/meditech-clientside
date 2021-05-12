@@ -4,7 +4,8 @@
     <div class="col-sm-2"></div>
     <div class="col-sm-3">
         <div>
-            <img [src] ="imageUrl"  alt="Avatar" class="img-fluid picture" id = "profilePicture">
+            <img *ngIf="!imageUrl" src="../../assets/blank_image.png" class="img-fluid picture" id = "profilePicture">
+            <img *ngIf="imageUrl" [src] ="imageUrl" class="img-fluid picture" id = "profilePictureexist">
          </div>
              
     </div>

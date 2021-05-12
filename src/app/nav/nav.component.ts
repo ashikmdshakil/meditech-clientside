@@ -47,12 +47,10 @@ export class NavComponent implements OnInit {
     })
     this.superAdminService.getNotifications().subscribe(result =>{
         this.notifications = result;
-        console.log(this.notifications);
     })
     setInterval(()=>{
       this.superAdminService.getNotifications().subscribe(result =>{
         this.notifications = result;
-        console.log(this.notifications);
     })
     },60000);
   }
@@ -62,8 +60,6 @@ export class NavComponent implements OnInit {
         localStorage.removeItem('username');
         localStorage.removeItem('password');
         localStorage.removeItem('role');
-        console.log(result);
-        console.log(localStorage.getItem('username'));
       })
       localStorage.removeItem('username');
         localStorage.removeItem('password');
@@ -119,7 +115,6 @@ export class NavComponent implements OnInit {
         else{
           this.message = "Passwords did not match."
         }
-        console.log(this.message);
     }
   }
   

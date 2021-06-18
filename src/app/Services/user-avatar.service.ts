@@ -26,7 +26,10 @@ export class UserAvatarService {
   }
 
   getImage(): Observable<any>{
-      return this.http.get(ip+'/getImage',{responseType: 'arraybuffer'});
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ip+'/getImage',{headers: headers,responseType: 'arraybuffer'});
    }
 
 

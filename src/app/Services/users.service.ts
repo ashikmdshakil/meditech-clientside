@@ -64,8 +64,10 @@ export class UsersService {
   requestForResetPassword(number: string): Observable<String>{
       this.formData.delete('number');
       this.formData.append('number', number);
-    return this.http.post(ipAdress+'/mailForResetPassword',this.formData,{'responseType': 'text'});
-    
+      const headers = new HttpHeaders({
+        authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+    });
+    return this.http.post(ipAdress+'/mailForResetPassword',this.formData,{headers: headers,'responseType': 'text'}); 
   }
 
   setPassword(token: string, password: string): Observable<String>{
@@ -73,7 +75,10 @@ export class UsersService {
       this.formData.delete('password');
       this.formData.append('tokenString', token);
       this.formData.append('password', password);
-    return this.http.post(ipAdress+'/setPassword',this.formData,{responseType: 'text'});
+      const headers = new HttpHeaders({
+        authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+    });
+    return this.http.post(ipAdress+'/setPassword',this.formData,{headers: headers,responseType: 'text'});
   }
   saveUserPrescription(prescription: Prescription): Observable<any>{
     const headers = new HttpHeaders({

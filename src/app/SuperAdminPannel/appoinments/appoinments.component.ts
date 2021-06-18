@@ -38,7 +38,6 @@ export class AppoinmentsComponent implements OnInit {
   deleteAppoinment(){
       this.message = null;
       this.superAdminService.deleteAppoinments(this.selectedAppoinment).subscribe(result =>{
-        console.log("The result is "+result);
         if(result === "archived"){
           this.message = "This user has been removed.";
         }

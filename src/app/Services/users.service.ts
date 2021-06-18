@@ -46,7 +46,6 @@ export class UsersService {
 
    removeUser(user: User): Observable<any>{
     user.userAvatar = null;
-     console.log(user.roles.roleId);
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });

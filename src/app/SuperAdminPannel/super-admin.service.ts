@@ -276,6 +276,13 @@ export class SuperAdminService {
       return this.http.get(ipAddress+'/adminGetsAllNotifications',{headers: headers});
    }
 
+   getAdminDashboardBasicInfo(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/adminGetsDashboardBasicInfos',{headers: headers})
+   }
+
 
    
 }

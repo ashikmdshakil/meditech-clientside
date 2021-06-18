@@ -27,12 +27,13 @@ export class AgentUsersComponent implements OnInit {
     })
 
     this.superAdminService.getAgentUsers(this.number).subscribe(result =>{
+      console.log(result);
       result.forEach(element => {
         let patient = new User();
-        patient.userId = element[0];
-        patient.name = element[1];
-        patient.mobileNumber = element[2];
-        patient.email = element[3];
+        patient.userId = element.userId;
+        patient.name = element.name;
+        patient.mobileNumber = element.mobileNumber;
+        patient.email = element.email;
         this.patients.push(patient);
       });
     })

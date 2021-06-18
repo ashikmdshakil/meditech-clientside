@@ -1,5 +1,5 @@
 import { environment } from './../environments/environment';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { stringify } from '@angular/compiler/src/util';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -30,18 +30,30 @@ export class RegistrationService {
     this.user.email = email;
     this.user.mobileNumber = number;
     this.user.password = password;
-    return this.http.post(ip+'/registerDoctor',this.user,{'responseType': 'text'});
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ip+'/registerDoctor',this.user,{headers: headers,'responseType': 'text'});
   }
 
   registerDoctorWithDetails(user: User): Observable<string>{
-    return this.http.post(ip+'/registerDoctor',user,{'responseType': 'text'});
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ip+'/registerDoctor',user,{headers: headers,'responseType': 'text'});
   }
   registerPatientDetails(user: User): Observable<string>{
-    return this.http.post(ip+'/registerPatient',user,{'responseType': 'text'});
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ip+'/registerPatient',user,{headers: headers,'responseType': 'text'});
   }
   registerSupermanDetails(user: User): Observable<string>{
 
-    return this.http.post(ip+'/registerSuperman',user,{'responseType': 'text'});
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ip+'/registerSuperman',user,{headers: headers,'responseType': 'text'});
   }
   
   registerPatient(name: string, email: string, number: string, password: string): Observable<string>{
@@ -49,7 +61,10 @@ export class RegistrationService {
     this.user.email = email;
     this.user.mobileNumber = number;
     this.user.password = password;
-    return this.http.post(ip+'/registerPatient',this.user,{'responseType': 'text'});
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ip+'/registerPatient',this.user,{headers: headers,'responseType': 'text'});
   }
   registerSuperman(name: string, email: string, number: string, password: string): Observable<string>{
     this.user.name = name;
@@ -59,6 +74,9 @@ export class RegistrationService {
     //this.user.adminNumber = localStorage.getItem("username");
     //console.log("admin number is "+this.user.adminNumber);
     let status: string;
-    return this.http.post(ip+'/registerSuperman',this.user,{'responseType': 'text'});
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ip+'/registerSuperman',this.user,{headers: headers,'responseType': 'text'});
   }
 }

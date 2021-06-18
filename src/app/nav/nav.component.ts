@@ -1,3 +1,5 @@
+import { UserAvatar } from './../UserAvatar.model';
+import { SearchbarService } from './../Services/searchbar.service';
 import { SuperAdminService } from './../SuperAdminPannel/super-admin.service';
 import { UserTransferService } from './../Services/user-transfer.service';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -22,19 +24,22 @@ export class NavComponent implements OnInit {
   userService: UsersService;
   user: User = new User();
   notifications: Notification[] = [];
+  users: User[] = [];
   imageUrl: any;
   domSanitizer: DomSanitizer;
   userTransferService: UserTransferService;
   superAdminService: SuperAdminService;
+  searchbarService: SearchbarService;
 
 
-  constructor(logoutService: LogoutService, router: Router, userService: UsersService, domSanitizer: DomSanitizer, userTransferService: UserTransferService, superAdminService: SuperAdminService) {
+  constructor(searchbarService: SearchbarService, logoutService: LogoutService, router: Router, userService: UsersService, domSanitizer: DomSanitizer, userTransferService: UserTransferService, superAdminService: SuperAdminService) {
     this.logoutService = logoutService;
     this.router = router;
     this.userService = userService;
     this.domSanitizer = domSanitizer;
     this.userTransferService = userTransferService;
     this.superAdminService = superAdminService;
+    this.searchbarService = searchbarService;
    }
 
   ngOnInit(): void {
@@ -116,5 +121,22 @@ export class NavComponent implements OnInit {
           this.message = "Passwords did not match."
         }
     }
+    onSearchChange(event){
+      let keyWord = event.target.value;
+      if(keyWord.length != 0){
+        this.searchbarService.searchDoctors(keyWord).subscribe(result =>{
+          this.users = [];
+          this.users = result;
+        })
+      }
+      else{
+        this.users = [];
+        setTimeout(() => {
+          this.users = [];
+        }, 3500);        
   }
-  
+}
+userDetails(number : string){
+  window.open("/user-details/"+number,"_blank"); 
+}
+}

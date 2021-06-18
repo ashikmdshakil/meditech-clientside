@@ -3,6 +3,7 @@ import { Commision } from './../../Model/Commision.model';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/User.model';
 import { SuperAdminService } from '../super-admin.service';
+import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 
 @Component({
   selector: 'app-dashboard',
@@ -16,6 +17,8 @@ export class DashboardComponent implements OnInit {
   totalSupermen: number;
   totalAppoinments: number;
   totalIncome: number;
+  totalPaidAppoinments: number;
+  totalUnpaidAppoinments: number;
   superAdminService: SuperAdminService;
   emmergencyDoc: User = new User();
   commision: Commision = new Commision();
@@ -28,24 +31,13 @@ export class DashboardComponent implements OnInit {
    }
 
   ngOnInit(): void {
-    this.superAdminService.totalPatients().subscribe(result =>{
-      this.totalPatients = result;
-    })
-
-    this.superAdminService.totalDoctors().subscribe(result =>{
-      this.totalDoctors = result;
-    })
-
-    this.superAdminService.totalSupermen().subscribe(result =>{
-      this.totalSupermen = result;
-    })
-
-    this.superAdminService.totalAppoinments().subscribe(result =>{
-      this.totalAppoinments = result;
-    })
-
-    this.superAdminService.getEmmergencyDoctors().subscribe(result =>{
-      this.emmergencyDocs = result;
+    this.superAdminService.getAdminDashboardBasicInfo().subscribe(result =>{
+      this.totalPatients = result.totalPatients;
+      this.totalDoctors = result.totalDoctors;
+      this.totalSupermen = result.totalAgents;
+      this.totalAppoinments = result.totalAppoinments;
+      this.totalPaidAppoinments = result.totalPaidAppoinments;
+      this.totalUnpaidAppoinments = result.totalUnpaidAppoinments; 
     })
 
     this.superAdminService.getCommision().subscribe(result =>{

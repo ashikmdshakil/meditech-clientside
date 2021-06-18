@@ -54,7 +54,6 @@ export class PatientAllComponent implements OnInit {
 
   userDetails(number : string){
     window.open("/user-details/"+number,"_blank"); 
-    
   }
 
   archiveUser(){

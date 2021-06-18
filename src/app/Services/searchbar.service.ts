@@ -19,6 +19,6 @@ export class SearchbarService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.get(ipAdress+'/searchDoctors',{ headers: headers, params: param });
+    return this.http.get(ipAdress+'/searchUsers',{ headers: headers, params: param });
   }
 }

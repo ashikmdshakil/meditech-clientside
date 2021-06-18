@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         }) */
         if(user.authorities[0].authority === 'admin'){
           localStorage.setItem('username',user.username);
-          localStorage.setItem('password',user.password);
+          localStorage.setItem('password',this.password);
           localStorage.setItem('role',user.authorities[0].authority);
           this.router.navigateByUrl('/super-admin-pannel');
         }

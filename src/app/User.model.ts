@@ -42,4 +42,5 @@ export class User{
     totalIncome: number = null;
     countUsers: number = null;
     countDoctors: number = null;
+    imageUrl: any;
 } 

@@ -90,6 +90,46 @@ export class SuperAdminService {
   });
       return this.http.get(ipAddress+'/adminGetsAppoinments',{headers: headers})
    }
+   getCompleteAppoinments(): Observable<any>{
+    /* let param = new HttpParams()
+    .set('mobileNumber' , mobileNumber); */
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/adminGetsCompleteAppoinments',{headers: headers})
+   }
+   getPendingAppoinments(): Observable<any>{
+    /* let param = new HttpParams()
+    .set('mobileNumber' , mobileNumber); */
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/adminGetsPendingAppoinments',{headers: headers})
+   }
+   getTodaysAppoinments(): Observable<any>{
+    /* let param = new HttpParams()
+    .set('mobileNumber' , mobileNumber); */
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/adminGetsTodaysAppoinments',{headers: headers})
+   }
+   getWeeksAppoinments(): Observable<any>{
+    /* let param = new HttpParams()
+    .set('mobileNumber' , mobileNumber); */
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/adminGetsWeeksAppoinments',{headers: headers})
+   }
+   getMonthsAppoinments(): Observable<any>{
+    /* let param = new HttpParams()
+    .set('mobileNumber' , mobileNumber); */
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAddress+'/adminGetsMonthsAppoinments',{headers: headers})
+   }
 
    getCategories(): Observable<any>{
     /* let param = new HttpParams()

@@ -3,7 +3,19 @@
     <div class="col-sm-2">
       <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModalDoctorRegister">Register Doctor</button>
     </div>
-    <div class="col-sm-9"></div>
+    <div class="col-sm-2">
+        <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Categories
+            </button>
+            <div class="dropdown-menu">
+                <div *ngFor= "let category of categories">
+                    <a class="dropdown-item" (click)="categoryDoctors(category.id)" href="javascript:void(0)">{{category.name}}</a>
+                </div>
+            </div>
+          </div>
+    </div>
+    <div class="col-sm-7"></div>
 </div>
 <div class="row">
     <div class="col-sm-1"></div>

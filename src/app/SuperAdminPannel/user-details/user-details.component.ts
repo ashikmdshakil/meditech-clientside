@@ -46,8 +46,9 @@ export class UserDetailsComponent implements OnInit {
       this.number = param.id;
     })
     this.userSevice.getUserById(this.number).subscribe(result =>{
+      //console.log(result);
       this.user = result;
-      this.addressBook = this.user.addressBooks;
+      //this.addressBook = this.user.addressBooks;
       if(this.user.roles.name==='doctor'){
           this.isDoctor = true;
           this.getDoctorBasicInfos();

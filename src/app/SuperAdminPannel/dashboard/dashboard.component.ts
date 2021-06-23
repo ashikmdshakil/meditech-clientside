@@ -48,7 +48,9 @@ export class DashboardComponent implements OnInit {
       this.meditecWallet = result;
       this.totalIncome = this.meditecWallet.totalIncome;
     })
-
+    this.superAdminService.getEmmergencyDoctors().subscribe(result =>{
+      this.emmergencyDocs = result;
+    })
 
 
   }

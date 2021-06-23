@@ -23,7 +23,6 @@ export class User{
     roles: Role;
     addressBooks: AddressBook;
     userAvatar: UserAvatar;
-    account: Account[] = [];
     categories: Categories[] = [];
     degree: Degree;
     speciality: Speciality;

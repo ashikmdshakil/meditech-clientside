@@ -54,7 +54,14 @@ export class DoctorAllComponent implements OnInit {
     })
     this.categoryService.getCategories().subscribe(result =>{
       this.categories = result;
-      })
+    })
+  }
+
+  categoryDoctors(id: number){
+    this.categoryService.getUserDoctorList(id).subscribe(result =>{
+      this.doctors = [];
+      this.doctors = result;
+    })
   }
 
   userInfo(number: string){

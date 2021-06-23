@@ -26,6 +26,33 @@ export class AppoinmentsComponent implements OnInit {
     })
   }
 
+  getCompleteAppoinments(){
+    this.superAdminService.getCompleteAppoinments().subscribe(result =>{
+      this.appoinments = result;
+    })
+  }
+
+  getPendingAppoinments(){
+    this.superAdminService.getPendingAppoinments().subscribe(result =>{
+      this.appoinments = result;
+    })
+  }
+  getTodaysAppoinments(){
+    this.superAdminService.getTodaysAppoinments().subscribe(result =>{
+      this.appoinments = result;
+    })
+  }
+  getWeeksAppoinments(){
+    this.superAdminService.getWeeksAppoinments().subscribe(result =>{
+      this.appoinments = result;
+    })
+  }
+  getMonthsAppoinments(){
+    this.superAdminService.getMonthsAppoinments().subscribe(result =>{
+      this.appoinments = result;
+    })
+  }
+
   appoinmentInfo(id: number){
     this.appoinments.forEach(appoinment => {
       if(appoinment.id === id){

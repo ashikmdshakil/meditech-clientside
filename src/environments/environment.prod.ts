@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  ip: 'http://139.162.19.50:8080'
+  ip: 'http://172.105.40.254:8080'
 };

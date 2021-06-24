@@ -8,6 +8,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Categories } from '../Model/Categories.model';
 import { AdvertisementCategory } from '../Model/AdvertisementCategory.model';
+import { Blog } from '../Model/Blog.model';
 const ipAddress = environment.ip;
 @Injectable({
   providedIn: 'root'
@@ -322,6 +323,13 @@ export class SuperAdminService {
   });
       return this.http.get(ipAddress+'/adminGetsDashboardBasicInfos',{headers: headers})
    }
+
+   postBlog(blog: Blog): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/createBlog',blog,{headers: headers,'responseType': 'text'});
+  }
 
 
    

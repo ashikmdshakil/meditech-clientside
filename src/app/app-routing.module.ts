@@ -48,6 +48,7 @@ import { DoctorChamberComponent } from './doctor-chamber/doctor-chamber.componen
 import { UpdateSlotsComponent } from './update-slots/update-slots.component';
 import { RegisterComponent } from './SuperAdminPannel/register/register.component';
 import { AppoinmentsComponent } from './SuperAdminPannel/appoinments/appoinments.component';
+import { BlogComponent } from './SuperAdminPannel/blog/blog.component';
 
 const routes: Routes = [
   {path: "", redirectTo : "Dacicil", pathMatch: 'full'},
@@ -187,6 +188,7 @@ const routes: Routes = [
     {path: "categories", component : CategoriesComponent, outlet: 'pannel'},
     {path: "advertisements", component : AdvertisementComponent, outlet: 'pannel'},
     {path: "agent-users/:number", component : AgentUsersComponent, outlet: 'pannel'},
+    {path: "blogs", component : BlogComponent, outlet: 'pannel'},
     {path: "blank", component : BlankComponent, outlet: 'pannel'},
   ]
 },

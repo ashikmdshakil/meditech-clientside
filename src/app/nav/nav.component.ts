@@ -46,9 +46,10 @@ export class NavComponent implements OnInit {
     this.userService.getUser(localStorage.getItem('username')).subscribe(result =>{
       this.user = result;
       localStorage.setItem("name", this.user.name);
+      localStorage.setItem('userId', this.user.userId.toString());
       let image = 'data:image/png;base64, '+this.user.userAvatar.image;
       this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl(image);
-      localStorage.setItem('userId', this.user.userId.toString());
+      
     })
     this.superAdminService.getNotifications().subscribe(result =>{
         this.notifications = result;

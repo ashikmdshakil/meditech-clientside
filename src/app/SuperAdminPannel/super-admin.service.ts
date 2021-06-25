@@ -331,6 +331,18 @@ export class SuperAdminService {
     return this.http.post(ipAddress+'/createBlog',blog,{headers: headers,'responseType': 'text'});
   }
 
+  getBlogs(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getBlogs',{headers: headers});
+  }
 
+  removeBlog(blog: Blog): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/removeBlog',blog,{headers: headers,'responseType': 'text'});
+  }
    
 }

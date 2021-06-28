@@ -9,6 +9,7 @@ import { Observable } from 'rxjs';
 import { Categories } from '../Model/Categories.model';
 import { AdvertisementCategory } from '../Model/AdvertisementCategory.model';
 import { Blog } from '../Model/Blog.model';
+import { BlogCategory } from '../Model/BlogCategory.model';
 const ipAddress = environment.ip;
 @Injectable({
   providedIn: 'root'
@@ -345,4 +346,24 @@ export class SuperAdminService {
     return this.http.post(ipAddress+'/removeBlog',blog,{headers: headers,'responseType': 'text'});
   }
    
+  getBlogCategories(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getBlogCategories',{headers: headers});
+  }
+
+  createBlogCategory(blogCategory: BlogCategory): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/createBlogCategory',blogCategory,{headers: headers,'responseType': 'text'});
+  }
+
+  removeBlogCategory(blogCategory: BlogCategory): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/removeBlogCategory',blogCategory,{headers: headers,'responseType': 'text'});
+  }
 }

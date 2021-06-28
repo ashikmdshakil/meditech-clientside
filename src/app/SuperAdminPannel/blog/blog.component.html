@@ -1,10 +1,10 @@
 <div class="row">
     <div class="col-1"></div>
-    <div class="col-7" style="overflow-y: scroll; height: 500px;">
+    <div class="col-7" style="overflow-y: scroll; height: 700px;">
       <div *ngFor= "let blog of blogs; let i = index">
       <div class="row" style="margin-bottom: 55px;">
         <div class="col-sm-10">
-          <p style="font-size: xx-large; color: darkblue;"><strong>{{blog.title}}</strong></p>
+          <p style="font-size: xx-large; color: darkblue;"><strong>{{blog.title}}</strong><span style="color: grey; font-size: x-large;">({{blog.blogCategory.name}})</span></p>
           <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: small; color: slategrey;"><strong>{{blog.blogger.name}}</strong></p>
           <p style="font-size: smaller; color: slategrey;">{{blog.time | date:'medium'}}</p>
           <iframe width="550" height="250" [src]= 'blog.youtubeAddress' frameborder="0" allowfullscreen></iframe>
@@ -15,15 +15,59 @@
       </div>
     </div>
     <div class="col-4" style="padding-left: 35px; padding-right: 20px;">
+
+      <p style="color: chocolate; margin-bottom: 25px;">{{message}}</p>
+
         <div class="form-group">
-            <label for="exampleFormControlInput1">Blog Title</label>
+            <label for="exampleFormControlInput1" style="color: grey;">Blog Title</label>
             <textarea class="form-control" [(ngModel)]= "blog.title" id="exampleFormControlTextarea1" rows="2"></textarea>
           </div>
           <div class="form-group">
-            <label for="exampleFormControlFile1">Youtube URL</label>
+            <label for="exampleFormControlFile1" style="color: grey;">Youtube URL</label>
             <textarea class="form-control" [(ngModel)]= "blog.youtubeLink" id="exampleFormControlTextarea1" rows="1"></textarea>
           </div>
-          <button type="button" (click)="postBlog()" class="btn btn-outline-success">Post Blog</button>
+          <div class="btn-group" style="margin-bottom: 25px;">
+            <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Select Blog Category
+            </button>
+            <div class="dropdown-menu">
+                <div *ngFor= "let blogCategory of blogCategories; let i = index">
+                    <a (click) = "selectCategory(blogCategory.id)" class="dropdown-item">{{blogCategory.name}}</a>
+                </div>
+            </div>
+              <p style="color: grey; font-size: small; margin-left: 15px;">{{selectedCategory.name}}</p>
+          </div>
+          <div>
+            <button type="button" (click)="postBlog()" class="btn btn-outline-success">Post Blog</button>
+            <p style="color: chocolate;">{{message1}}</p>
+          </div>
+
+          <div style="margin-top: 55px;">
+            <div class="form-group">
+                <label for="exampleFormControlInput1" style="color: gray;">Blog Category Name</label>
+                <input type="text" [(ngModel)]= "blogCategory.name" class="form-control" id="exampleFormControlInput1">
+            </div>
+            <button type="button" (click)="createBlogCategory()" class="btn btn-outline-warning">Save Blog Category</button>
+            <p style="color: chocolate;">{{message2}}</p>
+          </div>
+
+          <div style="margin-top: 55px;">
+            <div class="form-group">
+                <label for="exampleFormControlInput1" style="color: gray;">Remove Blog Category</label>
+                <button type="button" class="btn btn-outline-info dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Select Blog Category
+                  </button>
+                  <div class="dropdown-menu">
+                      <div *ngFor= "let blogCategory of blogCategories; let i = index">
+                          <a (click) = "selectCategoryToRemove(blogCategory.id)" class="dropdown-item">{{blogCategory.name}}</a>
+                      </div>
+                  </div>
+                  <p style="color: grey; font-size: small; margin-left: 15px;">{{selectedCategoryToRemove.name}}</p>
+            </div>
+            <button type="button" (click)="removeCategory(selectedCategoryToRemove.id)" class="btn btn-outline-danger">Remove Blog Category</button>
+            <p style="color: chocolate;">{{message3}}</p>
+          </div>
+
           <p style="color: chocolate; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{message}}</p>
     </div>
 </div>

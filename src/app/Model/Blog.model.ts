@@ -1,4 +1,5 @@
 import { User } from './../User.model';
+import { BlogCategory } from './BlogCategory.model';
 export class Blog{
     id: number;
     title: string;
@@ -6,4 +7,5 @@ export class Blog{
     youtubeAddress: any;
     time: Date;
     blogger: User;
+    blogCategory: BlogCategory;
 }

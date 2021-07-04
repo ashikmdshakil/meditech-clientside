@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/User.model';
 import { SuperAdminService } from '../super-admin.service';
 import { getLocaleDateFormat } from '@angular/common';
+import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
   selector: 'app-appoinments',
@@ -12,18 +13,30 @@ import { getLocaleDateFormat } from '@angular/common';
 export class AppoinmentsComponent implements OnInit {
   
   superAdminService: SuperAdminService;
+  userService: UsersService;
   appoinments: Appoinment[] = [];
+  doctors: User[] = [];
   selectedAppoinment: Appoinment = new Appoinment();
   message: string;
 
-  constructor(superAdminService: SuperAdminService) {
+  constructor(superAdminService: SuperAdminService, userService: UsersService) {
     this.superAdminService = superAdminService;
+    this.userService = userService;
    }
 
   ngOnInit(): void {
     this.superAdminService.getAppoinments().subscribe(result =>{
       this.appoinments = result;
     })
+    this.userService.getDoctorList().subscribe(result =>{
+      result.forEach(element => {
+        let doctor: User = new User();
+        doctor.userId = element[0];
+        doctor.name = element[1];
+        this.doctors.push(doctor);
+      });
+    })
+
   }
 
   getCompleteAppoinments(){
@@ -52,6 +65,17 @@ export class AppoinmentsComponent implements OnInit {
       this.appoinments = result;
     })
   }
+  getFullyCompleteAppoinments(){
+    this.superAdminService.getFullyCOmpleteAppoinments().subscribe(result =>{
+      this.appoinments = result;
+    })
+  }
+
+  getDoctorsAppoinments(id: number){
+    this.superAdminService.getDoctorsAppoinments(id.toString()).subscribe(result =>{
+      this.appoinments = result;
+    })
+  }
 
   appoinmentInfo(id: number){
     this.appoinments.forEach(appoinment => {
@@ -65,6 +89,7 @@ export class AppoinmentsComponent implements OnInit {
   deleteAppoinment(){
       this.message = null;
       this.superAdminService.deleteAppoinments(this.selectedAppoinment).subscribe(result =>{
+        console.log(result);
         if(result === "archived"){
           this.message = "This user has been removed.";
         }
@@ -82,4 +107,44 @@ export class AppoinmentsComponent implements OnInit {
         this.message = "Sorry something went wrong. It might be connection problem with server.";
       });
   }
+
+  selectForComplete(id: number){
+    this.appoinments.forEach(element => {
+      if(element.id === id){
+        this.selectedAppoinment = element;
+      }
+    });
+  }
+  selectForDelete(id: number){
+    this.appoinments.forEach(element => {
+      if(element.id === id){
+        this.selectedAppoinment = element;
+      }
+    });
+  }
+
+  completeAppoinment(){
+    if(this.selectedAppoinment.status === "Payment Complete"){
+      this.superAdminService.makeAppoinmentCOmplete(this.selectedAppoinment.id.toString()).subscribe(result =>{
+        if(result === 'success'){
+          this.message = "This appoinment has been successfully completed.";
+        }
+        else{
+          this.message = "Sorry! Something went wrong.";
+        }
+      },
+      error =>{
+        this.message = "Sorry! Something went wrong. It might be a connection error.";
+      }
+      )
+    }
+    else{
+      this.message = "Sorry! Payment of this appoinment is not complete.";
+    }
+  }
+
+  close(){
+    this.message = null;
+  }
+
 }

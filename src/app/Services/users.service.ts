@@ -133,6 +133,13 @@ export class UsersService {
   });
       return this.http.get(ipAdress+'/getAppDoctors',{headers: headers});
    }
+
+   getDoctorList(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+      return this.http.get(ipAdress+'/adminGetsDoctorList',{headers: headers});
+   }
   
 
 }

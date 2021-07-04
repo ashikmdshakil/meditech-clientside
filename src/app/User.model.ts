@@ -42,4 +42,6 @@ export class User{
     countUsers: number = null;
     countDoctors: number = null;
     imageUrl: any;
+    doctorRegistrationNumber: string;
+    designation: string;
 } 

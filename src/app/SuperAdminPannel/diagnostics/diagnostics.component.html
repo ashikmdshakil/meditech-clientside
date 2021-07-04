@@ -1,0 +1,24 @@
+<div class="row" style="margin-top: 20px;">
+    <div class="col-sm-1"></div>
+    <div class="col-sm-11">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">Mobile Number</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody *ngFor= "let diagnostic of diagnostics; let i = index">
+              <tr>
+                <th scope="row">{{i+1}}</th>
+                <td>{{diagnostic.name}}</td>
+                <td>{{diagnostic.mobileNumber}}</td>
+                <!--<td>{{appoinment.time | date:'medium'}}</td>-->
+                <td>{{diagnostic.email}}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

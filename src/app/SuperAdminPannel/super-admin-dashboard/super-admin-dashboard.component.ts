@@ -53,5 +53,8 @@ export class SuperAdminDashboardComponent implements OnInit {
   blogs(){
     this.router.navigateByUrl('/super-admin-pannel/(pannel:blogs)');
   }
+  diagnostics(){
+    this.router.navigateByUrl('/super-admin-pannel/(pannel:diagnostics)');
+  }
  
 } 

@@ -58,6 +58,7 @@ import { AdvertisementComponent } from './SuperAdminPannel/advertisement/adverti
 import { UserDetailsComponent } from './SuperAdminPannel/user-details/user-details.component';
 import { AgentUsersComponent } from './SuperAdminPannel/agent-users/agent-users.component';
 import { BlogComponent } from './SuperAdminPannel/blog/blog.component';
+import { DiagnosticsComponent } from './SuperAdminPannel/diagnostics/diagnostics.component';
 
 
 @NgModule({
@@ -111,7 +112,8 @@ import { BlogComponent } from './SuperAdminPannel/blog/blog.component';
     AdvertisementComponent,
     UserDetailsComponent,
     AgentUsersComponent,
-    BlogComponent
+    BlogComponent,
+    DiagnosticsComponent
   ],
   imports: [
     BrowserModule,

@@ -32,6 +32,9 @@ export class RegisterComponent implements OnInit {
     else if(this.roleId == 4){
       status = this.registration.registerSuperman(this.name, this.mail, this.number, this.password);
     }
+    else if(this.roleId == 5){
+      status = this.registration.registerDiagnosticCenter(this.name, this.mail, this.number, this.password);
+    }
     status.subscribe((status)=>{
       if(status == 'success'){
         this.alertExist = true;

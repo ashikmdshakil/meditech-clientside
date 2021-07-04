@@ -79,4 +79,17 @@ export class RegistrationService {
   });
     return this.http.post(ip+'/registerSuperman',this.user,{headers: headers,'responseType': 'text'});
   }
+  registerDiagnosticCenter(name: string, email: string, number: string, password: string): Observable<string>{
+    this.user.name = name;
+    this.user.email = email;
+    this.user.mobileNumber = number;
+    this.user.password = password;
+    //this.user.adminNumber = localStorage.getItem("username");
+    //console.log("admin number is "+this.user.adminNumber);
+    let status: string;
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ip+'/registerDiagnosticCenter',this.user,{headers: headers,'responseType': 'text'});
+  }
 }

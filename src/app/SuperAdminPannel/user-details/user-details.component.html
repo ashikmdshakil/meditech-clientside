@@ -117,6 +117,10 @@
             <label for="formGroupExampleInput2">Mobile Number</label>
             <input type="text" name="number" class="form-control" id="number" [(ngModel)] = 'user.mobileNumber'>
         </div>
+        <div *ngIf="isDoctor" class="form-group">
+            <label for="formGroupExampleInput2">BMDC Number</label>
+            <input type="text" name="number" class="form-control" id="number" [(ngModel)] = 'user.doctorRegistrationNumber'>
+        </div>
         <div class="row">
             <div class="col-sm-2"></div>
             <div class="col-sm-2">
@@ -162,6 +166,10 @@
         <div *ngIf="isDoctor" class="form-group">
             <label for="formGroupExampleInput2">Hospital Name</label>
             <input type="text" name="hospitalName" class="form-control" id="hospitalName" [(ngModel)] = 'user.hospitalName'>
+        </div>
+        <div *ngIf="isDoctor" class="form-group">
+            <label for="formGroupExampleInput2">Designation</label>
+            <input type="text" name="designation" class="form-control" id="hospitalName" [(ngModel)] = 'user.designation'>
         </div>
         <div *ngIf="isDoctor" class="row">
             <div class="col-sm-6">

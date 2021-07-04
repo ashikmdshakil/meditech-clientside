@@ -49,6 +49,7 @@ import { UpdateSlotsComponent } from './update-slots/update-slots.component';
 import { RegisterComponent } from './SuperAdminPannel/register/register.component';
 import { AppoinmentsComponent } from './SuperAdminPannel/appoinments/appoinments.component';
 import { BlogComponent } from './SuperAdminPannel/blog/blog.component';
+import { DiagnosticsComponent } from './SuperAdminPannel/diagnostics/diagnostics.component';
 
 const routes: Routes = [
   {path: "", redirectTo : "Dacicil", pathMatch: 'full'},
@@ -189,6 +190,7 @@ const routes: Routes = [
     {path: "advertisements", component : AdvertisementComponent, outlet: 'pannel'},
     {path: "agent-users/:number", component : AgentUsersComponent, outlet: 'pannel'},
     {path: "blogs", component : BlogComponent, outlet: 'pannel'},
+    {path: "diagnostics", component : DiagnosticsComponent, outlet: 'pannel'},
     {path: "blank", component : BlankComponent, outlet: 'pannel'},
   ]
 },

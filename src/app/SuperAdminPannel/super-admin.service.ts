@@ -366,4 +366,37 @@ export class SuperAdminService {
   });
     return this.http.post(ipAddress+'/removeBlogCategory',blogCategory,{headers: headers,'responseType': 'text'});
   }
+
+  getDiagnosticCenters(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getDiagnosticCenters',{headers: headers});
+  }
+
+  getFullyCOmpleteAppoinments(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/adminGetsFullyCompleteAppoinments',{headers: headers});
+  }
+
+  getDoctorsAppoinments(id: string): Observable<any>{
+    let param = new HttpParams()
+    .set('id' , id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/adminGetsDoctorAppoinments',{headers: headers, params: param});
+  }
+
+  makeAppoinmentCOmplete(id: string): Observable<any>{
+    let formData: FormData = new FormData();
+    formData.append('appoinmentId', id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/makeAppoinmentComplete',formData,{headers: headers,'responseType': 'text'});
+  }
+
 }

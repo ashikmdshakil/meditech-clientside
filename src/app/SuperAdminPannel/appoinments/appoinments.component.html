@@ -38,13 +38,14 @@
   </div>
 </div>
 <div class="row" style="margin-top: 20px;">
-    <div class="col-sm-1"></div>
-    <div class="col-sm-11">
+    <!--<div class="col-sm-1"></div>-->
+    <div class="col-sm-12">
         <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Patient</th>
+                <th scope="col">Patient Number</th>
                 <th scope="col">Doctor</th>
                 <th scope="col">Time</th>
                 <th scope="col">Payment Status</th>
@@ -57,14 +58,15 @@
               <tr>
                 <th scope="row" style="font-size: small;">{{i+1}}</th>
                 <td style="font-size: small;">{{appoinment.patientName}}</td>
+                <td style="font-size: small;">{{appoinment.patientMobileNumber}}</td>
                 <td style="font-size: small;">{{appoinment.doctorName}}</td>
                 <td style="font-size: small;">{{appoinment.time | date:'medium'}}</td>
                 <td style="font-size: small;">{{appoinment.status}}</td>
                 <td style="font-size: small;">{{appoinment.fee}}</td>
                 <td style="font-size: small;">{{appoinment.supermanFee}}</td>
                 <td style="font-size: small;">{{appoinment.adminFee}}</td>
-                <td><button type="button" data-toggle="modal" data-target="#completeAppoinment" class="btn btn-outline-success" (click)="selectForComplete(appoinment.id)">complete</button></td>
-                <td><button type="button" data-toggle="modal" data-target="#deleteAppoinment" class="btn btn-outline-danger" (click)="selectForDelete(appoinment.id)">cancel</button></td>
+                <td><button type="button" style="font-size: small;" data-toggle="modal" data-target="#completeAppoinment" class="btn btn-outline-success" (click)="selectForComplete(appoinment.id)">complete</button></td>
+                <td><button type="button" style="font-size: small;" data-toggle="modal" data-target="#deleteAppoinment" class="btn btn-outline-danger" (click)="selectForDelete(appoinment.id)">cancel</button></td>
               </tr>
             </tbody>
           </table>

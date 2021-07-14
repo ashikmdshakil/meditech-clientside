@@ -107,8 +107,8 @@ export class DoctorProfileComponent implements OnInit {
     console.log(this.user.speciality.speciality);
     //if(this.imageId !== null){
       //this.user.userAvatar.avatarId = this.imageId;
-    //}
-    this.userService.updateUser(this.user).subscribe(result =>{
+    //} 
+    this.userService.updateUser(this.user).subscribe(result =>{ 
         if(result == 'success'){
           this.name = this.user.name;
           this.mail = this.user.email;
@@ -130,7 +130,7 @@ export class DoctorProfileComponent implements OnInit {
       this.isChecked = true;
     }
     else{
-      this.isChecked = false;
+      this.isChecked = false; 
     }
   }
   uploadImage(event){
@@ -139,7 +139,7 @@ export class DoctorProfileComponent implements OnInit {
         this.userAvatar.image = file;
         this.userAvatar.user = this.user;
         this.userAvatarService.updateImage(this.userAvatar).subscribe(response =>{
-          console.log(response);
+          //console.log(response);
         });
         var fileReader = new FileReader();
         fileReader.readAsDataURL(file);

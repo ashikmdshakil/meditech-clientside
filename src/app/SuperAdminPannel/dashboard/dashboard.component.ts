@@ -25,6 +25,7 @@ export class DashboardComponent implements OnInit {
   meditecWallet: MeditecWallet = new MeditecWallet();
   emmergencyDocs: User[] = [];
   commisionMessage: string;
+  totalDiagnostics: number;
 
   constructor(superAdminService: SuperAdminService) {
     this.superAdminService = superAdminService;
@@ -37,7 +38,8 @@ export class DashboardComponent implements OnInit {
       this.totalSupermen = result.totalAgents;
       this.totalAppoinments = result.totalAppoinments;
       this.totalPaidAppoinments = result.totalPaidAppoinments;
-      this.totalUnpaidAppoinments = result.totalUnpaidAppoinments; 
+      this.totalUnpaidAppoinments = result.totalUnpaidAppoinments;
+      this.totalDiagnostics = result.totalDiagnostics; 
     })
 
     this.superAdminService.getCommision().subscribe(result =>{

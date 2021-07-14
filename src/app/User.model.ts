@@ -44,4 +44,9 @@ export class User{
     imageUrl: any;
     doctorRegistrationNumber: string;
     designation: string;
+    agentProfession: string;
+    agentDesignation: string;
+    agentCategory: string;
+    adminFeeForDiagnosticTest: number;
+    agentCommisionPerDiagnosticTest: number;
 } 

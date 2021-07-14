@@ -5,4 +5,6 @@ export class Commision{
     perAppoinment: number;
     adminPerFirstAppoinment: number;
     adminPerSecondAppoinment: number;
+    adminPerDiagnosticCenterTest: number;
+    agentPerDiagnosticCanterTest: number; 
 } 

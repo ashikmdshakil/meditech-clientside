@@ -84,6 +84,24 @@
             <button type="button" (click)="updateCategoryName()" class="btn btn-outline-success">Update Category</button>
         </div>
 
+
+        <div style="margin-top: 35px;">
+
+            <p style="color: gray;"><strong>Remove Category</strong></p>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Select Advertisement Category
+                </button>
+                <div class="dropdown-menu">
+                    <div *ngFor= "let category of advertisementCategories; let i = index">
+                        <a class="dropdown-item" (click) = "selectName(category.id)">{{category.categoryName}}</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
         <p style="color: chocolate; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: medium;">{{message}}</p>
     </div>
 

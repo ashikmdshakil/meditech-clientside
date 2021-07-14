@@ -51,6 +51,12 @@
                   <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px; color: whitesmoke;">Unpaid Appoinments</p>
                 </div>
               </div>
+              <div class="card bg-danger shadow p-3 mb-5 rounded">
+                <div class="card-body text-center">
+                  <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; color: whitesmoke;">{{totalDiagnostics}}</h1>
+                  <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px; color: whitesmoke;">Total Diag Centers</p>
+                </div>
+              </div>
           </div>
     </div>
     <div class="col-sm-1"></div>
@@ -119,19 +125,22 @@
 <div class="row" style="margin-top: 15px;">
   <div class="col-sm-2"></div>
   <div class="col-sm-4">
-    <div  class="row shadow p-3 mb-5 bg-white rounded" style="height: 480px; margin-top: 55px;">
+    <div  class="row shadow p-3 mb-5 bg-white rounded" style="height: 565px; margin-top: 55px;">
       <!-- <div class="form-group" style="margin-left: 15px;"> -->
-        <label for="exampleInputEmail1">Superman per patient</label>
+        <label for="exampleInputEmail1">Agent per patient</label>
         <input type="number" [(ngModel)] = "commision.perPatient" class="form-control"  aria-describedby="emailHelp" placeholder="0" required>
-        <label for="exampleInputEmail1">Superman per doctor</label>
+        <label for="exampleInputEmail1">Agent per doctor</label>
         <input type="number" [(ngModel)] = "commision.perDoctor" class="form-control"  aria-describedby="emailHelp" placeholder="0" required>
-        <label for="exampleInputEmail1">Superman per appoinment (%)</label>
+        <label for="exampleInputEmail1">Agent per appoinment (%)</label>
         <input type="number" [(ngModel)] = "commision.perAppoinment" class="form-control"  aria-describedby="emailHelp" placeholder="0">
         <label for="exampleInputEmail1">Admin per Doctor's 1st time fee</label>
         <input type="number" [(ngModel)] = "commision.adminPerFirstAppoinment" class="form-control"  aria-describedby="emailHelp" placeholder="0">
         <label for="exampleInputEmail1">Admin per Doctor's 2nd time fee</label>
         <input type="number" [(ngModel)] = "commision.adminPerSecondAppoinment" class="form-control"  aria-describedby="emailHelp" placeholder="0">
-
+        <label for="exampleInputEmail1">Admin per Diagnostic test booking(%)</label>
+        <input type="number" [(ngModel)] = "commision.adminPerDiagnosticCenterTest" class="form-control"  aria-describedby="emailHelp" placeholder="0">
+        <label for="exampleInputEmail1">Agent per Diagnostic test (%)</label>
+        <input type="number" [(ngModel)] = "commision.agentPerDiagnosticCanterTest" class="form-control"  aria-describedby="emailHelp" placeholder="0">
         <button type="button" (click)="saveCommision()" class="btn btn-outline-success" style="margin-left: 70px;">Save Commisions</button>
 
         <p style="color: chocolate;">{{commisionMessage}}</p>
@@ -161,6 +170,14 @@
       <li class="list-group-item d-flex justify-content-between align-items-center">
         Admin per Doctor's 2nd time fee
         <span class="badge badge-primary badge-pill">{{commision.adminPerSecondAppoinment}} Taka</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Admin per Diagnostic test booking(%)
+        <span class="badge badge-primary badge-pill">{{commision.adminPerDiagnosticCenterTest}} Taka</span>
+      </li>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        Agent per diagnostic test (%)
+        <span class="badge badge-primary badge-pill">{{commision.agentPerDiagnosticCanterTest}} %</span>
       </li>
     </ul>
   </div>

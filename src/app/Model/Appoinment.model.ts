@@ -15,5 +15,6 @@ export class Appoinment{
     reports: PrescriptionReport[] = [];
     prescription: Prescription;
     patientName: string;
+    patientMobileNumber: string;
     doctorName: string;
 }

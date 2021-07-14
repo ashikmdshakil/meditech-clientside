@@ -399,4 +399,22 @@ export class SuperAdminService {
     return this.http.post(ipAddress+'/makeAppoinmentComplete',formData,{headers: headers,'responseType': 'text'});
   }
 
+  removeDiagnosticCenter(id: string): Observable<any>{
+    let formData: FormData = new FormData();
+    formData.append('id', id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/removeDiagnosticCenter',formData,{headers: headers,'responseType': 'text'});
+  }
+
+  getDiagnosticBasicInfos(id: string){
+    let param = new HttpParams()
+    .set('id' , id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getDiagnosticBasicInfos',{headers: headers, params: param});
+  }
+
 }

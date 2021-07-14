@@ -117,6 +117,23 @@ saveCategory(){
   
 }
 
+
+saveCategoryToRemove(){
+  
+  this.superAdminService.saveAdvertisementCategory(this.advertisementCategory).subscribe(result =>{
+    if(result === "success"){
+      this.message = "Category created successfully.";
+    }
+    else{
+      this.message = "Sorry, Something went wrong !";
+    }
+  },
+  error =>{
+    this.message = "Sorry, Something went wrong !";
+  })
+  
+}
+
   selectAdvertiseCategory(id: number){
     this.advertisementCategories.forEach(category => {
       if(category.id === id){

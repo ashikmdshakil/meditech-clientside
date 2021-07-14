@@ -2,15 +2,32 @@
     <div class="col-sm-4">
     </div>
     <div class="col-sm-4">
-        <img *ngIf="isImage" [src] = "user.userAvatar.image" style=" width: 250px;
-        height: 250px; border-radius: 50%; position: relative; margin-top: 20px;" alt="Avatar" class="img-fluid" id = "profilePicture">  
-        <img *ngIf="!isImage" src = "../../../assets/blank_image.png" style=" width: 280px;
-        height: 250px; border-radius: 50%; position: relative; margin-top: 20px;" alt="Avatar" class="img-fluid" id = "profilePicture">
+        <div style="position: relative; left: 65px;">
+            <img *ngIf="isImage" [src] = "imageUrl" style=" width: 250px;
+                height: 250px; border-radius: 50%; position: relative; margin-top: 20px;" alt="Avatar" class="img-fluid" id = "profilePicture">  
+            <img *ngIf="!isImage" src = "../../../assets/blank_image.png" style=" width: 280px;
+                height: 250px; border-radius: 50%; position: relative; margin-top: 20px;" alt="Avatar" class="img-fluid" id = "profilePicture">
+        </div>
     </div>
     <div class="col-sm-4">
     </div>
   </div>
-
+  <div class="row">
+      <div class="col-sm-4"></div>
+      <div class="col-sm-5">
+        <form class="md-form" style="position: relative; left: 65px;">
+            <div class="file-field">
+              <div class="btn btn-primary btn-sm float-left">
+                <span>Upload Image</span>
+                <form enctype="multipart/form-data">
+                <input type="file" (change) = 'uploadImage($event)'>
+                </form>
+              </div>
+            </div>
+          </form>
+      </div>
+      <div class="col-sm-3"></div>
+  </div>
   <div *ngIf="isDoctor" class="row" style="margin-top: 25px;">
     <div class="col-sm-2"></div>
     <div class="col-sm-8">
@@ -92,6 +109,45 @@
     <div class="col-sm-2"></div>
   </div>
 
+  <div *ngIf="isDiagnostic" class="row" style="margin-top: 25px;">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8">
+        <div class="card-columns">
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+              <div class="card-body text-center" >
+                <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; ">{{diagnosticTodaysBooking}}</h1>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Today's Bookings</p>
+              </div>
+            </div>
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+              <div class="card-body text-center">
+                <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{diagnosticTotalBooking}}</h1>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Total Bookings</p>
+              </div>
+            </div>
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+              <div class="card-body text-center">
+                <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{diagnosticCOmpleteTest}}</h1>
+                <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Complete Tests</p>
+              </div>
+            </div>
+            <div class="card bg-light shadow p-3 mb-5 rounded">
+                <div class="card-body text-center">
+                  <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{diagnosticTotalIncome}} Taka</h1>
+                  <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Total Income</p>
+                </div>
+              </div> 
+              <div class="card bg-light shadow p-3 mb-5 rounded">
+                <div class="card-body text-center">
+                  <h1 class="card-text" style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;">{{diagnosticTotalBalance}} Taka</h1>
+                  <p style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: larger; font-size: 18px;">Total Balance</p>
+                </div>
+              </div>     
+        </div>
+    </div>
+    <div class="col-sm-2"></div>
+  </div>
+
 
 <div class="row">
     <div class="col-sm-2"></div>
@@ -121,7 +177,19 @@
             <label for="formGroupExampleInput2">BMDC Number</label>
             <input type="text" name="number" class="form-control" id="number" [(ngModel)] = 'user.doctorRegistrationNumber'>
         </div>
-        <div class="row">
+        <div *ngIf="isSuperman" class="form-group">
+            <label for="formGroupExampleInput2">Agent Profession</label>
+            <input type="text" name="profession" class="form-control" [(ngModel)] = 'user.agentProfession'>
+        </div>
+        <div *ngIf="isSuperman" class="form-group">
+            <label for="formGroupExampleInput2">Agent Designation</label>
+            <input type="text" name="agentDesignation" class="form-control" [(ngModel)] = 'user.agentDesignation'>
+        </div>
+        <div *ngIf="isSuperman" class="form-group">
+            <label for="formGroupExampleInput2">Agent Category</label>
+            <input type="text" name="agentCategory" class="form-control" [(ngModel)] = 'user.agentCategory'>
+        </div>
+        <div class="row" *ngIf="!isDiagnostic">
             <div class="col-sm-2"></div>
             <div class="col-sm-2">
                 <div class="form-group">
@@ -149,7 +217,7 @@
             </div>
             <div class="col-sm-2"></div>
         </div> 
-        <div class="row">
+        <div class="row" *ngIf="!isDiagnostic">
             <div class="col-sm-6">
                 <div class="form-group">
                     <label for="formGroupExampleInput">Agent Name</label>
@@ -183,6 +251,19 @@
                     <label for="formGroupExampleInput">Second time fee</label>
                     <input type="text" name="fee" class="form-control" [(ngModel)] = 'user.doctorSecondTimeFee' id="doctor_second_time_fee" >
                 </div>
+            </div>
+        </div>
+
+        <div *ngIf="isDiagnostic" class="row" style="margin-bottom: 25px;">
+            <div class="col-sm-4">
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Cicil Fee(%)</label>
+                    <input type="text" name="fee" class="form-control" [(ngModel)] = 'user.adminFeeForDiagnosticTest' id="cicil_fee" >
+                </div>
+            </div>
+            <div class="col-sm-4">
             </div>
         </div>
 
@@ -270,14 +351,20 @@
             <div class="col-sm-4"></div>
         </div>
         <div *ngIf="isSuperman" class="row">
-            <div class="col-sm-4"></div>
+            <div class="col-sm-2"></div>
             <div class="col-sm-4">
                 <div class="form-group">
                     <label for="formGroupExampleInput">Agent commision per appoinment(%)</label>
                     <input type="text" name="perAppoinment" class="form-control" [(ngModel)] = 'user.agentCommisionPerAppoinment' id="commision" >
                 </div>
             </div>
-            <div class="col-sm-4"></div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Agent commision per Diag test(%)</label>
+                    <input type="text" name="perAppoinment" class="form-control" [(ngModel)] = 'user.agentCommisionPerDiagnosticTest' id="commision" >
+                </div>
+            </div>
+            <div class="col-sm-2"></div>
         </div>
         
 

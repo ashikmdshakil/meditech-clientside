@@ -7,7 +7,9 @@ import { CategoryService } from './../../Services/category.service';
 import { User } from './../../User.model';
 import { UsersService } from './../../Services/users.service';
 import { Component, OnInit } from '@angular/core';
-
+import { UserAvatar } from 'src/app/UserAvatar.model';
+import { UserAvatarService } from 'src/app/Services/user-avatar.service';
+ 
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
@@ -18,11 +20,13 @@ export class UserDetailsComponent implements OnInit {
   userSevice: UsersService;
   categoryService: CategoryService;
   superAdminService: SuperAdminService;
+  userAvatarService: UserAvatarService;
   domSanitizer: DomSanitizer;
   router: Router;
   aRoute: ActivatedRoute;
   user: User = new User();
   superman: User = new User();
+  userAvatar: UserAvatar = new UserAvatar();
   addressBook: AddressBook = new AddressBook();
   categories: Categories[] = [];
   currentCategories: Categories[] = [];
@@ -31,14 +35,23 @@ export class UserDetailsComponent implements OnInit {
   isDoctor: boolean = false;
   isUser: boolean = false;
   isSuperman: boolean = false;
+  isDiagnostic: boolean = false;
+  imageUrl: any;
+  diagnosticTotalIncome: any;
+  diagnosticCOmpleteTest: any;
+  diagnosticTodaysBooking: any;
+  diagnosticTotalBooking: any;
+  diagnosticTotalBalance: any;
 
-  constructor(userService: UsersService, categoryService: CategoryService, domSanitizer: DomSanitizer, router: Router, superAdminService: SuperAdminService, aRoute: ActivatedRoute) {
+
+  constructor(userAvatarService: UserAvatarService, userService: UsersService, categoryService: CategoryService, domSanitizer: DomSanitizer, router: Router, superAdminService: SuperAdminService, aRoute: ActivatedRoute) {
     this.userSevice = userService;
     this.categoryService = categoryService;
     this.domSanitizer = domSanitizer;
     this.router = router;
     this.superAdminService = superAdminService;
     this.aRoute = aRoute;
+    this.userAvatarService = userAvatarService;
    }
 
   ngOnInit(): void {
@@ -66,6 +79,10 @@ export class UserDetailsComponent implements OnInit {
         this.isSuperman = true;
         this.getSupermanBasicInfo();
       }
+      else if(this.user.roles.name==='diagnostic'){
+        this.isDiagnostic = true;
+        this.getDIagnosticBasicInfo();
+      }  
 
       if(this.user.addressBooks !== null){
         this.addressBook = this.user.addressBooks;
@@ -74,14 +91,23 @@ export class UserDetailsComponent implements OnInit {
         this.currentCategories = this.user.categories;
       } 
       if(this.user.userAvatar !== null){
-        this.user.userAvatar.image = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+this.user.userAvatar.image);
+        this.imageUrl = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+this.user.userAvatar.image);
         this.isImage = true;
       } 
     })
     this.categoryService.getCategories().subscribe(result =>{
-      console.log(result);
       this.categories = result;
       })   
+  }
+
+  getDIagnosticBasicInfo(){
+    this.superAdminService.getDiagnosticBasicInfos(this.number.toString()).subscribe(result => {
+      this.diagnosticCOmpleteTest = result['completeTest'];
+      this.diagnosticTotalIncome = result['totalIncome'];
+      this.diagnosticTotalBalance = result['totalBalance'];
+      this.diagnosticTotalBooking = result['totalBooking'];
+      this.diagnosticTodaysBooking = result['todaysBooking'];
+    })
   }
 
   getDoctorBasicInfos(){
@@ -143,5 +169,20 @@ export class UserDetailsComponent implements OnInit {
   close(){
     window.close();
   }
+
+  uploadImage(event){
+    if(event.target.files[0]){
+      let file: File = event.target.files[0];
+      this.userAvatar.image = file;
+      this.userAvatar.user = this.user;
+      this.userAvatarService.updateImage(this.userAvatar).subscribe(response =>{
+          var fileReader = new FileReader();
+          fileReader.readAsDataURL(file);
+          fileReader.onload = (event)=>{
+          this.imageUrl = fileReader.result;
+        } 
+      });
+}
+}
 
 }

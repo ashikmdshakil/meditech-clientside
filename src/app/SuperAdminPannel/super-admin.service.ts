@@ -10,6 +10,8 @@ import { Categories } from '../Model/Categories.model';
 import { AdvertisementCategory } from '../Model/AdvertisementCategory.model';
 import { Blog } from '../Model/Blog.model';
 import { BlogCategory } from '../Model/BlogCategory.model';
+import { ManipulatedDoctors } from "../Model/ManipulatedDoctors.model";
+
 const ipAddress = environment.ip;
 @Injectable({
   providedIn: 'root'
@@ -416,5 +418,27 @@ export class SuperAdminService {
   });
     return this.http.get(ipAddress+'/getDiagnosticBasicInfos',{headers: headers, params: param});
   }
+
+  getManipulatedDoctors(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getManipulatedDoctors',{headers: headers});
+  }
+
+  manipulateDoctor(doctor: User): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/manipulateTopDoctors',doctor,{headers: headers});
+  }
+
+  removeManipulateDoctor(manipulatedDoctors: ManipulatedDoctors): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/removeManipulatedTopDoctors',manipulatedDoctors,{headers: headers,'responseType': 'text'});
+  }
+
 
 }

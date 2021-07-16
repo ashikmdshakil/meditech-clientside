@@ -183,3 +183,120 @@
   </div>
   <div class="col-sm-2"></div>
 </div>
+
+<!--4th line cards-->
+
+<div class="row" style="margin-bottom: 25px;">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-7">
+      <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: xx-large; font-weight: bold;">Manipulate Top Doctors</h1>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+
+<div class="row" style="margin-top: 50px;">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-6">
+      <div style="overflow-y: scroll; height: 480px;">
+        <table class="table table-striped table-dark" >
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Phone Number</th>
+            </tr>
+          </thead>
+          <tbody *ngFor= "let mani of manipulatedDoctors; let i = index">
+            <tr>
+              <th scope="row">{{i+1}}</th>
+              <td>{{mani.doctor.name}}</td>
+              <td>{{mani.doctor.mobileNumber}}</td>
+              <td>
+                <button type="button" (click)="clearManipulatedDoctor(mani.id)" class="btn btn-link">remove</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        </div>
+    </div>
+    <div class="col-sm-4">
+      <div class="row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+          <p><strong>Select Doctor to add on list</strong></p>
+          <div class="btn-group" style="margin-bottom: 25px;">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Make top doctor
+            </button>
+            <div class="dropdown-menu">
+              <div *ngFor= "let doctor of doctors; let i = index">
+                 <a class="dropdown-item" (click)="selectDoctor(doctor.userId, doctor.name)" href="javascript:void(0)">{{doctor.name}}</a>
+              </div>
+            </div>
+        </div>
+        <p style="color: gray;">{{seletedDoctor.name}}</p>
+        <button type="button" (click)="saveManipulatedDoctor()" class="btn btn-success">Manipulate</button>
+    </div>
+    <div class="col-sm-2"></div>
+</div>
+</div>
+</div>
+
+
+<!--5th line cards-->
+
+<div class="row" style="margin-bottom: 25px;">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-7">
+      <h1 style="font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: xx-large; font-weight: bold;">Manipulate Home Page Doctors</h1>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+
+<div class="row" style="margin-top: 50px;">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-6">
+    <div style="overflow-y: scroll; height: 280px;">
+      <table class="table table-striped table-dark" >
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Phone Number</th>
+          </tr>
+        </thead>
+        <tbody *ngFor= "let mani of manipulatedDoctors; let i = index">
+          <tr>
+            <th scope="row">{{i+1}}</th>
+            <td>{{mani.doctor.name}}</td>
+            <td>{{mani.doctor.mobileNumber}}</td>
+            <td>
+              <button type="button" (click)="clearManipulatedDoctor(mani.id)" class="btn btn-link">remove</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+        <p><strong>Select Doctor to add on list</strong></p>
+        <div class="btn-group" style="margin-bottom: 25px;">
+          <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Make top doctor
+          </button>
+          <div class="dropdown-menu">
+            <div *ngFor= "let doctor of doctors; let i = index">
+               <a class="dropdown-item" (click)="selectDoctor(doctor.userId, doctor.name)" href="javascript:void(0)">{{doctor.name}}</a>
+            </div>
+          </div>
+      </div>
+      <p style="color: gray;">{{seletedDoctor.name}}</p>
+      <button type="button" (click)="saveManipulatedDoctor()" class="btn btn-success">Manipulate</button>
+  </div>
+  <div class="col-sm-2"></div>
+</div>
+</div>
+</div>

@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/User.model';
 import { SuperAdminService } from '../super-admin.service';
 import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
+import { ManipulatedDoctors } from 'src/app/Model/ManipulatedDoctors.model';
+import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -26,9 +28,14 @@ export class DashboardComponent implements OnInit {
   emmergencyDocs: User[] = [];
   commisionMessage: string;
   totalDiagnostics: number;
+  doctors: User[] = [];
+  seletedDoctor: User = new User();
+  userService: UsersService;
+  manipulatedDoctors: ManipulatedDoctors[] = [];
 
-  constructor(superAdminService: SuperAdminService) {
+  constructor(superAdminService: SuperAdminService, userService: UsersService) {
     this.superAdminService = superAdminService;
+    this.userService = userService;
    }
 
   ngOnInit(): void {
@@ -54,6 +61,18 @@ export class DashboardComponent implements OnInit {
       this.emmergencyDocs = result;
     })
 
+    this.superAdminService.getManipulatedDoctors().subscribe(result =>{
+      this.manipulatedDoctors = result;
+    })
+
+    this.userService.getDoctorList().subscribe(result =>{
+      result.forEach(element => {
+        let doctor: User = new User();
+        doctor.userId = element[0];
+        doctor.name = element[1];
+        this.doctors.push(doctor);
+      });
+    })
 
   }
 
@@ -86,6 +105,29 @@ export class DashboardComponent implements OnInit {
     error =>{
       this.commisionMessage = "Sorry ! something went wrong !";
     }
+  }
+
+  saveManipulatedDoctor(){
+      this.superAdminService.manipulateDoctor(this.seletedDoctor).subscribe(result =>{
+        this.manipulatedDoctors.push(result);
+        this.seletedDoctor.userId = 0;
+        this.seletedDoctor.name = '';
+      })
+  }
+
+  selectDoctor(id: number, name: string){
+    this.seletedDoctor.userId = id;
+    this.seletedDoctor.name = name;
+  }
+
+  clearManipulatedDoctor(id: number){
+    var manipulatedDoctors: ManipulatedDoctors = new ManipulatedDoctors();
+    manipulatedDoctors.id = id;
+    this.superAdminService.removeManipulateDoctor(manipulatedDoctors).subscribe(result =>{
+      this.superAdminService.getManipulatedDoctors().subscribe(result =>{
+        this.manipulatedDoctors = result;
+      })
+    })
   }
 
 }

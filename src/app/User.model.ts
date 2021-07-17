@@ -38,7 +38,7 @@ export class User{
     agentCommisionPerAppoinment: number;
     todaysAppoinments: number = null;
     completeAppoinments: number = null;
-    totalIncome: number = null;
+    totalIncome: number;
     countUsers: number = null;
     countDoctors: number = null;
     imageUrl: any;
@@ -49,4 +49,8 @@ export class User{
     agentCategory: string;
     adminFeeForDiagnosticTest: number;
     agentCommisionPerDiagnosticTest: number;
+    doctorCurrentBalance: number;
+    doctorTotalWithdraw: number;
+    currentBalance: number;
+    diagnosticTotalWithdrow: number; 
 } 

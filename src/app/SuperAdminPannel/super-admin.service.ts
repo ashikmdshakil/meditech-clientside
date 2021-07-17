@@ -3,6 +3,7 @@ import { Commision } from './../Model/Commision.model';
 import { Advertisement } from './../Model/Advertisement.model';
 import { Appoinment } from './../Model/Appoinment.model';
 import { User } from './../User.model';
+import { RecommendedDiagnostics } from './../Model/RecommendedDiagnostics.model'
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -12,6 +13,7 @@ import { Blog } from '../Model/Blog.model';
 import { BlogCategory } from '../Model/BlogCategory.model';
 import { ManipulatedDoctors } from "../Model/ManipulatedDoctors.model";
 import { ManipulatedDiagnostic } from '../Model/ManipulatedDiagnostic.model';
+import { WithdrawRequest } from '../Model/WithdrawRequest.model';
 
 const ipAddress = environment.ip;
 @Injectable({
@@ -475,6 +477,12 @@ export class SuperAdminService {
   });
     return this.http.post(ipAddress+'/manipulateTopDiagnostics',diagnostic,{headers: headers});
   }
+  manipulateRecommendedDiagnostic(diagnostic: User): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/manipulateRecommendedDiagnostics',diagnostic,{headers: headers});
+  }
 
   removeDiagnostic(manipulatedDiagnostics: ManipulatedDiagnostic): Observable<any>{
     const headers = new HttpHeaders({
@@ -483,11 +491,55 @@ export class SuperAdminService {
     return this.http.post(ipAddress+'/removeManipulatedTopDiagnostics',manipulatedDiagnostics,{headers: headers,'responseType': 'text'});
   }
 
+  removeRecommendedDiagnostic(recommendedDiagnostics: RecommendedDiagnostics): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/removeRecommendedDiagnostic',recommendedDiagnostics,{headers: headers,'responseType': 'text'});
+  }
+
   getDIagnostics(): Observable<any>{
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
     return this.http.get(ipAddress+'/getAllDiagnostics',{headers: headers});
+  }
+
+  getRecommendedDIagnostics(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getRecommendedDiagnostics',{headers: headers});
+  }
+
+  getDoctorWithdrawRequest(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getDoctorWithdrawRequests',{headers: headers});
+  }
+
+  getDiagnosticWithdrawRequest(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getDiagnosticWithdrawRequests',{headers: headers});
+  }
+
+  completeRequest(id: string): Observable<any>{
+    let formData: FormData = new FormData();
+    formData.append('id', id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/completeRequest',formData,{headers: headers,'responseType': 'text'});
+  }
+
+  cancelRequest(request: WithdrawRequest): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/cancelWithdrawRequest',request,{headers: headers,'responseType': 'text'});
   }
 
 

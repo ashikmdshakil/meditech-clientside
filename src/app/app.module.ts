@@ -59,6 +59,7 @@ import { UserDetailsComponent } from './SuperAdminPannel/user-details/user-detai
 import { AgentUsersComponent } from './SuperAdminPannel/agent-users/agent-users.component';
 import { BlogComponent } from './SuperAdminPannel/blog/blog.component';
 import { DiagnosticsComponent } from './SuperAdminPannel/diagnostics/diagnostics.component';
+import { WithdrawRequestComponent } from './SuperAdminPannel/withdraw-request/withdraw-request.component';
 
 
 @NgModule({
@@ -113,7 +114,8 @@ import { DiagnosticsComponent } from './SuperAdminPannel/diagnostics/diagnostics
     UserDetailsComponent,
     AgentUsersComponent,
     BlogComponent,
-    DiagnosticsComponent
+    DiagnosticsComponent,
+    WithdrawRequestComponent
   ],
   imports: [
     BrowserModule,

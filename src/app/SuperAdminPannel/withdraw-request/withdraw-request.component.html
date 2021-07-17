@@ -1,0 +1,143 @@
+<div class="row">
+    <div class="col-sm-3">
+        <div class="btn-group">
+            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Withdraw Requests of
+            </button>
+            <div class="dropdown-menu">
+              <a class="dropdown-item" (click)="showDoctorsRequest()" href="javascript:void(0)">Doctors</a>
+              <a class="dropdown-item" (click)="showDiagnosticsRequests()" href="javascript:void(0)">Diagnostics</a>
+            </div>
+          </div>
+    </div>
+    <div class="col-sm-9"></div>
+</div>
+<div *ngIf="isDoctor" class="row" style="margin-top: 20px;">
+    <!--<div class="col-sm-1"></div>-->
+    <div class="col-sm-12">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Total Balance</th>
+                <th scope="col">Total Withdraw</th>
+                <th scope="col">Requested Date</th>
+                <th scope="col">Requested Amount</th>
+                <th scope="col">Transaction Media</th>
+                <th scope="col">Transaction Number</th>
+              </tr>
+            </thead>
+            <tbody *ngFor= "let request of doctorWithdrawRequests; let i = index">
+              <tr>
+                <th scope="row" style="font-size: small;"></th>
+                <td style="font-size: small;">{{request.user.name}}</td>
+                <td style="font-size: small;">{{request.user.doctorCurrentBalance}}</td>
+                <td style="font-size: small;">{{request.user.doctorTotalWithdraw}}</td>
+                <td style="font-size: small;">{{request.requestedDate | date:'medium'}}</td>
+                <td style="font-size: small;">{{request.amount}}</td>
+                <td style="font-size: small;">{{request.transactionMethod}}</td>
+                <td style="font-size: small;">{{request.transactionNumber}}</td>
+                <td><button type="button" (click)="selectRequest(request.id, request.user.userId, request.user.name)" style="font-size: small;" data-toggle="modal" data-target="#completePayment" class="btn btn-outline-success">complete</button></td>
+                <td><button type="button" (click)="selectRequest(request.id,request.user.userId,request.user.name)" style="font-size: small;" data-toggle="modal" data-target="#deleteAppoinment" class="btn btn-outline-danger">cancel</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+
+<div *ngIf="isDiagnostic" class="row" style="margin-top: 20px;">
+    <!--<div class="col-sm-1"></div>-->
+    <div class="col-sm-12">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Total Balance</th>
+                <th scope="col">Total Withdraw</th>
+                <th scope="col">Requested Date</th>
+                <th scope="col">Requested Amount</th>
+                <th scope="col">Transaction Media</th>
+                <th scope="col">Transaction Number</th>
+              </tr>
+            </thead>
+            <tbody *ngFor= "let request of diagnosticWithdrawRequests; let i = index">
+              <tr>
+                <th scope="row" style="font-size: small;"></th>
+                <td style="font-size: small;">{{request.user.name}}</td>
+                <td style="font-size: small;">{{request.user.currentBalance}}</td>
+                <td style="font-size: small;">{{request.user.diagnosticTotalWithdrow}}</td>
+                <td style="font-size: small;">{{request.requestedDate | date:'medium'}}</td>
+                <td style="font-size: small;">{{request.amount}}</td>
+                <td style="font-size: small;">{{request.transactionMethod}}</td>
+                <td style="font-size: small;">{{request.transactionNumber}}</td>
+                <td><button type="button" (click)="selectRequest(request.id,request.user.userId,request.user.name)" style="font-size: small;" data-toggle="modal" data-target="#completePayment" class="btn btn-outline-success">complete</button></td>
+                <td><button type="button" (click)="selectRequest(request.id,request.user.userId,request.user.name)" style="font-size: small;" data-toggle="modal" data-target="#deleteAppoinment" class="btn btn-outline-danger">cancel</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>
+
+   <!--  Complete Modal -->
+   <div class="modal fade" id="completePayment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Complete request</h5>
+          <button type="button" (click)="close()" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-sm-2">
+            </div>
+            <div class="col-sm-8">
+                <p><strong>Are you sure you want to complete {{selectedRequest.user.name}}'s request?</strong></p>
+                <p style="color: chocolate;">{{message}}</p>
+                
+            </div>
+            <div class="col-sm-2">
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
+          <button type="button" (click)="complete()" class="btn btn-primary">Complete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+     <!--Delete Modal -->
+     <div class="modal fade" id="deleteAppoinment" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Cancel request</h5>
+              <button type="button" (click)="close()" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-8">
+                    <p><strong>Are you sure you want to cancel {{selectedRequest.user.name}}'s request?</strong></p>
+                    <p style="color: chocolate;">{{message}}</p>
+                    
+                </div>
+                <div class="col-sm-2">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
+              <button type="button" (click)="cancel()" class="btn btn-primary">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>

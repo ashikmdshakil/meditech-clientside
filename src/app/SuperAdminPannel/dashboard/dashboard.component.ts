@@ -2,6 +2,7 @@ import { MeditecWallet } from './../../Model/MeditecWallet.model';
 import { Commision } from './../../Model/Commision.model';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/User.model';
+import { RecommendedDiagnostics } from 'src/app/Model/RecommendedDiagnostics.model';
 import { SuperAdminService } from '../super-admin.service';
 import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 import { ManipulatedDoctors } from 'src/app/Model/ManipulatedDoctors.model';
@@ -36,7 +37,9 @@ export class DashboardComponent implements OnInit {
   manipulatedDoctors: ManipulatedDoctors[] = [];
   manipulatedHomePageDoctors: ManipulatedDoctors[] = [];
   manipulatedDiagnostics: ManipulatedDiagnostic[] = [];
+  recoDiagnostics: RecommendedDiagnostics[] = [];
   selectedDiagnostic: User = new User();  
+  selectedRecoDiagnostic: User = new User(); 
   diagnostics: User[] = [];
 
   constructor(superAdminService: SuperAdminService, userService: UsersService) {
@@ -86,6 +89,10 @@ export class DashboardComponent implements OnInit {
 
     this.superAdminService.getManipulatedDIagnostics().subscribe(result =>{
       this.manipulatedDiagnostics = result;
+    })
+
+    this.superAdminService.getRecommendedDIagnostics().subscribe(result =>{
+      this.recoDiagnostics = result;
     })
 
     this.getAllDiagnostics();
@@ -145,6 +152,14 @@ saveManipulatedDiagnostic(){
   })
 }
 
+saveRecoDiagnostic(){
+  this.superAdminService.manipulateRecommendedDiagnostic(this.selectedRecoDiagnostic).subscribe(result =>{
+    this.recoDiagnostics.push(result);
+    this.selectedRecoDiagnostic.userId = 0;
+    this.selectedRecoDiagnostic.name = '';
+  })
+}
+
   selectDoctor(id: number, name: string){
     this.seletedDoctor.userId = id;
     this.seletedDoctor.name = name;
@@ -158,6 +173,11 @@ saveManipulatedDiagnostic(){
   selectDiagnostic(id: number, name: string){
     this.selectedDiagnostic.userId = id;
     this.selectedDiagnostic.name = name;
+  }
+
+  selectRecoDiagnostic(id: number, name: string){
+    this.selectedRecoDiagnostic.userId = id;
+    this.selectedRecoDiagnostic.name = name;
   }
 
   clearManipulatedDoctor(id: number){
@@ -176,6 +196,16 @@ saveManipulatedDiagnostic(){
     this.superAdminService.removeDiagnostic(manipulatedDiagnostics).subscribe(result =>{
       this.superAdminService.getManipulatedDIagnostics().subscribe(result =>{
         this.manipulatedDiagnostics = result;
+      })
+    })
+  }
+
+  clearRecoDiagnostics(id: number){
+    var recoDiagnostics: RecommendedDiagnostics = new RecommendedDiagnostics();
+    recoDiagnostics.id = id;
+    this.superAdminService.removeRecommendedDiagnostic(recoDiagnostics).subscribe(result =>{
+      this.superAdminService.getRecommendedDIagnostics().subscribe(result =>{
+        this.recoDiagnostics = result;
       })
     })
   }

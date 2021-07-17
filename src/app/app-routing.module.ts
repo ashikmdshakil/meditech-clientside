@@ -50,6 +50,7 @@ import { RegisterComponent } from './SuperAdminPannel/register/register.componen
 import { AppoinmentsComponent } from './SuperAdminPannel/appoinments/appoinments.component';
 import { BlogComponent } from './SuperAdminPannel/blog/blog.component';
 import { DiagnosticsComponent } from './SuperAdminPannel/diagnostics/diagnostics.component';
+import { WithdrawRequestComponent } from './SuperAdminPannel/withdraw-request/withdraw-request.component';
 
 const routes: Routes = [
   {path: "", redirectTo : "Dacicil", pathMatch: 'full'},
@@ -191,6 +192,7 @@ const routes: Routes = [
     {path: "agent-users/:number", component : AgentUsersComponent, outlet: 'pannel'},
     {path: "blogs", component : BlogComponent, outlet: 'pannel'},
     {path: "diagnostics", component : DiagnosticsComponent, outlet: 'pannel'},
+    {path: "withdraw-request", component : WithdrawRequestComponent, outlet: 'pannel'},
     {path: "blank", component : BlankComponent, outlet: 'pannel'},
   ]
 },

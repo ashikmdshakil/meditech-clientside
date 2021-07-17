@@ -56,5 +56,8 @@ export class SuperAdminDashboardComponent implements OnInit {
   diagnostics(){
     this.router.navigateByUrl('/super-admin-pannel/(pannel:diagnostics)');
   }
+  withdraw(){
+    this.router.navigateByUrl('/super-admin-pannel/(pannel:withdraw-request)');
+  }
  
 } 

@@ -11,6 +11,7 @@ import { AdvertisementCategory } from '../Model/AdvertisementCategory.model';
 import { Blog } from '../Model/Blog.model';
 import { BlogCategory } from '../Model/BlogCategory.model';
 import { ManipulatedDoctors } from "../Model/ManipulatedDoctors.model";
+import { ManipulatedDiagnostic } from '../Model/ManipulatedDiagnostic.model';
 
 const ipAddress = environment.ip;
 @Injectable({
@@ -433,11 +434,60 @@ export class SuperAdminService {
     return this.http.post(ipAddress+'/manipulateTopDoctors',doctor,{headers: headers});
   }
 
+  manipulateHomePageDoctor(doctor: User): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/manipulateHomePageDoctors',doctor,{headers: headers});
+  }
+
   removeManipulateDoctor(manipulatedDoctors: ManipulatedDoctors): Observable<any>{
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
     return this.http.post(ipAddress+'/removeManipulatedTopDoctors',manipulatedDoctors,{headers: headers,'responseType': 'text'});
+  }
+
+  removeManipulateHomePageDoctor(manipulatedDoctors: ManipulatedDoctors): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/removeHomePageDoctors',manipulatedDoctors,{headers: headers,'responseType': 'text'});
+  }
+
+  getManipulatedHomePageDoctors(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getHomePageDoctors',{headers: headers});
+  }
+
+  getManipulatedDIagnostics(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getManipulatedDiagnostics',{headers: headers});
+  }
+
+  manipulateDiagnostic(diagnostic: User): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/manipulateTopDiagnostics',diagnostic,{headers: headers});
+  }
+
+  removeDiagnostic(manipulatedDiagnostics: ManipulatedDiagnostic): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.post(ipAddress+'/removeManipulatedTopDiagnostics',manipulatedDiagnostics,{headers: headers,'responseType': 'text'});
+  }
+
+  getDIagnostics(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getAllDiagnostics',{headers: headers});
   }
 
 

@@ -5,6 +5,7 @@ import { User } from 'src/app/User.model';
 import { SuperAdminService } from '../super-admin.service';
 import { collapseTextChangeRangesAcrossMultipleVersions } from 'typescript';
 import { ManipulatedDoctors } from 'src/app/Model/ManipulatedDoctors.model';
+import { ManipulatedDiagnostic } from 'src/app/Model/ManipulatedDiagnostic.model';
 import { UsersService } from 'src/app/Services/users.service';
 
 @Component({
@@ -30,8 +31,13 @@ export class DashboardComponent implements OnInit {
   totalDiagnostics: number;
   doctors: User[] = [];
   seletedDoctor: User = new User();
+  seletedHomePageDoctor: User = new User();
   userService: UsersService;
   manipulatedDoctors: ManipulatedDoctors[] = [];
+  manipulatedHomePageDoctors: ManipulatedDoctors[] = [];
+  manipulatedDiagnostics: ManipulatedDiagnostic[] = [];
+  selectedDiagnostic: User = new User();  
+  diagnostics: User[] = [];
 
   constructor(superAdminService: SuperAdminService, userService: UsersService) {
     this.superAdminService = superAdminService;
@@ -74,6 +80,16 @@ export class DashboardComponent implements OnInit {
       });
     })
 
+    this.superAdminService.getManipulatedHomePageDoctors().subscribe(result =>{
+      this.manipulatedHomePageDoctors = result;
+    })
+
+    this.superAdminService.getManipulatedDIagnostics().subscribe(result =>{
+      this.manipulatedDiagnostics = result;
+    })
+
+    this.getAllDiagnostics();
+
   }
 
   saveDoc(){
@@ -114,10 +130,34 @@ export class DashboardComponent implements OnInit {
         this.seletedDoctor.name = '';
       })
   }
+  saveManipulatedHomePageDoctor(){
+    this.superAdminService.manipulateHomePageDoctor(this.seletedHomePageDoctor).subscribe(result =>{
+      this.manipulatedHomePageDoctors.push(result);
+      this.seletedHomePageDoctor.userId = 0;
+      this.seletedHomePageDoctor.name = '';
+    })
+}
+saveManipulatedDiagnostic(){
+  this.superAdminService.manipulateDiagnostic(this.selectedDiagnostic).subscribe(result =>{
+    this.manipulatedDiagnostics.push(result);
+    this.selectedDiagnostic.userId = 0;
+    this.selectedDiagnostic.name = '';
+  })
+}
 
   selectDoctor(id: number, name: string){
     this.seletedDoctor.userId = id;
     this.seletedDoctor.name = name;
+  }
+
+  selectDoctorForHomePage(id: number, name: string){
+    this.seletedHomePageDoctor.userId = id;
+    this.seletedHomePageDoctor.name = name;
+  }
+
+  selectDiagnostic(id: number, name: string){
+    this.selectedDiagnostic.userId = id;
+    this.selectedDiagnostic.name = name;
   }
 
   clearManipulatedDoctor(id: number){
@@ -127,6 +167,38 @@ export class DashboardComponent implements OnInit {
       this.superAdminService.getManipulatedDoctors().subscribe(result =>{
         this.manipulatedDoctors = result;
       })
+    })
+  }
+  
+  clearManipulatedDiagnostics(id: number){
+    var manipulatedDiagnostics: ManipulatedDiagnostic = new ManipulatedDiagnostic();
+    manipulatedDiagnostics.id = id;
+    this.superAdminService.removeDiagnostic(manipulatedDiagnostics).subscribe(result =>{
+      this.superAdminService.getManipulatedDIagnostics().subscribe(result =>{
+        this.manipulatedDiagnostics = result;
+      })
+    })
+  }
+
+  clearManipulatedHomePageDoctor(id: number){
+    var manipulatedHomePageDoctors: ManipulatedDoctors = new ManipulatedDoctors();
+    manipulatedHomePageDoctors.id = id;
+    this.superAdminService.removeManipulateHomePageDoctor(manipulatedHomePageDoctors).subscribe(result =>{
+      console.log(result);
+      this.superAdminService.getManipulatedHomePageDoctors().subscribe(result =>{
+        this.manipulatedHomePageDoctors = result;
+      })
+    })
+  }
+
+  getAllDiagnostics(){
+    this.superAdminService.getDIagnostics().subscribe(result =>{
+      result.forEach(element => {
+          var diagnostic: User = new User();
+          diagnostic.userId = element[0];
+          diagnostic.name = element[1];
+          this.diagnostics.push(diagnostic);
+      });
     })
   }
 

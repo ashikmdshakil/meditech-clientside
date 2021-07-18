@@ -10,11 +10,14 @@ import { SuperAdminService } from '../super-admin.service';
 })
 export class WithdrawRequestComponent implements OnInit {
 
-
+  isComplete: boolean = false;
+  isAgent: boolean = false;
   isDoctor: boolean = true;
   isDiagnostic: boolean = false;
   doctorWithdrawRequests: WithdrawRequest[] = [];
   diagnosticWithdrawRequests: WithdrawRequest[] = [];
+  agentWithdrawRequests: any = [];
+  allWithdrawRequests: WithdrawRequest[] = [];
   superAdminService: SuperAdminService;
   message: string;
   selectedRequest: WithdrawRequest = new WithdrawRequest();
@@ -30,16 +33,30 @@ export class WithdrawRequestComponent implements OnInit {
     this.superAdminService.getDiagnosticWithdrawRequest().subscribe(result =>{
       this.diagnosticWithdrawRequests = result;
     })
+    this.superAdminService.getAgentWithdrawRequest().subscribe(result =>{
+      this.agentWithdrawRequests = result;
+    })
   }
 
   showDoctorsRequest(){
     this.isDoctor = true;
     this.isDiagnostic = false;
+    this.isAgent = false;
+    this.isComplete = false;
   }
 
   showDiagnosticsRequests(){
     this.isDiagnostic = true;
     this.isDoctor = false;
+    this.isAgent = false;
+    this.isComplete = false;
+  }
+
+  showAgent(){
+    this.isDiagnostic = false;
+    this.isDoctor = false;
+    this.isAgent = true;
+    this.isComplete = false;
   }
 
   selectRequest(id: number, userId: number, name: string){
@@ -63,6 +80,9 @@ export class WithdrawRequestComponent implements OnInit {
           this.superAdminService.getDiagnosticWithdrawRequest().subscribe(result =>{
             this.diagnosticWithdrawRequests = result;
           })
+          this.superAdminService.getAgentWithdrawRequest().subscribe(result =>{
+            this.agentWithdrawRequests = result;
+          })
         }
         else{
           this.message = "Sorry ! Some thing went wrong";
@@ -84,6 +104,9 @@ export class WithdrawRequestComponent implements OnInit {
         this.superAdminService.getDiagnosticWithdrawRequest().subscribe(result =>{
           this.diagnosticWithdrawRequests = result;
         })
+        this.superAdminService.getAgentWithdrawRequest().subscribe(result =>{
+          this.agentWithdrawRequests = result;
+        })
       }
       else{
         this.message = "Sorry ! Some thing went wrong";
@@ -94,5 +117,15 @@ export class WithdrawRequestComponent implements OnInit {
     }
     )
 }
+
+  getCompleteRequests(){
+    this.superAdminService.getAllRequest().subscribe(result =>{
+      this.isDiagnostic = false;
+      this.isDoctor = false;
+      this.isAgent = false;
+      this.isComplete = true;
+      this.allWithdrawRequests = result;
+    })
+  }
 
 }

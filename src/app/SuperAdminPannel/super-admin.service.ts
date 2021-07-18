@@ -525,6 +525,19 @@ export class SuperAdminService {
   });
     return this.http.get(ipAddress+'/getDiagnosticWithdrawRequests',{headers: headers});
   }
+  getAgentWithdrawRequest(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getAgentWithdrawRequests',{headers: headers});
+  }
+
+  getAllRequest(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getCompleteWithdrawRequests',{headers: headers});
+  }
 
   completeRequest(id: string): Observable<any>{
     let formData: FormData = new FormData();

@@ -8,6 +8,7 @@ import { UserAvatar } from './UserAvatar.model';
 import { AddressBook } from './AddressBook.model';
 import { Role } from './Role.model';
 import { DoctorSlot } from './Model/DoctorSlot.model';
+import { SupermanWallet } from './Model/SupermanWallet.model';
 
 export class User{
     userId: number;
@@ -53,4 +54,5 @@ export class User{
     doctorTotalWithdraw: number;
     currentBalance: number;
     diagnosticTotalWithdrow: number; 
+    supermanWallet: SupermanWallet = new SupermanWallet();
 } 

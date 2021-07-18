@@ -7,10 +7,14 @@
             <div class="dropdown-menu">
               <a class="dropdown-item" (click)="showDoctorsRequest()" href="javascript:void(0)">Doctors</a>
               <a class="dropdown-item" (click)="showDiagnosticsRequests()" href="javascript:void(0)">Diagnostics</a>
+              <a class="dropdown-item" (click)="showAgent()" href="javascript:void(0)">Agents</a>
             </div>
           </div>
     </div>
-    <div class="col-sm-9"></div>
+    <div class="col-sm-3">
+        <button type="button" (click)="getCompleteRequests()" class="btn btn-info">Complete Request</button>
+    </div>
+    <div class="col-sm-6"></div>
 </div>
 <div *ngIf="isDoctor" class="row" style="margin-top: 20px;">
     <!--<div class="col-sm-1"></div>-->
@@ -53,7 +57,7 @@
             <thead>
               <tr>
                 <th scope="col">#</th>
-                <th scope="col">Doctor Name</th>
+                <th scope="col">Diagnostic Name</th>
                 <th scope="col">Total Balance</th>
                 <th scope="col">Total Withdraw</th>
                 <th scope="col">Requested Date</th>
@@ -78,6 +82,68 @@
             </tbody>
           </table>
     </div>
+</div> 
+
+<div *ngIf="isAgent" class="row" style="margin-top: 20px;">
+  <div class="col-sm-12">
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Agent Name</th>
+              <th scope="col">Total Balance</th>
+              <th scope="col">Total Withdraw</th>
+              <th scope="col">Requested Date</th>
+              <th scope="col">Requested Amount</th>
+              <th scope="col">Transaction Media</th>
+              <th scope="col">Transaction Number</th>
+            </tr>
+          </thead>
+          <tbody *ngFor= "let request of agentWithdrawRequests; let i = index">
+            <tr>
+              <th scope="row" style="font-size: small;"></th>
+              <td style="font-size: small;">{{request[7]}}</td>
+              <td style="font-size: small;">{{request[8]}}</td>
+              <td style="font-size: small;">{{request[9]}}</td>
+              <td style="font-size: small;">{{request[1] | date:'medium'}}</td>
+              <td style="font-size: small;">{{request[2]}}</td>
+              <td style="font-size: small;">{{request[4]}}</td>
+              <td style="font-size: small;">{{request[5]}}</td>
+              <td><button type="button" (click)="selectRequest(request[0],request[6],request[7])" style="font-size: small;" data-toggle="modal" data-target="#completePayment" class="btn btn-outline-success">complete</button></td>
+              <td><button type="button" (click)="selectRequest(request[0],request[6],request[7])" style="font-size: small;" data-toggle="modal" data-target="#deleteAppoinment" class="btn btn-outline-danger">cancel</button></td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
+</div>
+
+<div *ngIf="isComplete" class="row" style="margin-top: 20px;">
+  <div class="col-sm-12">
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Agent Name</th>
+              <th scope="col">Requested Date</th>
+              <th scope="col">Payment Date</th>
+              <th scope="col">Requested Amount</th>
+              <th scope="col">Transaction Media</th>
+              <th scope="col">Transaction Number</th>
+            </tr>
+          </thead>
+          <tbody *ngFor= "let request of allWithdrawRequests; let i = index">
+            <tr>
+              <th scope="row" style="font-size: small;"></th>
+              <td style="font-size: small;">{{request.user.name}}</td>
+              <td style="font-size: small;">{{request.requestedDate | date:'medium'}}</td>
+              <td style="font-size: small;">{{request.paymentDate | date:'medium'}}</td>
+              <td style="font-size: small;">{{request.amount}}</td>
+              <td style="font-size: small;">{{request.transactionMethod}}</td>
+              <td style="font-size: small;">{{request.transactionNumber}}</td>
+            </tr>
+          </tbody>
+        </table>
+  </div>
 </div>
 
    <!--  Complete Modal -->

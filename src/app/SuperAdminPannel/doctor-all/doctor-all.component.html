@@ -37,6 +37,7 @@
                 <td>{{doctor.email}}</td>
                 <td><button class="btn btn-danger deleteRow"  data-toggle="modal" data-target="#exampleModalDoctor" (click)="userInfo(doctor.mobileNumber)">Delete</button></td>
                 <td><button class="btn btn-info deleteRow" (click)="userDetails(doctor.userId)">Details</button></td>
+                <td><button class="btn btn-secondary deleteRow" (click)="showFeedbacks(doctor.userId)">Feedbacks</button></td>
               </tr>
             </tbody>
           </table>

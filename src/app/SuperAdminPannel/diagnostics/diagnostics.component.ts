@@ -20,7 +20,14 @@ export class DiagnosticsComponent implements OnInit {
 
   ngOnInit(): void {
     this.superAdminService.getDiagnosticCenters().subscribe(result =>{
-      this.diagnostics = result;
+      result.forEach(element => {
+        let diagnostic: User = new User();
+        diagnostic.userId = element[0];
+        diagnostic.name = element[1];
+        diagnostic.email = element[2];
+        diagnostic.mobileNumber = element[3];
+        this.diagnostics.push(diagnostic);
+      });
     },
     error =>{
       this.message = "Sorry! Something went wrong. It might be connection error."
@@ -57,6 +64,10 @@ export class DiagnosticsComponent implements OnInit {
   }
   userDetails(number : string){
     window.open("/user-details/"+number,"_blank");
+  }
+
+  seeBookings(number: string){
+    window.open("/bookedTests/"+number,"_blank");
   }
 
 }

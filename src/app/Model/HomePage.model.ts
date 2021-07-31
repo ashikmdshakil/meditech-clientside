@@ -2,5 +2,6 @@ import { User } from './../User.model';
 
 export class HomePageDoctrs{
     id: number;
-    doctor: User;
+    doctor: User = new User();
+    image: any;
 }

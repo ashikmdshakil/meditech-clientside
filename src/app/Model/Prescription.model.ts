@@ -8,11 +8,11 @@ export class Prescription{
     appoinmentId: number;
     referredTo: string;
     advice: string;
-    doctor: User;
-    patient: User;
+    doctor: User = new User();
+    patient: User = new User();
     medicines: Medicine[] = [];
     tests: Test[] = [];
     scedules: MedicineScedule[] = [];
-    referredDoctor: User;
+    referredDoctor: User = new User();
     appoinment: Appoinment;
 }

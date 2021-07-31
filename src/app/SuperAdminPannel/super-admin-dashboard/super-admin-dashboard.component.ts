@@ -59,5 +59,8 @@ export class SuperAdminDashboardComponent implements OnInit {
   withdraw(){
     this.router.navigateByUrl('/super-admin-pannel/(pannel:withdraw-request)');
   }
+  bookings(){
+    this.router.navigateByUrl('/super-admin-pannel/(pannel:test-bookings)');
+  }
  
 } 

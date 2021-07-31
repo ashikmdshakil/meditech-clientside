@@ -4,6 +4,8 @@ import { User } from 'src/app/User.model';
 import { SuperAdminService } from '../super-admin.service';
 import { getLocaleDateFormat } from '@angular/common';
 import { UsersService } from 'src/app/Services/users.service';
+import { Prescription } from 'src/app/Model/Prescription.model';
+import { PrescriptionService } from 'src/app/Services/prescription.service';
 
 @Component({
   selector: 'app-appoinments',
@@ -18,10 +20,13 @@ export class AppoinmentsComponent implements OnInit {
   doctors: User[] = [];
   selectedAppoinment: Appoinment = new Appoinment();
   message: string;
+  prescription: Prescription = new Prescription();
+  prescriptionService: PrescriptionService;
 
-  constructor(superAdminService: SuperAdminService, userService: UsersService) {
+  constructor(superAdminService: SuperAdminService, userService: UsersService, prescriptionService: PrescriptionService) {
     this.superAdminService = superAdminService;
     this.userService = userService;
+    this.prescriptionService = prescriptionService;
    }
 
   ngOnInit(): void {
@@ -141,6 +146,22 @@ export class AppoinmentsComponent implements OnInit {
     else{
       this.message = "Sorry! Payment of this appoinment is not complete.";
     }
+  }
+
+  getPrescription(id: number){
+    this.prescriptionService.getUserPrescriptions(id).subscribe(result =>{
+      if(result == null){
+        this.prescription.medicines = [];
+        this.prescription.tests = [];
+        this.prescription.referredDoctor.name = " ";
+      }
+      else{
+        this.prescription = result;
+        if(this.prescription.referredDoctor == null){
+          this.prescription.referredDoctor.name = " ";
+        }
+      }
+    })
   }
 
   close(){

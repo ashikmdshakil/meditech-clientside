@@ -23,10 +23,10 @@ export class User{
     hospitalName: string;
     roles: Role;
     addressBooks: AddressBook;
-    userAvatar: UserAvatar;
+    userAvatar: UserAvatar = new UserAvatar();
     categories: Categories[] = [];
     degree: Degree;
-    speciality: Speciality;
+    speciality: Speciality = new Speciality();
     chambers: Chamber[] = [];
     doctorSlots: DoctorSlot[] = [];
     prescriptions: Prescription[] = [];

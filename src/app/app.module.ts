@@ -60,6 +60,10 @@ import { AgentUsersComponent } from './SuperAdminPannel/agent-users/agent-users.
 import { BlogComponent } from './SuperAdminPannel/blog/blog.component';
 import { DiagnosticsComponent } from './SuperAdminPannel/diagnostics/diagnostics.component';
 import { WithdrawRequestComponent } from './SuperAdminPannel/withdraw-request/withdraw-request.component';
+import { BookedTestComponent } from './SuperAdminPannel/booked-test/booked-test.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { TestsComponent } from './SuperAdminPannel/tests/tests.component';
+import { FeedbackComponent } from './SuperAdminPannel/feedback/feedback.component';
 
 
 @NgModule({
@@ -115,7 +119,11 @@ import { WithdrawRequestComponent } from './SuperAdminPannel/withdraw-request/wi
     AgentUsersComponent,
     BlogComponent,
     DiagnosticsComponent,
-    WithdrawRequestComponent
+    WithdrawRequestComponent,
+    BookedTestComponent,
+    LandingPageComponent,
+    TestsComponent,
+    FeedbackComponent
   ],
   imports: [
     BrowserModule,

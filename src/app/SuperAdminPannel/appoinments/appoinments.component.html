@@ -67,6 +67,7 @@
                 <td style="font-size: small;">{{appoinment.adminFee}}</td>
                 <td><button type="button" style="font-size: small;" data-toggle="modal" data-target="#completeAppoinment" class="btn btn-outline-success" (click)="selectForComplete(appoinment.id)">complete</button></td>
                 <td><button type="button" style="font-size: small;" data-toggle="modal" data-target="#deleteAppoinment" class="btn btn-outline-danger" (click)="selectForDelete(appoinment.id)">cancel</button></td>
+                <td><button type="button" style="font-size: small;" data-toggle="modal" data-target="#prescription" class="btn btn-outline-danger" (click)="getPrescription(appoinment.id)">prescription</button></td>
               </tr>
             </tbody>
           </table>
@@ -130,6 +131,44 @@
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
               <button type="button" (click)="deleteAppoinment()" class="btn btn-primary">Cancel</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--Prescription modal -->
+
+      <div class="modal fade" id="prescription" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Prescription</h5>
+              <button type="button" (click)="close()" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="row">
+                <div class="col-sm-2">
+                </div>
+                <div class="col-sm-8">
+                  <h4 style="color: gray;">Medicines</h4>
+                  <div *ngFor= "let medicine of prescription.medicines; let i = index">
+                    <p style="font-size: small; color: gray;">{{medicine.medicineName}}</p>
+                  </div>
+                  <h4 style="color: gray;">Tests</h4>
+                  <div *ngFor= "let test of prescription.tests; let i = index">
+                    <p style="color: gray; font-size: small;">{{test.testName}}</p>
+                  </div>
+                  <!--<h4 style="color: gray;">Referred Doctor</h4>
+                  <p style="color: gray; font-size: small;">{{prescription.referredDoctor.name}}</p>-->    
+                </div>
+                <div class="col-sm-2">
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" (click)="close()" data-dismiss="modal">Close</button>
             </div>
           </div>
         </div>

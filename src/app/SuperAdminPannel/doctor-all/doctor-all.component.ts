@@ -96,6 +96,10 @@ export class DoctorAllComponent implements OnInit {
     )
   }
 
+  showFeedbacks(id: number){
+    window.open("/feedbacks/"+id,"_blank");
+  }
+
   updateCategory(id, name){
     let category: Categories = new Categories();
     category.id = id;

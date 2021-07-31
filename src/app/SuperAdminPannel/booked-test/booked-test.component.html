@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-sm-8"></div>
+  <div class="col-sm-4">
+    <div class="btn-group" style="float: right;">
+      <button type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Select Diagnostic
+      </button>
+      <div class="dropdown-menu">
+        <div *ngFor= "let diagnostic of diagnostics; let i = index">
+          <a class="dropdown-item" (click)="showBookings(diagnostic[0])" href="javascript:void(0)">{{diagnostic[1]}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" style="margin-top: 15px;">
+    <div class="col-sm-12">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Patient Name</th>
+                <th scope="col">Number</th>
+                <th scope="col">Diagnostic's Name</th>
+                <th scope="col">Exaination Date</th>
+                <th scope="col">Report Date</th>
+                <th scope="col">Payment Status</th>
+                <th scope="col">Status</th>
+                <th scope="col">Diagnostic Amount</th>
+                <th scope="col">Cicil Amount</th>
+                <th scope="col">Agent Amount</th>
+              </tr>
+            </thead>
+            <tbody *ngFor= "let test of bookedTests; let i = index">
+              <tr>
+                <th scope="row" style="font-size: small;">{{i+1}}</th>
+                <td style="font-size: small;">{{test[0]}}</td>
+                <td style="font-size: small;">{{test[1]}}</td>
+                <td style="font-size: small;">{{test[3]}}</td>
+                <td style="font-size: small;">{{test[4] | date:'medium'}}</td>
+                <td style="font-size: small;">{{test[5] | date:'medium'}}</td>
+                <td style="font-size: small;">{{test[6]}}</td>
+                <td style="font-size: small;">{{test[7]}}</td>
+                <td style="font-size: small;">{{test[8]}}</td>
+                <td style="font-size: small;">{{test[9]}}</td>
+                <td style="font-size: small;">{{test[9]}}</td>
+                <td style="font-size: small;"><button type="button" (click)="tests(test[2])" class="btn btn-success">Tests</button></td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+</div>

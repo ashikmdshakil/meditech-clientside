@@ -376,7 +376,7 @@ export class SuperAdminService {
     const headers = new HttpHeaders({
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
-    return this.http.get(ipAddress+'/getDiagnosticCenters',{headers: headers});
+    return this.http.get(ipAddress+'/adminGetsDiagnostics',{headers: headers});
   }
 
   getFullyCOmpleteAppoinments(): Observable<any>{
@@ -458,10 +458,7 @@ export class SuperAdminService {
   }
 
   getManipulatedHomePageDoctors(): Observable<any>{
-    const headers = new HttpHeaders({
-      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
-  });
-    return this.http.get(ipAddress+'/getHomePageDoctors',{headers: headers});
+    return this.http.get(ipAddress+'/getHomePageDoctors');
   }
 
   getManipulatedDIagnostics(): Observable<any>{
@@ -553,6 +550,60 @@ export class SuperAdminService {
       authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
   });
     return this.http.post(ipAddress+'/cancelWithdrawRequest',request,{headers: headers,'responseType': 'text'});
+  }
+
+  getBookedTests(id: string): Observable<any>{
+    let param = new HttpParams()
+    .set('diagnosticId' , id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getDiagnosticCentersBookingTest',{headers: headers, params: param});
+  }
+
+  getAllBooking(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/adminGetsAllBookings',{headers: headers});
+  }
+
+  getAllTests(id: string): Observable<any>{
+    let param = new HttpParams()
+    .set('bookingId' , id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/adminGetsTests',{headers: headers, params: param});
+  }
+
+  findAllDiagnostics(): Observable<any>{
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/getAllDiagnostics',{headers: headers});
+  }
+
+  getFeedbacks(id: string): Observable<any>{
+    let param = new HttpParams()
+    .set('id' , id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/adminGetsFeedbacks',{headers: headers, params: param});
+  }
+   
+  getAllBookingById(id: string): Observable<any>{
+    let param = new HttpParams()
+    .set('id' , id);
+    const headers = new HttpHeaders({
+      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
+  });
+    return this.http.get(ipAddress+'/adminGetsBookingById',{headers: headers, params: param});
+  }
+
+  getLandingPageInfo(): Observable<any>{
+    return this.http.get(ipAddress+'/landingpageInfo');
   }
 
 

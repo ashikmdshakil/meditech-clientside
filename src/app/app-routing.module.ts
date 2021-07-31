@@ -51,9 +51,14 @@ import { AppoinmentsComponent } from './SuperAdminPannel/appoinments/appoinments
 import { BlogComponent } from './SuperAdminPannel/blog/blog.component';
 import { DiagnosticsComponent } from './SuperAdminPannel/diagnostics/diagnostics.component';
 import { WithdrawRequestComponent } from './SuperAdminPannel/withdraw-request/withdraw-request.component';
+import { BookedTestComponent } from './SuperAdminPannel/booked-test/booked-test.component';
+import { LandingPageComponent } from './landing-page/landing-page.component';
+import { TestsComponent } from './SuperAdminPannel/tests/tests.component';
+import { FeedbackComponent } from './SuperAdminPannel/feedback/feedback.component';
 
 const routes: Routes = [
-  {path: "", redirectTo : "Dacicil", pathMatch: 'full'},
+  {path: "", component: LandingPageComponent},
+  {path: "admin", redirectTo : "Dacicil", pathMatch: 'full'},
   {path : "home", 
   component : HomeComponent,
   children : [
@@ -119,6 +124,8 @@ const routes: Routes = [
     ]
   },
   {path: "user-details/:id", component : UserDetailsComponent},
+  {path: "tests/:id", component : TestsComponent},
+  {path: "feedbacks/:id", component : FeedbackComponent},
   {path: "blank", component : BlankComponent},
   {path: "admin-pannel/refresh", component: BlankComponent},
   {path: "profile", component: ProfileComponent,
@@ -132,6 +139,7 @@ const routes: Routes = [
     ]
   },
   {path: "reset-password/:name", component: ResetPasswordComponent},
+  {path: "landingpage", component: LandingPageComponent},
   {path: "register-doctor", component: RegisterDoctorComponent,
   children : [
     {path: "", component : NavComponent, outlet: 'nav'},
@@ -193,6 +201,7 @@ const routes: Routes = [
     {path: "blogs", component : BlogComponent, outlet: 'pannel'},
     {path: "diagnostics", component : DiagnosticsComponent, outlet: 'pannel'},
     {path: "withdraw-request", component : WithdrawRequestComponent, outlet: 'pannel'},
+    {path: "test-bookings", component : BookedTestComponent, outlet: 'pannel'},
     {path: "blank", component : BlankComponent, outlet: 'pannel'},
   ]
 },

@@ -5,4 +5,5 @@ export class Categories{
     icon: File;
     iconUrl: any;
     users: User[] = [];
+    description: string;
 }

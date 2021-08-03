@@ -158,6 +158,7 @@ export class SuperAdminService {
       formData.append('icon', category.icon);
       formData.append('id', category.id.toString());
       formData.append('name', category.name);
+      formData.append('description', category.description);
     return this.http.post(ipAddress+'/adminPostsCategory',formData,{headers: headers,'responseType': 'text'});
   }
 

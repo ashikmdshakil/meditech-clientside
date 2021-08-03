@@ -23,6 +23,10 @@
             <input type="text" [(ngModel)]= "category.name" class="form-control" id="exampleFormControlInput1">
           </div>
           <div class="form-group">
+            <label for="exampleFormControlInput1">Category Description</label>
+            <textarea class="form-control" [(ngModel)]= "category.description" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="form-group">
             <label for="exampleFormControlFile1">Upload Category Icon</label>
             <input type="file" (change) = 'uploadImage($event)' class="form-control-file" id="exampleFormControlFile1">
           </div>

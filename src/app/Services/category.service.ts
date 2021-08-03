@@ -15,10 +15,7 @@ export class CategoryService {
    }
 
    getCategories(): Observable<any>{
-    const headers = new HttpHeaders({
-      authorization : 'Basic ' + btoa(localStorage.getItem('username') + ':' + localStorage.getItem('password'))
-  });
-    return this.http.get(ip+'/getCategories',{ headers: headers});
+    return this.http.get(ip+'/getCategories');
   }
 
 

@@ -3,6 +3,8 @@ import { SuperAdminDashboardComponent } from '../SuperAdminPannel/super-admin-da
 import { SuperAdminService } from '../SuperAdminPannel/super-admin.service';
 import { HomePageDoctrs} from '../Model/HomePage.model'
 import { DomSanitizer } from '@angular/platform-browser';
+import { CategoryService } from '../Services/category.service';
+import { Categories } from '../Model/Categories.model';
 
 @Component({
   selector: 'app-landing-page',
@@ -15,10 +17,14 @@ export class LandingPageComponent implements OnInit {
   superAdminService: SuperAdminService;
   homePageDoctors: HomePageDoctrs[] = [];
   domSanitizer: DomSanitizer;
+  categoryService: CategoryService;
+  categories: Categories[] = [];
+  category: Categories = new Categories();
 
-  constructor(superAdminService: SuperAdminService, domSanitizer: DomSanitizer) {
+  constructor(superAdminService: SuperAdminService, domSanitizer: DomSanitizer, categoryService: CategoryService) {
     this.superAdminService = superAdminService;
     this.domSanitizer = domSanitizer;
+    this.categoryService = categoryService;
    }
 
   ngOnInit(): void {
@@ -31,12 +37,31 @@ export class LandingPageComponent implements OnInit {
           if(doctor.doctor.userAvatar.image !== null){
             doctor.image = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+doctor.doctor.userAvatar.image);
           }
+          else{
+            doctor.image = this.domSanitizer.bypassSecurityTrustUrl('../../assets/assets/img/departments-1.jpg');
+          }
         });
     })
+    this.categoryService.getCategories().subscribe(result =>{
+        this.categories = result;
+        this.categories.forEach(element => {
+          element.iconUrl = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+element.icon);
+        });
+        this.category = this.categories[0];
+    })
+
   }
 
   scroll(el: HTMLElement) {
     el.scrollIntoView();
-}
+  }
+
+  selectCategory(id: number){
+    this.categories.forEach(element => {
+      if(element.id === id){
+        this.category = element;
+      }
+    });
+  }
 
 }

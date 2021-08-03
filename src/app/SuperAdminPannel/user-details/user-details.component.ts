@@ -9,6 +9,8 @@ import { UsersService } from './../../Services/users.service';
 import { Component, OnInit } from '@angular/core';
 import { UserAvatar } from 'src/app/UserAvatar.model';
 import { UserAvatarService } from 'src/app/Services/user-avatar.service';
+import { Degree } from 'src/app/Model/Degree.model';
+import { Speciality } from 'src/app/Model/Speciality.model';
  
 @Component({
   selector: 'app-user-details',
@@ -28,6 +30,8 @@ export class UserDetailsComponent implements OnInit {
   superman: User = new User();
   userAvatar: UserAvatar = new UserAvatar();
   addressBook: AddressBook = new AddressBook();
+  degree: Degree = new Degree();
+  specialities: Speciality = new Speciality();
   categories: Categories[] = [];
   currentCategories: Categories[] = [];
   message: string; 
@@ -87,6 +91,12 @@ export class UserDetailsComponent implements OnInit {
       if(this.user.addressBooks !== null){
         this.addressBook = this.user.addressBooks;
       }
+      if(this.user.degree !== null){
+        this.degree = this.user.degree;
+      } 
+      if(this.user.speciality !== null){
+        this.specialities = this.user.speciality;
+      }
       if(this.user.categories !== null){
         this.currentCategories = this.user.categories;
       } 
@@ -97,6 +107,7 @@ export class UserDetailsComponent implements OnInit {
     })
     this.categoryService.getCategories().subscribe(result =>{
       this.categories = result;
+      console.log(result);
       })   
   }
 
@@ -149,6 +160,8 @@ export class UserDetailsComponent implements OnInit {
   update(){
     this.user.categories = this.currentCategories;
     this.user.addressBooks = this.addressBook;
+    this.user.degree = this.degree;
+    this.user.speciality = this.specialities;
     this.userSevice.updateUser(this.user).subscribe(result =>{
       if(result =='success'){
         this.message = "Profile is updated successfully !";

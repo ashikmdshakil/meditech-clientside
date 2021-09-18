@@ -82,7 +82,7 @@ export class DashboardComponent implements OnInit {
         this.doctors.push(doctor);
       });
     })
-
+ 
     this.superAdminService.getManipulatedHomePageDoctors().subscribe(result =>{
       this.manipulatedHomePageDoctors = result;
     })

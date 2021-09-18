@@ -5,6 +5,7 @@ import { HomePageDoctrs} from '../Model/HomePage.model'
 import { DomSanitizer } from '@angular/platform-browser';
 import { CategoryService } from '../Services/category.service';
 import { Categories } from '../Model/Categories.model';
+import { ManipulatedDiagnostic } from '../Model/ManipulatedDiagnostic.model';
 
 @Component({
   selector: 'app-landing-page',
@@ -16,6 +17,7 @@ export class LandingPageComponent implements OnInit {
   info: any;
   superAdminService: SuperAdminService;
   homePageDoctors: HomePageDoctrs[] = [];
+  manipulatedDiagnostics: ManipulatedDiagnostic[] = [];
   domSanitizer: DomSanitizer;
   categoryService: CategoryService;
   categories: Categories[] = [];
@@ -49,6 +51,18 @@ export class LandingPageComponent implements OnInit {
         });
         this.category = this.categories[0];
     })
+
+    this.superAdminService.getManipulatedDIagnostics().subscribe(result =>{
+      this.manipulatedDiagnostics = result;
+      this.manipulatedDiagnostics.forEach(diagnostic => {
+        if(diagnostic.diagnostic.userAvatar.image !== null){
+          diagnostic.image = this.domSanitizer.bypassSecurityTrustUrl('data:image/png;base64, '+diagnostic.diagnostic.userAvatar.image);
+        }
+        else{
+          diagnostic.image = this.domSanitizer.bypassSecurityTrustUrl('../../assets/assets/img/departments-1.jpg');
+        }
+      });
+  })
 
   }
 
